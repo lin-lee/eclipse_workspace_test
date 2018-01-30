@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <mkdir dir="E:\eclipse32_enjoy_4.4.1\workspace_hadoop\hadoop-2.5.2-src\hadoop-maven-plugins\target/test-dir"/>
+  <mkdir dir="E:\eclipse32_enjoy_4.4.1\workspace_hadoop\hadoop-2.5.2-src\hadoop-maven-plugins\target/test-dir"/>
+</target>
+</project>
