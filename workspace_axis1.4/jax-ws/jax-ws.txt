@@ -1,0 +1,132 @@
+http://blog.csdn.net/chszs/article/details/5050756
+
+ 利用JAX-WS开发Web服务
+分类： Java工具 Web服务 2009-12-21 21:38 10599人阅读 评论(11) 收藏 举报
+web服务webservicesoapservicejavadate
+利用JAX-WS开发Web服务
+ 
+本文提供了一个使用Java如何开发基于SOAP的Web Services，其客户端可以是Perl、Ruby、Python或Java等。
+ 
+Java SE 6封装了JAX-WS(Java API for XML-Web Services)，而JAX-WS同时支持基于SOAP的Web服务和REST风格的Web服务。JAX-WS通常可简写为JWS，当前，JWS的版本为2.x。
+ 
+基于SOAP的Web服务可用单个Java类的实现，但是最好是用“接口+实现”的方式来实现最佳。
+
+Web服务的接口称为SEI，即Service Endpoint Interface；
+而Web服务的实现称为SIB，即Service Implementation Bean。
+ 
+SIB可以是一个POJO，也可以是无状态的会话EJB。本文的SIB是普通Java类，通过JDK 6的类库即可实现Web服务的发布。
+ 
+代码1：服务接口类SEI
+[java] view plaincopyprint?
+package myweb.service;  
+import javax.jws.WebService;  
+import javax.jws.WebMethod;  
+import javax.jws.soap.SOAPBinding;  
+import javax.jws.soap.SOAPBinding.Style;  
+@WebService  
+@SOAPBinding(style=Style.RPC)  
+public interface TimeServer {  
+    @WebMethod  
+    String getTimeAsString();  
+    @WebMethod  
+    long getTimeAsElapsed();  
+}  
+
+ 
+代码2：服务实现类SIB
+[java] view plaincopyprint?
+package myweb.service;  
+import java.text.DateFormat;  
+import java.util.Date;  
+import javax.jws.WebService;  
+@WebService(endpointInterface = "myweb.service.TimeServer")  
+public class TimeServerImpl implements TimeServer {  
+    /** 
+     * 返回从1970年1月1日0点0时0分起的毫秒数 
+     */  
+    public long getTimeAsElapsed() {  
+        return new Date().getTime();  
+    }  
+    /** 
+     * 返回如“2009-12-21”格式的日期 
+     */  
+    public String getTimeAsString() {  
+        Date date = new Date();  
+        DateFormat df = DateFormat.getDateInstance();  
+        return df.format(date);  
+    }  
+}  
+
+ 
+代码3：服务发布类Publisher
+[java] view plaincopyprint?
+package myweb.service;  
+import javax.xml.ws.Endpoint;  
+public class TimeServerPublisher {  
+    public static void main(String[] args){  
+        // 第一个参数是发布的URL  
+        // 第二个参数是SIB实现  
+        Endpoint.publish("http://127.0.0.1:10100/myweb", new TimeServerImpl());  
+    }  
+}  
+
+ 
+编译以上代码：
+javac myweb/service/*.java
+ 
+运行服务：
+java myweb/service/TimeServerPublisher
+ 
+在浏览器地址栏输入：
+http://localhost:10100/myweb?wsdl
+显示如下图所示：
+服务内容
+ 
+ 
+也可编写客户端代码测试服务。
+Java客户端：
+[java] view plaincopyprint?
+package myweb.client;  
+import javax.xml.namespace.QName;  
+import javax.xml.ws.Service;  
+import java.net.URL;  
+import myweb.service.*;  
+public class TimeClient {  
+    public static void main(String[] args) throws Exception{  
+        URL url = new URL("http://localhost:10100/myweb?wsdl");  
+        // 第一个参数是服务的URI  
+        // 第二个参数是在WSDL发布的服务名  
+        QName qname = new QName("http://service.myweb/","TimeServerImplService");  
+        // 创建服务  
+        Service service = Service.create(url, qname);  
+        // 提取端点接口，服务“端口”。  
+        TimeServer eif = service.getPort(TimeServer.class);  
+        System.out.println(eif.getTimeAsString());  
+        System.out.println(eif.getTimeAsElapsed());  
+    }  
+}  
+
+ 
+运行客户端，显示结果如下：
+2009-12-21
+1261402511859
+ 
+也可用Ruby编写客户端，如下：
+[ruby] view plaincopyprint?
+#!/usr/bin/ruby  
+# one Ruby package for SOAP-based services  
+require 'soap/wsdlDriver'   
+wsdl_url = 'http://127.0.0.1:10100/myweb?wsdl'  
+  
+service = SOAP::WSDLDriverFactory.new(wsdl_url).create_rpc_driver  
+# Save request/response messages in files named '...soapmsgs...'  
+service.wiredump_file_base = 'soapmsgs'  
+# Invoke service operations.  
+result1 = service.getTimeAsString  
+result2 = service.getTimeAsElapsed  
+# Output results.  
+puts "Current time is: #{result1}"  
+puts "Elapsed milliseconds from the epoch: #{result2}"  
+
+ 
+运行结果相同！

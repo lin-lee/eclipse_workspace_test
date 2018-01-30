@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<deployment xmlns="http://xml.apache.org/axis/wsdd/"  
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">  
+  
+   
+  
+    <!-- 自定义的WebService配置 -->  
+    <service name="HelloWorldWSDD" provider="java:RPC">  
+        
+        <parameter name="allowedMethods" value="*" />  
+        <parameter name="scope" value="request" />  
+        <parameter name="className" value="lin.server.HelloWorldWSDD" />  
+    </service>  
+  
+          
+</deployment> 
+
