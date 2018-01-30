@@ -1,0 +1,334 @@
+<?xml version="1.0" ?>
+<definitions name="PFTMX" targetNamespace="urn:PFTMX" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:PFTMX" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<types xmlns="http://schemas.xmlsoap.org/wsdl/" />
+<portType name="PFTMXPort"><operation name="authrize">
+<input message="tns:authrizeRequest" />
+<output message="tns:authrizeResponse" />
+</operation>
+<operation name="Get_ScenicSpot_List">
+<input message="tns:Get_ScenicSpot_ListRequest" />
+<output message="tns:Get_ScenicSpot_ListResponse" />
+</operation>
+<operation name="Get_ScenicSpot_Info">
+<input message="tns:Get_ScenicSpot_InfoRequest" />
+<output message="tns:Get_ScenicSpot_InfoResponse" />
+</operation>
+<operation name="Get_Ticket_List">
+<input message="tns:Get_Ticket_ListRequest" />
+<output message="tns:Get_Ticket_ListResponse" />
+</operation>
+<operation name="Dynamic_Price_And_Storage">
+<input message="tns:Dynamic_Price_And_StorageRequest" />
+<output message="tns:Dynamic_Price_And_StorageResponse" />
+</operation>
+<operation name="PFT_Order_Submit">
+<input message="tns:PFT_Order_SubmitRequest" />
+<output message="tns:PFT_Order_SubmitResponse" />
+</operation>
+<operation name="Order_Globle_Search">
+<input message="tns:Order_Globle_SearchRequest" />
+<output message="tns:Order_Globle_SearchResponse" />
+</operation>
+<operation name="reSend_SMS_Global_PL">
+<input message="tns:reSend_SMS_Global_PLRequest" />
+<output message="tns:reSend_SMS_Global_PLResponse" />
+</operation>
+<operation name="Order_Change_Pro">
+<input message="tns:Order_Change_ProRequest" />
+<output message="tns:Order_Change_ProResponse" />
+</operation>
+<operation name="Send_SMS_System_Fee">
+<input message="tns:Send_SMS_System_FeeRequest" />
+<output message="tns:Send_SMS_System_FeeResponse" />
+</operation>
+<operation name="Terminal_Code_Verify">
+<input message="tns:Terminal_Code_VerifyRequest" />
+<output message="tns:Terminal_Code_VerifyResponse" />
+</operation>
+<operation name="PFT_Member_Fund">
+<input message="tns:PFT_Member_FundRequest" />
+<output message="tns:PFT_Member_FundResponse" />
+</operation>
+<operation name="PFT_Member_Relationship">
+<input message="tns:PFT_Member_RelationshipRequest" />
+<output message="tns:PFT_Member_RelationshipResponse" />
+</operation>
+</portType>
+<binding name="PFTMXBinding" type="tns:PFTMXPort">
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+<operation name="authrize">
+<soap:operation soapAction="urn:PFTMX#PFT_server#authrize" />
+<input><soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="Get_ScenicSpot_List">
+<soap:operation soapAction="urn:PFTMX#PFT_server#Get_ScenicSpot_List" />
+<input><soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="Get_ScenicSpot_Info">
+<soap:operation soapAction="urn:PFTMX#PFT_server#Get_ScenicSpot_Info" />
+<input><soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="Get_Ticket_List">
+<soap:operation soapAction="urn:PFTMX#PFT_server#Get_Ticket_List" />
+<input><soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="Dynamic_Price_And_Storage">
+<soap:operation soapAction="urn:PFTMX#PFT_server#Dynamic_Price_And_Storage" />
+<input><soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="PFT_Order_Submit">
+<soap:operation soapAction="urn:PFTMX#PFT_server#PFT_Order_Submit" />
+<input><soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="Order_Globle_Search">
+<soap:operation soapAction="urn:PFTMX#PFT_server#Order_Globle_Search" />
+<input><soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="reSend_SMS_Global_PL">
+<soap:operation soapAction="urn:PFTMX#PFT_server#reSend_SMS_Global_PL" />
+<input><soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="Order_Change_Pro">
+<soap:operation soapAction="urn:PFTMX#PFT_server#Order_Change_Pro" />
+<input><soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="Send_SMS_System_Fee">
+<soap:operation soapAction="urn:PFTMX#PFT_server#Send_SMS_System_Fee" />
+<input><soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="Terminal_Code_Verify">
+<soap:operation soapAction="urn:PFTMX#PFT_server#Terminal_Code_Verify" />
+<input><soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="PFT_Member_Fund">
+<soap:operation soapAction="urn:PFTMX#PFT_server#PFT_Member_Fund" />
+<input><soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="PFT_Member_Relationship">
+<soap:operation soapAction="urn:PFTMX#PFT_server#PFT_Member_Relationship" />
+<input><soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:PFTMX" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+</binding>
+<service name="PFTMX">
+<documentation />
+<port name="PFTMXPort" binding="tns:PFTMXBinding"><soap:address location="http://open.elonghushan.com.cn/openService/pftMX.php" />
+</port>
+</service>
+<message name="authrizeRequest">
+<part name="ac" type="xsd:string" />
+<part name="pw" type="xsd:string" />
+</message>
+<message name="authrizeResponse">
+<part name="authrize" type="xsd:string" />
+</message>
+<message name="Get_ScenicSpot_ListRequest">
+<part name="ac" type="xsd:string" />
+<part name="pw" type="xsd:string" />
+<part name="n" type="xsd:string" />
+<part name="m" type="xsd:string" />
+</message>
+<message name="Get_ScenicSpot_ListResponse">
+<part name="Get_ScenicSpot_List" type="xsd:string" />
+</message>
+<message name="Get_ScenicSpot_InfoRequest">
+<part name="ac" type="xsd:string" />
+<part name="pw" type="xsd:string" />
+<part name="n" type="xsd:string" />
+</message>
+<message name="Get_ScenicSpot_InfoResponse">
+<part name="Get_ScenicSpot_Info" type="xsd:string" />
+</message>
+<message name="Get_Ticket_ListRequest">
+<part name="ac" type="xsd:string" />
+<part name="pw" type="xsd:string" />
+<part name="n" type="xsd:string" />
+<part name="m" type="xsd:string" />
+</message>
+<message name="Get_Ticket_ListResponse">
+<part name="Get_Ticket_List" type="xsd:string" />
+</message>
+<message name="Dynamic_Price_And_StorageRequest">
+<part name="ac" type="xsd:string" />
+<part name="pw" type="xsd:string" />
+<part name="pid" type="xsd:string" />
+<part name="date" type="xsd:string" />
+<part name="mode" type="xsd:string" />
+<part name="ptype" type="xsd:string" />
+<part name="get_storage" type="xsd:string" />
+<part name="m" type="xsd:string" />
+</message>
+<message name="Dynamic_Price_And_StorageResponse">
+<part name="Dynamic_Price_And_Storage" type="xsd:string" />
+</message>
+<message name="PFT_Order_SubmitRequest">
+<part name="ac" type="xsd:string" />
+<part name="pw" type="xsd:string" />
+<part name="lid" type="xsd:string" />
+<part name="tid" type="xsd:string" />
+<part name="remotenum" type="xsd:string" />
+<part name="tprice" type="xsd:string" />
+<part name="tnum" type="xsd:string" />
+<part name="playtime" type="xsd:string" />
+<part name="ordername" type="xsd:string" />
+<part name="ordertel" type="xsd:string" />
+<part name="contactTEL" type="xsd:string" />
+<part name="smsSend" type="xsd:string" />
+<part name="paymode" type="xsd:string" />
+<part name="ordermode" type="xsd:string" />
+<part name="assembly" type="xsd:string" />
+<part name="series" type="xsd:string" />
+<part name="concatID" type="xsd:string" />
+<part name="pCode" type="xsd:string" />
+<part name="m" type="xsd:string" />
+<part name="personID" type="xsd:string" />
+</message>
+<message name="PFT_Order_SubmitResponse">
+<part name="PFT_Order_Submit" type="xsd:string" />
+</message>
+<message name="Order_Globle_SearchRequest">
+<part name="ac" type="xsd:string" />
+<part name="pw" type="xsd:string" />
+<part name="sid" type="xsd:string" />
+<part name="mid" type="xsd:string" />
+<part name="aid" type="xsd:string" />
+<part name="tid" type="xsd:string" />
+<part name="ltitle" type="xsd:string" />
+<part name="ttitle" type="xsd:string" />
+<part name="btime1" type="xsd:string" />
+<part name="etime1" type="xsd:string" />
+<part name="btime2" type="xsd:string" />
+<part name="etime2" type="xsd:string" />
+<part name="btime3" type="xsd:string" />
+<part name="etime3" type="xsd:string" />
+<part name="ordernum" type="xsd:string" />
+<part name="remotenum" type="xsd:string" />
+<part name="oname" type="xsd:string" />
+<part name="otel" type="xsd:string" />
+<part name="status" type="xsd:string" />
+<part name="pays" type="xsd:string" />
+<part name="orderby" type="xsd:string" />
+<part name="sort" type="xsd:string" />
+<part name="rstart" type="xsd:string" />
+<part name="n" type="xsd:string" />
+<part name="c" type="xsd:string" />
+<part name="contactTEL" type="xsd:string" />
+<part name="payinfo" type="xsd:string" />
+<part name="p_type" type="xsd:string" />
+<part name="ordertype" type="xsd:string" />
+<part name="concat" type="xsd:string" />
+<part name="ifpack" type="xsd:string" />
+<part name="m" type="xsd:string" />
+</message>
+<message name="Order_Globle_SearchResponse">
+<part name="Order_Globle_Search" type="xsd:string" />
+</message>
+<message name="reSend_SMS_Global_PLRequest">
+<part name="ac" type="xsd:string" />
+<part name="pw" type="xsd:string" />
+<part name="ordern" type="xsd:string" />
+<part name="m" type="xsd:string" />
+</message>
+<message name="reSend_SMS_Global_PLResponse">
+<part name="reSend_SMS_Global_PL" type="xsd:string" />
+</message>
+<message name="Order_Change_ProRequest">
+<part name="ac" type="xsd:string" />
+<part name="pw" type="xsd:string" />
+<part name="ordern" type="xsd:string" />
+<part name="num" type="xsd:string" />
+<part name="ordertel" type="xsd:string" />
+<part name="m" type="xsd:string" />
+</message>
+<message name="Order_Change_ProResponse">
+<part name="Order_Change_Pro" type="xsd:string" />
+</message>
+<message name="Send_SMS_System_FeeRequest">
+<part name="ac" type="xsd:string" />
+<part name="pw" type="xsd:string" />
+<part name="tel" type="xsd:string" />
+<part name="msg" type="xsd:string" />
+<part name="m" type="xsd:string" />
+</message>
+<message name="Send_SMS_System_FeeResponse">
+<part name="Send_SMS_System_Fee" type="xsd:string" />
+</message>
+<message name="Terminal_Code_VerifyRequest">
+<part name="ac" type="xsd:string" />
+<part name="pw" type="xsd:string" />
+<part name="ordern" type="xsd:string" />
+<part name="m" type="xsd:string" />
+</message>
+<message name="Terminal_Code_VerifyResponse">
+<part name="Terminal_Code_Verify" type="xsd:string" />
+</message>
+<message name="PFT_Member_FundRequest">
+<part name="ac" type="xsd:string" />
+<part name="pw" type="xsd:string" />
+<part name="dtype" type="xsd:string" />
+<part name="aid" type="xsd:string" />
+</message>
+<message name="PFT_Member_FundResponse">
+<part name="PFT_Member_Fund" type="xsd:string" />
+</message>
+<message name="PFT_Member_RelationshipRequest">
+<part name="ac" type="xsd:string" />
+<part name="pw" type="xsd:string" />
+<part name="n" type="xsd:string" />
+<part name="m" type="xsd:string" />
+</message>
+<message name="PFT_Member_RelationshipResponse">
+<part name="PFT_Member_Relationship" type="xsd:string" />
+</message>
+</definitions>
