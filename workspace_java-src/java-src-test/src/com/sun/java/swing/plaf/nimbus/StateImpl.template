@@ -1,0 +1,23 @@
+/*
+ * ${STATE_NAME}.java %E%
+ *
+ * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
+ * ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ */
+package ${PACKAGE};
+
+import java.awt.*;
+import javax.swing.*;
+
+/**
+ */
+class ${STATE_NAME} extends State {
+    ${STATE_NAME}() {
+        super("${STATE_KEY}");
+    }
+
+    @Override protected boolean isInState(JComponent c) {
+${BODY}
+    }
+}
+

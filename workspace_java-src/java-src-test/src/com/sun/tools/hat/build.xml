@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+ The contents of this file are subject to the Sun Public License
+ Version 1.0 (the "License"); you may not use this file except in
+ compliance with the License. A copy of the License is available at
+ http://www.sun.com/, and in the file LICENSE.html in the
+ doc directory.
+ 
+ The Original Code is HAT. The Initial Developer of the
+ Original Code is Bill Foote, with contributions from others
+ at JavaSoft/Sun. Portions created by Bill Foote and others
+ at Javasoft/Sun are Copyright (C) 1997-2004. All Rights Reserved.
+ 
+ In addition to the formal license, I ask that you don't
+ change the history or donations files without permission.
+
+-->
+
+<!-- This is an Ant project file to build Heap Analysis Tool (HAT).
+     For more information on Ant, please see http://ant.apache.org/ 
+
+     To build jhat.jar, run ant in current directory. jhat.jar is
+     built in ./build directory.
+-->
+
+<project name="Java Heap Analysis Tool" default="all" basedir=".">
+
+  <!-- Property Definitions -->
+
+  <property name="app.name" value="jhat"/>
+  <property name="src.dir"  value="."/>
+  <property name="build.dir"  value="build"/>
+  <property name="classes.dir"  value="${build.dir}/classes"/>
+  <property name="dist.jar" value="${app.name}.jar"/>
+
+  <target name="prepare">
+    <mkdir dir="${build.dir}"/>
+    <mkdir dir="${classes.dir}"/>
+  </target>
+
+  <target name="clean">
+     <delete dir="${build.dir}"/>
+  </target>
+
+  <target name="compile" depends="prepare" description="Compiles the sources">
+    <javac srcdir="${src.dir}" destdir="${classes.dir}"
+           debug="on" deprecation="on">
+    </javac>
+
+  </target>
+
+  <target name="deploy" depends="compile" description="Creates a deployment bundle">
+    <delete file="${build.dir}/${dist.jar}" />
+    <mkdir dir="${classes.dir}/com/sun/tools/hat/resources" />
+    <copy todir="${classes.dir}/com/sun/tools/hat/resources">
+      <fileset dir="${src.dir}/resources" includes="*" />
+    </copy>
+
+    <jar jarfile="${build.dir}/${dist.jar}"
+         manifest="${src.dir}/MANIFEST.mf" basedir="${classes.dir}"/>
+  </target>
+
+  <target name="all" depends="deploy" description="Builds sources and deployment jar"/>
+
+</project>
