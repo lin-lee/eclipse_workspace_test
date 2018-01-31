@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://xfire.codehaus.org/config/1.0">
+  <service>
+    <serviceClass>com.bjlyw.ts.service.ITicketServiceImpl</serviceClass>
+    <wsdlURL>http://114.242.13.196:3177/ticketservice/httpService.ts?wsdl</wsdlURL>
+    <serviceFactory>org.codehaus.xfire.jaxb2.JaxbServiceFactory</serviceFactory>
+  </service>
+</beans>
+

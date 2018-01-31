@@ -1,0 +1,195 @@
+http://clq9761.iteye.com/blog/1261963
+
+
+XFire创建WebService实例
+
+博客分类： Java综合
+webservice 
+  XFire创建WebService实例应用
+ 
+  XFire使得在JavaEE应用中发布Web服务变得轻而易举。和其他Web服务引擎相比，
+  XFire的配置非常简单，可以非常容易地和Spring集成。
+  下载地址：http://xfire.codehaus.org/Download。
+ 
+   一． 使用XFire发布WebService
+
+   1. 创建service接口 
+ 
+Java代码  收藏代码
+ package com.test.service;  
+ import com.test.service.bean.User;  
+   
+ public interface IHelloService {  
+    public String sayHello(String name);  
+    public User  getUser(User user);  
+    }  
+}  
+  2.创建Service接口的实现类
+Java代码  收藏代码
+package com.test.service;  
+import com.test.service.bean.User;  
+public class HelloService implements IHelloService{   
+    public String sayHello(String name){  
+        return "Hello, "+name;  
+    }  
+    public User getUser(User user) {  
+        User userNew = new User();  
+        userNew.setId("new:"+user.getId());  
+        userNew.setName("new:"+user.getName());  
+        return userNew;  
+    }  
+}  
+  
+Java代码  收藏代码
+package com.test.service.bean;  
+public class User {       
+    private String id;  
+    private String name;      
+    public String getId() {  
+        return id;  
+    }  
+    public void setId(String id) {  
+        this.id = id;  
+    }  
+    public String getName() {  
+        return name;  
+    }  
+    public void setName(String name) {  
+        this.name = name;  
+    }  
+}  
+ 
+3.在web.xml文件中进行XFire拦截配置，可参照官网提供的sample。
+Xml代码  收藏代码
+<?xml version="1.0" encoding="UTF-8"?>  
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"  
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+   xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee   
+   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">  
+  
+<servlet>  
+    <servlet-name>XFireServlet</servlet-name>  
+    <servlet-class>  
+        org.codehaus.xfire.transport.http.XFireConfigurableServlet  
+    </servlet-class>  
+</servlet>  
+<servlet-mapping>  
+    <servlet-name>XFireServlet</servlet-name>  
+    <url-pattern>/servlet/XFireServlet/*</url-pattern>  
+</servlet-mapping>  
+<servlet-mapping>  
+    <servlet-name>XFireServlet</servlet-name>  
+    <url-pattern>/services/*</url-pattern>  
+</servlet-mapping>  
+</web-app>  
+ 4.在class目录下建立META-INF目录,如（META-INF>xifre->services.xml）,
+    在services.xml文件中进行webservice服务的发布，可参照官网提供的sample。 
+Xml代码  收藏代码
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://xfire.codehaus.org/config/1.0">  
+<service>  
+    <name>HelloService</name>  
+    <serviceClass>com.test.service.IHelloService</serviceClass>  
+    <implementationClass>com.test.service.HelloService</implementationClass>  
+</service>      
+</beans>  
+ 
+5.将xfire的Jar包和相关依赖包拷到系统应用中，在Tomcat下部署应用。
+   启动tomcat后访问服务（需在应用后加上/services,webservice才会进行拦截）：
+   例：http://localhost:8080/ws2/services。(IE下有时无法显示列表，可用其它浏览器显示或指定接口名称）
+   界面如下：   
+ 
+ 点击后查看详细的wsdl文档，不同的浏览器下访问会有区别，展示效果不一致。
+ 
+ 
+   二．建立XFire客户端进行调用
+  
+    1.本地客户端调用，与webservice服务在同一应用。
+Java代码  收藏代码
+package com.test.client;  
+  
+import java.net.MalformedURLException;  
+import org.codehaus.xfire.XFireFactory;  
+import org.codehaus.xfire.client.XFireProxyFactory;  
+import org.codehaus.xfire.service.Service;  
+import org.codehaus.xfire.service.binding.ObjectServiceFactory;  
+import com.test.service.IHelloService;  
+import com.test.service.bean.User;  
+  
+public class ClientTest {  
+    public static void main(String args[]) throws MalformedURLException {  
+        Service service = new ObjectServiceFactory().create(IHelloService.class);  
+        XFireProxyFactory factory = new XFireProxyFactory(XFireFactory  
+                .newInstance().getXFire());  
+        String url = "http://localhost:8080/ws2/services/HelloService";  
+        IHelloService helloService = (IHelloService) factory.create(service,url);  
+        System.out.println(helloService.sayHello("张三"));  
+        User user = new User();  
+        user.setName("张三");  
+        System.out.println(helloService.getUser(user).getName());  
+    }  
+}  
+ 
+     执行结果如下：
+Java代码  收藏代码
+Hello, 张三  
+new:张三  
+ 
+   2. 利用XFire创建build.xml文件生成客户端代码调用webservice服务
+  
+     2.1在src目录下创建build.properties文件，配置如下：
+Java代码  收藏代码
+src.dir=${basedir}  
+lib.dir=D:/myspace/ws2/WebRoot/WEB-INF/lib  
+wsdl.dir=http\://localhost\:8080/ws2/services/HelloService?wsdl  
+ 
+     2.2在src目录下创建build.xml文件，配置如下：
+Xml代码  收藏代码
+<?xml version="1.0" encoding="UTF-8"?>  
+<project name="WebService" basedir="." default="gen-webservice">  
+    <property file="build.properties"></property>  
+    <path id="project-classpath">  
+        <fileset dir="${lib.dir}">  
+            <include name="**/*.jar" />   
+        </fileset>  
+    </path>  
+  
+    <target name="gen-webservice">  
+        <taskdef name="wsgen" classname="org.codehaus.xfire.gen.WsGenTask"   
+                                             classpathref="project-classpath" />  
+        <wsgen outputDirectory="${src.dir}"  wsdl="${wsdl.dir}"   
+                    package="stub.test.client" overwrite="true"/>          
+    </target>  
+</project>  
+    
+     用ant构建生成代码，生成后的目录如下：
+ 
+ 
+ 
+     2.3编写客户端代码进行调用
+Java代码  收藏代码
+package com.test.client;  
+import stub.test.client.HelloServiceClient;  
+import stub.test.client.HelloServicePortType;  
+import com.test.service.bean.ObjectFactory;  
+import com.test.service.bean.User;  
+  
+public class HelloServiceTest {  
+  
+    public static void main(String args[]){  
+        HelloServiceClient service = new HelloServiceClient();        
+        HelloServicePortType portType = service.getHelloServiceHttpPort();            
+        System.out.println(portType.sayHello("张三"));  
+          
+        ObjectFactory factory = new ObjectFactory();          
+        User user = factory.createUser();  
+        user.setName(factory.createUserName("张三"));  
+        System.out.println(portType.getUser(user).getName().getValue());  
+    }  
+}  
+ 
+    执行结果如下：
+Java代码  收藏代码
+Hello, 张三  
+new:张三  
+ 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="water/" kind="src" path="src"/>
+	<classpathentry kind="src" path="chi"/>
+	<classpathentry kind="src" path="out"/>
+	<classpathentry kind="src" path="water"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6.0_20_32"/>
+	<classpathentry kind="con" path="org.codehaus.xfire.eclipse.XFIRE_LIBRARY"/>
+	<classpathentry kind="lib" path="httpclient-4.2.1.jar"/>
+	<classpathentry kind="lib" path="commons-httpclient-3.0.jar"/>
+	<classpathentry kind="lib" path="commons-codec-1.6.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
