@@ -1,0 +1,1650 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=GB2312">
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta name="robots" content="all" />
+<meta name="author" content=" " />
+<meta name="Copyright" content="  " />
+<meta name="description" content="人民网旅游是中国权威旅游媒体，向海内外网民及数百万旅游业者提供旅游服务信息，栏目有旅游访谈，原创新闻，旅游投诉，业界资讯，旅游专题，旅游产品等。" />
+<meta name="keywords" content="峨眉山、武夷山、九寨沟、普陀山、欢乐谷、千岛湖，知名景区旅游" />
+<meta name="filetype" content="1">
+<meta name="publishedtype" content="1">
+<meta name="pagetype" content="2">
+<meta name="catalogs" content="41570">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>旅游频道_权威全面报道旅游--人民网</title>
+<link href="/img/2010lvyoupd/2010lvyou.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/img/MAIN/2012/10/112513/js_library/jquery-1.7.1.min.js"></script>
+<style type="text/css">
+/*pic list content*/
+	.pic_list{width:980px;height:auto;margin:10px auto;background:#d3eafb;}
+	.pic_list1{width:980px;height:auto;margin:10px auto;border:1px solid #f9e3cc;padding-top:10px;padding-bottom:15px;border-top:2px solid #e80b07;}
+	.pic_list h2{border-bottom:1px solid #ccc;padding-bottom:8px;width:100%;}
+	.pic_list1 ul li{float:left;padding:20px 13px 20px 30px; text-align:center;}
+	.pic_list1 ul li img{border:1px solid #ccc;display:block;}
+	#tiles{list-style-type: none;position: relative;margin: 0;}
+	#tiles li{
+	width: 210px;
+	background-color: #fff;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	border:1px solid #d8e1e4;
+	padding:10px;
+	display: none;cursor: pointer;color:#5c5c5c;}
+	#tiles li img {display: block;}
+	#tiles li p {color:#fff;font-size: 12px;margin: 7px 0 0 7px;width:95%;text-align:center;}
+	#tiles li p.time {text-align:right;color:#333;background:#e3e3e3;margin:5px auto 0 auto;width:100%;padding:5px 0;}
+	#tiles li p a:link,#tiles li p a:visited,#tiles li p a:hover{font-size:14px;color:#333;}
+	#tiles ali:nth-child(3n){height: 175px;}
+	#tiles ali:nth-child(4n-3){padding-bottom: 30px;}
+	#tiles ali:nth-child(5n){height: 250px;}
+	.page_n{border-top:1px solid #ccc;width:980px;height:70px;padding-top:10px;font-size:14x;margin:5px auto; text-align:center;}
+	.page_n a:link,.page_n a:visited,.page_n a:hover{display:inline-block;background:#0099cb;color:#fff;padding:3px 12px;}
+.zdfy{text-align:center;width:90%;margin:0 auto;word-wrap: break-word; word-break: normal;}
+.zdfy a{margin:0 5px;}
+.replay_top{position:fixed;bottom:50px;right:20px;}
+</style>
+<script language="javascript" type="text/javascript" src="/img/2010lvyoupd/swfobject.js"></script>
+<script language="javascript" type="text/javascript" src="/img/2010lvyoupd/change.js"></script>
+<script language="javascript" src="http://www.people.com.cn/adv/swfobject.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+document.writeln("<style type=\"text\/css\">");
+document.writeln(".p2_pic .b_bg{filter:alpha(opacity=50);-moz-opacity:0.5;opacity:0.5;}");
+document.writeln("</style>");
+//-->
+</script>
+<script language="javascript" src="/img/2010lvyoupd/AutoChangePhoto.js"></SCRIPT>
+<script type="text/javascript">
+/* ==== slider nameSpace ==== */
+var slider = function() {
+	/* ==== private methods ==== */
+	function getElementsByClass(object, tag, className) {
+		var o = object.getElementsByTagName(tag);
+		for ( var i = 0, n = o.length, ret = []; i < n; i++) {
+			if (o[i].className == className) ret.push(o[i]);
+		}
+		if (ret.length == 1) ret = ret[0];
+		return ret;
+	}
+	function setOpacity (obj,o) {
+		if (obj.filters) obj.filters.alpha.opacity = Math.round(o);
+		else obj.style.opacity = o / 100;
+	}
+	/* ==== Slider Constructor ==== */
+	function Slider(oCont, speed, iW, iH, oP) {
+		this.slides = [];
+		this.over   = false;
+		this.S      = this.S0 = speed;
+		this.iW     = iW;
+		this.iH     = iH;
+		this.oP     = oP;
+		this.oc     = document.getElementById(oCont);
+		this.frm    = getElementsByClass(this.oc, 'div', 'slide');
+		this.NF     = this.frm.length;
+		this.resize();
+		for (var i = 0; i < this.NF; i++) {
+			this.slides[i] = new Slide(this, i);
+		}
+		this.oc.parent = this;
+		this.view      = this.slides[0];
+		this.Z         = this.mx;
+		/* ==== on mouse out event ==== */
+		this.oc.onmouseout = function () {
+			this.parent.mouseout();
+			return false;
+		}
+	}
+	Slider.prototype = {
+		/* ==== animation loop ==== */
+		run : function () {
+			this.Z += this.over ? (this.mn - this.Z) * .5 : (this.mx - this.Z) * .5;
+			this.view.calc();
+			var i = this.NF;
+			while (i--) this.slides[i].move();
+		},
+		/* ==== resize  ==== */
+		resize : function () {
+			this.wh = this.oc.clientWidth;
+			this.ht = this.oc.clientHeight;
+			this.wr = this.wh * this.iW;
+			this.r  = this.ht / this.wr;
+			this.mx = this.wh / this.NF;
+			this.mn = (this.wh * (1 - this.iW)) / (this.NF - 1);
+		},
+		/* ==== rest  ==== */
+		mouseout : function () {
+			this.over      = false;
+			setOpacity(this.view.img, this.oP);
+		}
+	}
+	/* ==== Slide Constructor ==== */
+	Slide = function (parent, N) {
+		this.parent = parent;
+		this.N      = N;
+		this.x0     = this.x1 = N * parent.mx;
+		this.v      = 0;
+		this.loaded = false;
+		this.cpt    = 0;
+		this.start  = new Date();
+		this.obj    = parent.frm[N];
+		this.txt    = getElementsByClass(this.obj, 'div', 'text');
+		this.img    = getElementsByClass(this.obj, 'img', 'diapo');
+		this.bkg    = document.createElement('div');
+		this.bkg.className = 'backgroundText';
+		this.obj.insertBefore(this.bkg, this.txt);
+		if (N == 0) this.obj.style.borderLeft = 'none';
+		this.obj.style.left = Math.floor(this.x0) + 'px';
+		setOpacity(this.img, parent.oP);
+		/* ==== mouse events ==== */
+		this.obj.parent = this;
+		this.obj.onmouseover = function() {
+			this.parent.over();
+			return false;
+		}
+	}
+	Slide.prototype = {
+		/* ==== target positions ==== */
+		calc : function() {
+			var that = this.parent;
+			// left slides
+			for (var i = 0; i <= this.N; i++) {
+				that.slides[i].x1 = i * that.Z;
+			}
+			// right slides
+			for (var i = this.N + 1; i < that.NF; i++) {
+				that.slides[i].x1 = that.wh - (that.NF - i) * that.Z;
+			}
+		},
+		/* ==== HTML animation : move slides ==== */
+		move : function() {
+			var that = this.parent;
+			var s = (this.x1 - this.x0) / that.S;
+			/* ==== lateral slide ==== */
+			if (this.N && Math.abs(s) > .5) {
+				this.obj.style.left = Math.floor(this.x0 += s) + 'px';
+			}
+			/* ==== vertical text ==== */
+			var v = (this.N < that.NF - 1) ? that.slides[this.N + 1].x0 - this.x0 : that.wh - this.x0;
+			if (Math.abs(v - this.v) > .5) {
+				this.bkg.style.top = this.txt.style.top = 0 + 'px';
+				this.v = v;
+				this.cpt++;
+			} else {
+				if (!this.pro) {
+					/* ==== adjust speed ==== */
+					this.pro = true;
+					var tps = new Date() - this.start;
+					if(this.cpt > 1) {
+						that.S = Math.max(1, (30 / (tps / this.cpt)) * that.S0);
+					}
+				}
+			}
+			if (!this.loaded) {
+				if (this.img.complete) {
+					this.img.style.visibility = 'visible';
+					this.loaded = true;
+				}
+			}
+		},
+		/* ==== light ==== */
+		over : function () {
+			this.parent.resize();
+			this.parent.over = true;
+			setOpacity(this.parent.view.img, this.parent.oP);
+			this.parent.view = this;
+			this.start = new Date();
+			this.cpt = 0;
+			this.pro = false;
+			this.calc();
+			setOpacity(this.img, 100);
+		}
+	}
+	/* ==== public method - script initialization ==== */
+	return {
+		init : function() {
+			// create instances of sliders here
+			// parameters : HTMLcontainer name, speed (2 fast - 20 slow), Horizontal ratio, vertical text ratio, opacity
+			this.s1 = new Slider("slider", 12, 1.6/2, 1/3.2, 100);
+			setInterval("slider.s1.run();", 16);
+		}
+	}
+}();
+
+</script>
+<!--检索-->
+<script src="/css/search_goso.js"></script>
+<script src="/css/search.js"></script>
+<!--回顾-->
+<script language="JavaScript">
+function go() {
+
+        var today = new Date();
+        var bday = new Date(2006,04, 27);
+
+
+        tf=document.dateform;
+        vd=tf.sday.options[tf.sday.selectedIndex].value;
+        vm=tf.smonth.options[tf.smonth.selectedIndex].value;
+vy=tf.syear.options[tf.syear.selectedIndex].value;
+        var aday = new Date(vy ,vm-1, vd);
+		if((vy>2011)){ window.open("http://travel.people.com.cn/GB/review/"+vy+vm+vd+".html");}
+ else if ((vy==2011)&&(vm<2)&&(vd<10))
+ { window.alert("回顾请从2011年02月10日开始");}
+ else    {
+        window.open("http://travel.people.com.cn/GB/review/"+vy+vm+vd+".html");}
+}
+function resetselect () {
+	var mydate = new Date();
+    var myyear = mydate.getFullYear();
+    var mymonth = mydate.getMonth()+1;
+
+	var mytoday = mydate.getDate();
+	if(new String(mymonth).length==1)mymonth="0"+new String(mymonth);
+	if(new String(mytoday).length==1)mytoday="0"+new String(mytoday);
+	document.dateform.syear.value=myyear;
+    document.dateform.smonth.value=mymonth;
+    document.dateform.sday.value=mytoday;
+}
+</script>
+<script>
+function showc1(n){
+	for(var i=1;i<=7;i++){
+		var curCon=document.getElementById("c_"+i);
+		var curBtn=document.getElementById("d_"+i);
+ if(i==n){
+	 curCon.className="this_a";
+	 curBtn.style.display="block";
+	 }
+ else{
+	 curCon.className="";
+	 curBtn.style.display="none";
+
+	 }
+	}
+}
+function showc2(n){
+	for(var i=1;i<=7;i++){
+		var curCon=document.getElementById("c2_"+i);
+		var curBtn=document.getElementById("d2_"+i);
+ if(i==n){
+	 curCon.className="this_a";
+	 curBtn.style.display="block";
+	 }
+ else{
+	 curCon.className="";
+	 curBtn.style.display="none";
+
+	 }
+	}
+}
+function showc3(n){
+	for(var i=1;i<=7;i++){
+		var curCon=document.getElementById("c3_"+i);
+		var curBtn=document.getElementById("d3_"+i);
+ if(i==n){
+	 curCon.className="this_b";
+	 curBtn.style.display="block";
+	 }
+ else{
+	 curCon.className="";
+	 curBtn.style.display="none";
+
+	 }
+	}
+}
+function showc4(n){
+	for(var i=1;i<=7;i++){
+		var curCon=document.getElementById("c4_"+i);
+		var curBtn=document.getElementById("d4_"+i);
+ if(i==n){
+	 curCon.className="this_b";
+	 curBtn.style.display="block";
+	 }
+ else{
+	 curCon.className="";
+	 curBtn.style.display="none";
+
+	 }
+	}
+}
+function showc5(n){
+	for(var i=1;i<=7;i++){
+		var curCon=document.getElementById("c5_"+i);
+		var curBtn=document.getElementById("d5_"+i);
+ if(i==n){
+	 curCon.className="this_c";
+	 curBtn.style.display="block";
+	 }
+ else{
+	 curCon.className="";
+	 curBtn.style.display="none";
+
+	 }
+	}
+}
+function showc6(n){
+	for(var i=1;i<=7;i++){
+		var curCon=document.getElementById("c6_"+i);
+		var curBtn=document.getElementById("d6_"+i);
+ if(i==n){
+	 curCon.className="this_c";
+	 curBtn.style.display="block";
+	 }
+ else{
+	 curCon.className="";
+	 curBtn.style.display="none";
+
+	 }
+	}
+}
+function showc1(n){
+	for(var i=1;i<=7;i++){
+		var curCon=document.getElementById("c_"+i);
+		var curBtn=document.getElementById("d_"+i);
+ if(i==n){
+	 curCon.className="this_a";
+	 curBtn.style.display="block";
+	 }
+ else{
+	 curCon.className="";
+	 curBtn.style.display="none";
+
+	 }
+	}
+}
+
+
+
+</script>
+
+</head>
+<body>
+<div class="w980 width980 clear"><!--AdForward Begin:--><script type='text/javascript' src='http://pmm.people.com.cn/main/s?user=people|nonechannel|topfullcolumn&db=people&border=0&local=yes&js=ie&kv=people|travel;third|;fourth|;newsid|0' charset='gbk'></script><!--AdForward End--></div>
+<div class="all_content clearfix">
+<div style="margin:10px auto;width:980px;height:auto;"><script type='text/javascript' src='http://pmm.people.com.cn/main/s?user=people|travel|topfullcolumn&db=people&border=0&local=yes&js=ie' charset='gbk'></script></div>
+<!--头部开始-->
+<div class="width980"><!-- #BeginLibraryItem "/Library/2011navtop.lbi" --><!-- 调用样式表 -->
+  <style type="text/css">
+/*top nav*/
+.nav{height:88px;width:978px;border:#B2C7DA 1px solid;background:url(/img/2010navtop/images/nav_bg.gif) top repeat-x #fff;margin-top:3px}
+.nav div{color:#000000;height:31px;line-height:31px;margin:0 10px 0 15px;text-align:left;}
+.nav div a{color:#000000;padding:0 6px;}
+.nav div b,.nav div b a:link,.nav div b a:hover,.nav div b a:visited{color:#B10104;font-weight:normal;}
+.nav div span{float:right;margin-top:-32px;color:#696969;}
+.nav div span a:link,.nav div span a:hover,.nav div span a:visited{color:#696969;}
+.nav ul{margin:6px 14px;}
+.nav ul li{color:#080808;float:left;width:34px;text-align:center;}
+.nav ul li a{color:#080808;}
+.nav ul .separate{width:17px;}
+.topad{width:980px; clear:both; margin:5px auto; padding:0;}
+.topad .ad01{width:770px;height:90px;border:#EBEBEB 1px solid;float:left;padding:0;margin:0;list-style:none;}
+.topad .ad02{width:180px;height:80px;border:#EBEBEB 1px solid;float:right;padding:8px 10px 2px;margin:0;list-style:none;}
+/*chrome and opera*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+.topad .ad02 iframe{margin:-4px 0 0 0;}
+}
+  </style>
+  <!--[if !IE]><!-->
+<style type="text/css">
+.nav div span{margin-top:0px}
+.nav ul{ margin:6px 10px;}
+</style>
+<!--<![endif]-->
+  <!--人民网主导航-->
+  <div class="nav">
+    <div><a href="http://www.people.com.cn/" target="_blank">首页</a><b><a href="http://cpc.people.com.cn/" target="_blank">中国共产党新闻</a></b><a href="http://bbs.people.com.cn/" target="_blank">强国社区</a><a href="http://bbs1.people.com.cn/boardList.do?action=postList&amp;boardId=1" target="_blank">论坛</a><a href="http://zhengwutong.com" target="_blank">政务通</a><a href="http://blog.people.com.cn/" target="_blank">博客</a><a href="http://t.people.com.cn" target="_blank">微博</a><a href="http://bbs1.people.com.cn/board/1/131.html" target="_blank">育儿宝</a><a href="http://ezheng.people.com.cn" target="_blank">E政</a><a href="http://vblog.people.com.cn" target="_blank">播客</a><a href="http://sns.people.com.cn/" target="_blank">SNS</a><a href="http://tv.people.com.cn/" target="_blank">人民电视</a>|<a href="http://qzlx.people.com.cn/" target="_blank">群众路线网</a><a href="http://npc.people.com.cn/" target="_blank">人大</a><a href="http://cppcc.people.com.cn/" target="_blank">政协</a><a href="http://acftu.people.com.cn/" target="_blank">工会</a><a href="http://acwf.people.com.cn/" target="_blank">妇联</a><a href="http://scitech.people.com.cn/GB/131715/index.html" target="_blank">科协</a> <span><a href="javascript:void(0)" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.people.com.cn/');return(false);" style="BEHAVIOR:url(#default#homepage)">设为首页</a>|<a href="http://www.people.com.cn/GB/138812/index.html" target="_blank">网站地图</a></span> </div>
+    <ul>
+      <li><strong><a href="http://news.people.com.cn/" target="_blank">新闻</a></strong></li>
+      <li><a href="http://politics.people.com.cn/" target="_blank">时政</a></li>
+      <li><a href="http://society.people.com.cn/" target="_blank">社会</a></li>
+      <li><a href="http://legal.people.com.cn/" target="_blank">法治</a></li>
+      <li><a href="http://chinese.people.com.cn/" target="_blank">华侨</a></li>
+      <li class="separate">|</li>
+      <li><strong><a href="http://unn.people.com.cn/GB/41796/index.html" target="_blank">地方</a></strong></li>
+      <li><a href="http://leaders.people.com.cn/" target="_blank">领导</a></li>
+      <li><a href="http://expo.people.com.cn/" target="_blank">节会</a></li>
+      <li><a href="http://invest.people.com.cn/" target="_blank">招商</a></li>
+      <li><a href="http://travel.people.com.cn/" target="_blank">旅游</a></li>
+      <li class="separate">|</li>
+      <li><strong><a href="http://finance.people.com.cn/" target="_blank">财经</a></strong></li>
+      <li><a href="http://finance.people.com.cn/stock/" target="_blank">股票</a></li>
+      <li><a href="http://energy.people.com.cn/" target="_blank">能源</a></li>
+      <li><a href="http://health.people.com.cn/" target="_blank">健康</a></li>
+      <li class="separate">|</li>
+      <li><strong><a href="http://house.people.com.cn/" target="_blank">房产</a></strong></li>
+      <li><a href="http://shipin.people.com.cn/" target="_blank">食品</a></li>
+      <li><a href="http://medicine.people.com.cn/" target="_blank">卫生</a></li>
+      <li class="separate">|</li>
+      <li><strong><a href="http://edu.people.com.cn/" target="_blank">教育</a></strong></li>
+      <li><a href="http://scitech.people.com.cn/" target="_blank">科技</a></li>
+      <li><a href="http://env.people.com.cn/" target="_blank">环保</a></li>
+      <li><a href="http://culture.people.com.cn/" target="_blank">文化</a></li>
+      <li class="separate">|</li>
+      <li><strong><a href="http://art.people.com.cn/" target="_blank">收藏</a></strong></li>
+      <li><a href="http://lady.people.com.cn/" target="_blank">时尚</a></li>
+      <li><a href="http://shop.people.com.cn/" target="_blank">商城</a></li>
+      <li><a href="http://pic.people.com.cn/" target="_blank">图片</a></li>
+      <li><strong><a href="http://opinion.people.com.cn/" target="_blank">观点</a></strong></li>
+      <li><a href="http://theory.people.com.cn/" target="_blank">理论</a></li>
+      <li><a href="http://media.people.com.cn/" target="_blank">传媒</a></li>
+      <li><a href="http://yq.people.com.cn/" target="_blank">舆情</a></li>
+      <li><a href="http://fangtan.people.com.cn" target="_blank">访谈</a></li>
+      <li class="separate">|</li>
+      <li><strong><a href="http://world.people.com.cn/" target="_blank">国际</a></strong></li>
+      <li><a href="http://military.people.com.cn/" target="_blank">军事</a></li>
+      <li><a href="http://tw.people.com.cn/" target="_blank">台湾</a></li>
+      <li><a href="http://hm.people.com.cn/" target="_blank">港澳</a></li>
+      <li><a href="http://japan.people.com.cn/" target="_blank">日本</a></li>
+      <li class="separate">|</li>
+      <li><strong><a href="http://it.people.com.cn/" target="_blank">I&nbsp;T </a></strong></li>
+      <li><a href="http://auto.people.com.cn/" target="_blank">汽车</a></li>
+      <li><a href="http://tc.people.com.cn/" target="_blank">通信</a></li>
+      <li><a href="http://homea.people.com.cn/" target="_blank">家电</a></li>
+      <li class="separate">|</li>
+      <li><strong><a href="http://ccnews.people.com.cn/" target="_blank">央企</a></strong></li>
+      <li><a href="http://mnc.people.com.cn/" target="_blank">跨国</a></li>
+      <li><a href="http://finance.people.com.cn/money/" target="_blank">理财</a></li>
+      <li class="separate">|</li>
+      <li><strong><a href="http://sports.people.com.cn/" target="_blank">体育</a></strong></li>
+      <li><a href="http://ent.people.com.cn/" target="_blank">娱乐</a></li>
+      <li><a href="http://game.people.com.cn/" target="_blank">游戏</a></li>
+      <li><a href="http://comic.people.com.cn/" target="_blank">动漫</a></li>
+      <li class="separate">|</li>
+      <li><strong><a href="http://mms.people.com.cn/" target="_blank">无线</a></strong></li>
+      <li><a href="http://data.people.com.cn/directLogin.do" target="_blank">数据</a></li>
+      <li><a href="http://mag.people.com.cn/" target="_blank">杂志</a></li>
+      <li><a href="http://finance.people.com.cn/fund/" target="_blank">基金</a></li>
+    </ul>
+  </div>
+  <!--结束 人民网主导航--><!-- #EndLibraryItem --><!--广告-->
+  <ul class="topad">
+    <li class="ad01">
+      <!--广告左一[770*80]开始-->
+<iframe marginheight="0" marginwidth="0" frameborder="0" width="770" height="90" scrolling="no" src="http://pmm.people.com.cn/main/s?user=people|nonechannel|bigbanner2012&db=people&border=0&local=yes&kv=people|travel;third|;fourth|;newsid|0"></iframe>
+      <!--广告左一[770*80]结束-->
+    </li>
+    <li class="ad02">
+	  <iframe marginheight="0" marginwidth="0" frameborder="0" width="100%" height="19" scrolling="no" src="http://pmm.people.com.cn/main/s?user=people|nonechannel|textlink&db=people&border=0&local=yes&kv=people|travel;third|;fourth|;newsid|0"></iframe>
+      <iframe marginheight="0" marginwidth="0" frameborder="0" width="100%" height="19" scrolling="no" src="http://pmm.people.com.cn/main/s?user=people|nonechannel|textlink1&db=people&border=0&local=yes&kv=people|travel;third|;fourth|;newsid|0"></iframe>
+      <iframe marginheight="0" marginwidth="0" frameborder="0" width="100%" height="19" scrolling="no" src="http://pmm.people.com.cn/main/s?user=people|nonechannel|textlink2&db=people&border=0&local=yes&kv=people|travel;third|;fourth|;newsid|0"></iframe>
+      <iframe marginheight="0" marginwidth="0" frameborder="0" width="100%" height="19" scrolling="no" src="http://pmm.people.com.cn/main/s?user=people|nonechannel|textlink3&db=people&border=0&local=yes&kv=people|travel;third|;fourth|;newsid|0"></iframe>
+    </li>
+  </ul>
+  <!--结束 广告-->
+</div>
+<!--头部结束-->
+<!--导航开始-->
+<div class="sub_nav">
+  <div class="sub_nav_l">
+   <a href="http://www.people.com.cn/" target="_blank"><img src="/img/2014channel_logo/logo_2014.gif" alt="" width="129" height="43" /></a>
+<a href="http://travel.people.com.cn/" target="_blank"><img src="/img/2014channel_logo/logo_travel.gif" alt="" height="43" /></a>
+<style type="text/css">
+	<!--
+.sub_nav{ width:980px; height:52px; background:url(images/t0.gif) no-repeat; margin:0px auto;}
+.sub_nav_l{ width:266px; height:45px; float:left; display:inline; padding:0px 0 10px 10px ;}
+.sub_nav_l img{ vertical-align:middle; padding-top:3px;}
+
+.sub_nav_c{ width:460px; height:auto; float:left; color:#000; margin-left:10px;background:url(images/nav/navbg.gif) no-repeat 147px 10px ;}
+.sub_nav_r{ width:230px; float:right;color:#666666;}
+.sub_nav_r input{ vertical-align:middle;}
+	-->
+</style>
+  </div>
+  <ul class="sub_nav_c"><li><a href="http://travel.people.com.cn/GB/382900/index.html 
+" target='_blank'>旅游视讯</a> <a href="http://travel.people.com.cn/GB/386903/index.html" target='_blank'>旅游气象</a><br /><a href="http://travel.people.com.cn/GB/386960/index.html" target='_blank'>旅游中国</a> <a href="http://travel.people.com.cn/GB/41634/index.html" target='_blank'>环游世界</a></li>
+    <li><a href="http://travel.people.com.cn/GB/210706/index.html" target='_blank'>邮轮</a> <a href="http://travel.people.com.cn/GB/163475/index.html" target='_blank'>航空</a> <a href="http://travel.people.com.cn/GB/206081/index.html" target='_blank'>自驾</a> <a href="http://travel.people.com.cn/GB/217133/index.html" target='_blank'>铁路</a><br /><a href="http://travel.people.com.cn/GB/210707/index.html" target='_blank'>高尔夫</a> <a href="/GB/163477/index.html" target='_blank'>酒店</a> <a href="http://travel.people.com.cn/GB/41624/index.html" target='_blank'>旅行社</a></li>
+    <li><a href="/GB/163470/index.html" target='_blank'>美食</a> <a href="/GB/163471/index.html" target='_blank'>美景</a> <a href="/GB/163472/index.html" target='_blank'>趣图</a><br /><a href="/GB/139035/189973/211237/index.html" target='_blank'>月逛宝盒</a> <a href="http://bbs1.people.com.cn/boardList.do?action=postList&boardId=32" target='_blank'>旅游论坛</a></li></ul>
+  <div class="sub_nav_r">
+<form name="dateform" method="post" onsubmit="return false">新闻日志：...................
+<select name="syear">
+<script type="text/javascript">
+  var realdate = new Date();
+  var realyear = realdate.getFullYear();
+  for(i=2011;i<=realyear;i++)
+  {
+    document.write("<option value='" +i+ "'>" +i+ "</option>");
+  }
+</script>
+        </select>年
+  <select name="smonth">
+  	<option value="01">1</option>
+    <option value="02">2</option>
+    <option value="03">3</option>
+    <option value="04">4</option>
+    <option value="05">5</option>
+    <option value="06">6</option>
+    <option value="07">7</option>
+    <option value="08">8</option>
+    <option value="09">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+  </select>月
+  <select name="sday">
+  	<option value="01">1</option>
+    <option value="02">2</option>
+    <option value="03">3</option>
+    <option value="04">4</option>
+    <option value="05">5</option>
+    <option value="06">6</option>
+    <option value="07">7</option>
+    <option value="08">8</option>
+    <option value="09">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+    <option value="16">16</option>
+    <option value="17">17</option>
+    <option value="18">18</option>
+    <option value="19">19</option>
+    <option value="20">20</option>
+    <option value="21">21</option>
+    <option value="22">22</option>
+    <option value="23">23</option>
+    <option value="24">24</option>
+    <option value="25">25</option>
+    <option value="26">26</option>
+    <option value="27">27</option>
+    <option value="28">28</option>
+    <option value="29">29</option>
+    <option value="30">30</option>
+    <option value="31">31</option>
+  </select>日<input type="image" name="Submit" src="/img/2010chuanmei/images/seach1.gif" onClick="go()"/><script language="Javascript">{resetselect()}</script></form></div>
+</div>
+<div class="width980 sub_nav2">
+<ul><li class="this"><a href="http://travel.people.com.cn" target='_blank'>首页</a></li>
+<li>|</li>
+<li><a href="/GB/41636/41644/index.html" target='_blank'>业界</a></li>
+<li>|</li>
+<li><a href="http://travel.people.com.cn/GB/225668/index.html" target='_blank'>国内</a></li>
+<li>|</li>
+<li><a href="/GB/41636/41641/index.html" target='_blank'>国际</a></li>
+<li>|</li>
+<li><a href="http://travel.people.com.cn/GB/53301/index.html" target='_blank'>访谈</a></li>
+<li>|</li>
+<li><a href="/GB/41636/41640/index.html" target='_blank'>争鸣</a></li>
+<li>|</li>
+<li><a href="/GB/203376/index.html" target='_blank'>原创</a></li>
+<li>|</li>
+<li><a href="http://travel.people.com.cn/GB/139035/index.html" target='_blank'>专题</a></li>
+<li>|</li>
+<li><a href="http://travel.people.com.cn/GB/115592/index.html" target='_blank'>对话旅游局长</a></li>
+<li>|</li>
+<li><a href="http://travel315.people.com.cn/" target='_blank'>旅游3·15</a></li>
+<li>|</li>
+<li><a href="/GB/214547/index.html" target='_blank'>关于我们</a></li></ul>
+</div>
+<div class="width980 gd_new">
+<div class="gd_1"><b><a href='/GB/41636/index.html' target='_blank'><font color='#d20000'>即时新闻：</font></a></b><marquee direction="left" scrolldelay="150" height="22" width="400" onmouseover="this.stop()" onmouseout="this.start()" truespeed="truespeed">·<a href='/n/2015/0623/c41570-27194217.html' target="_blank">高清：敦煌西湖自然保护区生态植被得到恢复</a>
+·<a href='/n/2015/0623/c41570-27194203.html' target="_blank">高清：美国华裔小姐大赛 佳丽表演尽显中国风 </a>
+·<a href='/n/2015/0623/c41570-27194198.html' target="_blank">高清：2015全球首对大熊猫双胞胎出生 </a>
+·<a href='/n/2015/0623/c41570-27193977.html' target="_blank">坐飞机时网上冲浪？ 看球赛实况转播将不再是梦</a>
+·<a href='/n/2015/0623/c41570-27193938.html' target="_blank">陕西丝路申遗一周年:7处遗产点游客激增门票未涨</a>
+·<a href='http://tv.people.com.cn/n/2015/0623/c150721-27193639.html' target="_blank">端午节北京圣泉山景区旅游文化活动轮番上演</a>
+·<a href='/n/2015/0623/c41570-27192971.html' target="_blank">贵州省委副书记谌贻琴:"贵州懂绿"从"四个绿色"开始</a>
+·<a href='/n/2015/0623/c41570-27192891.html' target="_blank">谌贻琴：写入“一带一路”规划  凸显生态文明论坛价值</a>
+·<a href='/n/2015/0623/c41570-27192859.html' target="_blank">东京城市治理经验参考：与周边形成环状多级都市群</a>
+·<a href='/n/2015/0623/c41570-27192777.html' target="_blank">盘点北京端午小长假：160家景区接待游客400万人次</a>
+
+</marquee></div>
+<div class="gd_2"><b>新闻热线：</b>010-65368440 010-65368449</div>
+<div class="gd_3"><form action="http://search.people.com.cn/rmw/GB/rmwsearch/gj_search_pd.jsp" name="searchForm" method="post"  onsubmit="if(getParameter_DJ('旅游频道_权威全面报道旅游') == false) return false;" target="_blank"><input type="hidden" name="XMLLIST"><input type="text" name="names" id="names" /><input name="SearchSubmit" border="0" value="submit" type="image" src="/img/2010chuanmei/images/seach3.gif" style="width:26px; height:22px;"></form></div>
+</div>
+<div class="width980 ad2 ad3">
+<ul><a href="http://www.nxtour.com.cn/ningxiaIndex.ghtml" ><img src="/NMediaFile/2015/0402/MAIN201504021332076278318643203.jpg" /></a>
+</ul>
+</div>
+<div class="ad clear">
+	<div class="ad_left"><div style="margin:0;padding:0;" id="FDL">
+<script type="text/javascript">
+var imagePathL=new Array();//图片地址
+var linkPathL=new Array();//连接地址
+
+imagePathL.push("/NMediaFile/2015/0210/MAIN201502101040108334448554042.jpg")
+linkPathL.push("http://travel.people.com.cn/GB/139035/367529/index.html")
+
+var imagePathL_str=""
+var linkPathL_str=""
+
+for(var i=0;i<imagePathL.length;i++){
+	
+	imagePathL_str+=imagePathL[i]+"|";
+	linkPathL_str+=linkPathL[i]+"|";
+}
+
+var FDL = new SWFObject("http://www.people.com.cn/adv/picshow.swf", "FDL", "165", "60", "7", "");
+FDL.addParam("menu", "false");
+FDL.addParam("wmode", "transparent");
+FDL.addVariable("ad_num", "3"); //翻牌数量
+FDL.addVariable("pic_width", "165"); //图片宽
+FDL.addVariable("pic_height", "60"); //图片高
+FDL.addVariable("flip_time", "300"); //翻牌速度
+FDL.addVariable("pause_time", "4000"); //间隔时间
+FDL.addVariable("wait_time", "1000"); //等待时间
+FDL.addVariable("pics", imagePathL_str); //广告图片地址
+FDL.addVariable("urls", linkPathL_str); //广告链接地址
+
+FDL.write("FDL");
+</script></div></div>
+    <div class="ad_center"><div class="ad_center"><a href="http://travel.people.com.cn/GB/139035/395699/index.html" target="_blank"><img src="/NMediaFile/2015/0602/MAIN201506021312005319195558280.jpg" width="630" height="59" border="0" alt="七问厕所革命"/></a></div>
+</div>
+    <div class="ad_right"><div style="margin:0;padding:0;" id="FP">
+<script language="javascript" type="text/javascript">
+<!--
+var imagePath=new Array();//图片地址
+var linkPath=new Array();//连接地址
+
+imagePath.push("/NMediaFile/2014/0320/MAIN201403201616589320972990329.jpg")
+linkPath.push("http://travel.people.com.cn/GB/382900/index.html")
+
+imagePath.push("/NMediaFile/2014/0604/MAIN201406041637348115840235163.jpg")
+linkPath.push("http://travel.people.com.cn/GB/139035/384884/index.html")
+
+
+var imagePath_str=""
+var linkPath_str=""
+
+for(var i=0;i<imagePath.length;i++){
+	imagePath_str+=imagePath[i]+"|";
+	linkPath_str+=linkPath[i]+"|";
+}
+
+var FP = new SWFObject("http://www.people.com.cn/adv/picshow.swf", "FP", "165", "60", "7", "");
+FP.addParam("menu", "false");
+FP.addParam("wmode", "transparent");
+FP.addVariable("ad_num", "3"); //翻牌数量
+FP.addVariable("pic_width", "165"); //图片宽
+FP.addVariable("pic_height", "60"); //图片高
+FP.addVariable("flip_time", "300"); //翻牌速度
+FP.addVariable("pause_time", "4000"); //间隔时间
+FP.addVariable("wait_time", "1000"); //等待时间
+FP.addVariable("pics", imagePath_str); //广告图片地址
+FP.addVariable("urls", linkPath_str); //广告链接地址
+
+FP.write("FP");
+//-->
+</script></div></div>
+</div>
+
+
+<!--导航结束-->
+<!--xzp1 20101027-->
+<div class="xzp1_content clearfix">
+	<div class="xzp1_left">
+    	<div id="wwdiv"></div>
+<script language="javascript" type="text/javascript">
+<!--
+var pic_arr = new Array(); 
+var link_arr = new Array(); 
+var text_arr = new Array(); 
+
+pic_arr.push("/NMediaFile/2015/0512/MAIN201505121329171730122711299.jpg");
+pic_arr.push("/NMediaFile/2015/0518/MAIN201505181347082042395618252.jpg");
+pic_arr.push("/NMediaFile/2015/0521/MAIN201505211109074161937777819.jpg");
+pic_arr.push("/NMediaFile/2015/0210/MAIN201502101128469073929421798.jpg");
+pic_arr.push("/NMediaFile/2014/0623/MAIN201406230925451503289268925.jpg");
+pic_arr.push("/NMediaFile/2015/0623/MAIN201506230905471042657144192.jpg");
+
+
+link_arr.push("http://travel.people.com.cn/GB/139035/395699/index.html");
+link_arr.push("http://travel.people.com.cn/GB/139035/396142/index.html");
+link_arr.push("http://travel315.people.com.cn/");
+link_arr.push("http://travel.people.com.cn/GB/139035/367529/index.html");
+link_arr.push("http://map.sogou.com/?lq=%u9152%u5E97&from=renmin");
+link_arr.push("http://www.people.com.cn/adv/teh0623.html");
+
+text_arr.push("七问厕所革命系列之六：国外的旅游厕所怎么样？");
+text_arr.push("2015“中国旅游日”全国31省区市惠民措施一览");
+text_arr.push("不合理低价游、一日游投诉征集");
+text_arr.push("旅游别把“脸”丢了 倡议：文明出境游，我承诺！");
+text_arr.push("地图上订酒店 快捷又优惠 ");
+text_arr.push("免费游国家4A级景区 ");
+
+var p = pic_arr.join("|");
+var l = link_arr.join("|");
+var t = text_arr.join("|");
+p = encodeURIComponent(p);
+l = encodeURIComponent(l);
+t = encodeURIComponent(t);
+var wwvars = {pic: p,url: l, infor: t};
+swfobject.embedSWF("/img/2010lvyoupd/main3.swf?"+Math.random(), "wwdiv", "540", "300", "9.0.0", "",wwvars,{wmode:"opaque"},false);
+-->
+</script>
+	</div>
+    <div class="xzp1_right">
+    <h5 class="xzp1_1 clear"><span><img src="/img/2010lvyoupd/images/xzp1_2.gif" alt="" width="146" height="26" /></span><em><a href="http://travel315.people.com.cn/" target="_blank">更多&gt;&gt;</a></em></h5>
+        <h5 class="xzp1_2 clear"><span>最新投诉：</span></h5>
+        <ul class="xzp1_3 clear"><li><b><a href="http://travel315.people.com.cn/" target="_blank" target='_blank'><font color="#ff0000">携程旅行网：</font></a></b><a href="http://travel315.people.com.cn/iframe/shw.php?c_id=13339" target='_blank'>无故扣除会员账户2万5千积分</a></li><li><b><a href="http://travel315.people.com.cn/" target="_blank" target='_blank'><font color="#ff0000">云南：</font></a></b> <a href="http://travel315.people.com.cn/iframe/shw.php?c_id=13337" target='_blank'>义云天旅行社带团购物欺骗游客</a></li></ul>
+    <h5 class="xzp1_2 clear"><span>最新回复：</span></h5>
+        <ul class="xzp1_3 clear"><li><a href='http://travel315.people.com.cn/' target='_blank'><b><font color='#008000'>携程：</font></b></a><a href='http://travel315.people.com.cn/iframe/shw.php?c_id=13320' target='_blank'>接机服务单方面违约 携程只补偿打车费消费者未认可</a></li><li><a href='http://travel315.people.com.cn/' target='_blank'><b><font color='#008000'>携程：</font></b></a><a href='http://travel315.people.com.cn/iframe/shw.php?c_id=13249' target='_blank'>网上预订宾馆出现金钱纠纷 携程建议报警处理</a></li></ul>
+    <h5 class="xzp1_2 xzp1_4 clear"><span><a href='http://travel.people.com.cn/GB/236434/index.html'><font color='#800000'>旅游预警——3·15跟踪报道</font></a></span></h5>
+        <ul class="xzp1_3 clear"><li><a href='/n/2015/0618/c41570-27177219.html' target="_blank">三亚：一潜水教练索要小费被列入行业黑名单</a></li>
+<li><a href='/n/2015/0618/c41570-27174442.html' target="_blank">男子旅行泰国溺亡 家属诉旅行社索赔百万</a></li>
+<li><a href='/n/2015/0618/c41570-27174274.html' target="_blank">丈夫赴泰国旅游溺亡 妻子起诉旅行社索赔百万</a></li>
+
+</ul>
+    </div>
+</div>
+<!--xzp1 20101027 end-->
+</div>
+<!--p1-->
+<div class="width980 p1_content marg_top10">
+  <div class="p1_left">
+    <div class="p1_a">
+      <div class="tit1 xzp1_9">
+        <h3><a href='http://travel.people.com.cn/GB/53301/index.html' target='_blank'><font color='#ffffff'>会议访谈</font></a></h3>
+      </div>
+      <div class="p1_a1 marg_bt10">
+<div class="p1_a_pic"><style>
+.scrollImgList1,.scrCont,.Cont,.box{width:120px;line-height:20px; text-align:center;}
+.Cont{height:100px; overflow:hidden}
+</style>
+<div class="scrollImgList1" id="scrollImgList1">
+<div class="Cont" id="ISL_Cont_1">
+<div class="scrCont">
+<div id=List1_1>
+<div class="box"><a href="http://tv.people.com.cn/n/2015/0601/c150721-27087626.html"><img src="/NMediaFile/2015/0604/MAIN201506041330055365553764234.jpg" width="120" height="80"><br />国家旅游局局长李金早</a></div>
+<div class="box"><a href="http://travel.people.com.cn/GB/136588/382679/index.html"><img src="/NMediaFile/2014/0314/MAIN201403141043351485595752634.jpg" width="120" height="80"><br />李进仓做客人民网</a></div>
+<div class="box"><a href="http://tv.people.com.cn/n/2014/0307/c150721-24563433.html"><img src="/NMediaFile/2014/0307/MAIN201403071725400017562116135.jpg" width="120" height="80"><br />全国人大代表谢忠岩</a>
+</div>
+<div class="box"><a href="http://tv.people.com.cn/n/2015/0112/c150721-26370374.html"><img src="/NMediaFile/2015/0116/MAIN201501161703386278077122493.jpg" width="120" height="80"><br />濮阳县委宣传部吉子文</a></div>
+<div class="box"><a href="http://tv.people.com.cn/n/2015/0505/c150721-26949477.html"><img src="/NMediaFile/2015/0505/MAIN201505050952202670236338409.jpg" width="120" height="80"><br />河南旅游副局长张凤有</a></div>
+<div class="box"><a href="http://tv.people.com.cn/n/2015/0114/c150721-26385383.html"><img src="/NMediaFile/2015/0116/MAIN201501161703387740270425379.jpg" width="120" height="80"><br />金华市副市长孙荣燕</a></div>
+</div>
+<div id="List2_1"></div></div></div>
+</div>
+<script type="text/javascript">
+		var speed_1 = 10; //速度(毫秒)
+		var space_1 = 10; //每次移动(px)
+		var PageHeight_1 =100; //翻页宽度
+		var fill_1 = 0; //整体移位
+		var moveLock_1 = false;
+		var moveTimeObj_1;
+		var moveWay_1 = "right";
+		var comp_1 = 0;
+		var autoPlayObj_1=null;
+		
+		GetObj("List2_1").innerHTML=GetObj("List1_1").innerHTML;
+		GetObj('ISL_Cont_1').scrollTop=fill_1>=0?fill_1:GetObj('List1_1').scrollHeight-Math.abs(fill_1);
+		GetObj("ISL_Cont_1").onmouseover=function(){clearInterval(autoPlayObj_1)}
+		GetObj("ISL_Cont_1").onmouseout=function(){AutoPlay_1()}
+		AutoPlay_1();
+		
+		function GetObj(objName){
+			if(document.getElementById){return eval('document.getElementById("'+objName+'")')}else{return eval('document.all.'+objName)}
+		}
+		
+		function AutoPlay_1(){
+			clearInterval(autoPlayObj_1);
+			autoPlayObj_1=setInterval('ISL_GoDown_1();ISL_StopDown_1();',5000)
+		}
+		
+		function ISL_GoUp_1(){
+			if(moveLock_1)return;
+			clearInterval(autoPlayObj_1);
+			moveLock_1=true;
+			moveWay_1="left";
+			moveTimeObj_1=setInterval('ISL_ScrUp_1();',speed_1);
+		}
+		
+		function ISL_StopUp_1(){
+		if(moveWay_1 == "right"){return};
+		clearInterval(moveTimeObj_1);
+		if((GetObj('ISL_Cont_1').scrollTop-fill_1)%PageHeight_1!=0){
+		comp_1=fill_1-(GetObj('ISL_Cont_1').scrollTop%PageHeight_1);
+		CompScr_1()}else{moveLock_1=false}
+		AutoPlay_1()}
+		
+		function ISL_ScrUp_1(){
+		if(GetObj('ISL_Cont_1').scrollTop<=0){GetObj('ISL_Cont_1').scrollTop=GetObj('ISL_Cont_1').scrollTop+GetObj('List1_1').offsetHeight}
+		GetObj('ISL_Cont_1').scrollTop-=space_1
+		}
+		
+		function ISL_GoDown_1(){
+			clearInterval(moveTimeObj_1);
+			if(moveLock_1)return;
+			clearInterval(autoPlayObj_1);
+			moveLock_1=true;
+			moveWay_1="right";
+			ISL_ScrDown_1();
+			moveTimeObj_1=setInterval('ISL_ScrDown_1()',speed_1)
+		}
+		
+		function ISL_StopDown_1(){
+			if(moveWay_1 == "left"){return};
+			clearInterval(moveTimeObj_1);
+			if(GetObj('ISL_Cont_1').scrollTop%PageHeight_1-(fill_1>=0?fill_1:fill_1+1)!=0){
+				comp_1=PageHeight_1-GetObj('ISL_Cont_1').scrollTop%PageHeight_1+fill_1;
+				CompScr_1()
+			}
+			else{moveLock_1=false}
+			AutoPlay_1()
+		}
+		
+		function ISL_ScrDown_1(){
+		if(GetObj('ISL_Cont_1').scrollTop>=GetObj('List1_1').scrollHeight){GetObj('ISL_Cont_1').scrollTop=GetObj('ISL_Cont_1').scrollTop-
+
+GetObj('List1_1').scrollHeight}
+		GetObj('ISL_Cont_1').scrollTop+=space_1
+		}
+		
+		function CompScr_1(){
+			if(comp_1==0){moveLock_1=false;return}
+			var num,TempSpeed=speed_1,TempSpace=space_1;
+			if(Math.abs(comp_1)<PageHeight_1/2){
+				TempSpace=Math.round(Math.abs(comp_1/space_1));
+				if(TempSpace<1){TempSpace=1}
+			}
+			if(comp_1<0){
+				if(comp_1<-TempSpace){
+					comp_1+=TempSpace;
+					num=TempSpace
+				}
+				else{num=-comp_1;comp_1=0}
+				GetObj('ISL_Cont_1').scrollTop-=num;
+				setTimeout('CompScr_1()',TempSpeed)
+			}	
+			else{if(comp_1>TempSpace){comp_1-=TempSpace;num=TempSpace}
+			else{num=comp_1;
+			comp_1=0}
+			GetObj('ISL_Cont_1').scrollTop+=num;
+			setTimeout('CompScr_1()',TempSpeed)}
+		}
+		</script></div>
+      <ul class="list_12"><li><a href="http://travel.people.com.cn/GB/136588/382679/index.html" target='_blank'>人民网旅游3·15维权访谈</a></li><li><a href="http://tv.people.com.cn/n/2014/0324/c150721-24721113.html" target='_blank'>“清新福建”专家谈</a></li><li><a href='http://tv.people.com.cn/n/2014/0307/c150721-24563433.html' target="_blank">全国人大代表谢忠岩</a></li>
+<li><a href="http://tv.people.com.cn/n/2015/0112/c150721-26370374.html">濮阳县委宣传部长吉子文</a></li><li><a href="http://tv.people.com.cn/n/2015/0114/c150721-26385383.html" target='_blank'>金华市政府副市长孙荣燕</a></li></ul>
+</div>
+      <div class="tit1 xzp1_5"><ul>
+<li class="this" id="ab_1" style="cursor:pointer;" onmouseover="showMenb(1)"><a href='http://travel.people.com.cn/GB/139035/index.html' target='_blank'>热点专题</a></li>
+<li id="ab_2" style="cursor:pointer;" onmouseover="showMenb(2)"><a href='/GB/360010/index.html' target='_blank'>网上调查</a></li>
+<li id="ab_3" style="cursor:pointer;" onmouseover="showMenb(3)"><a href='http://travel.people.com.cn/GB/139035/373829/index.html' target='_blank'>智慧旅游</a></li>
+</ul>
+</div>
+    <div class="p1_a2" id="bb_1"><div class="p1_a3"><a href="http://travel.people.com.cn/GB/139035/395651/index.html" target="_blank"><img src="/NMediaFile/2015/0507/MAIN201505071013586690274235862.jpg" width="80" height="80" border="0"/></a>为了提升全社会的文明旅游意识，推出“五千年旅游先贤”网络调查活动，欢迎广大网友选出自己心中具有标志性的旅游历史人物。</div>
+
+    <ul class="list_12"><li><a href="http://bbs1.people.com.cn/post/1/1/2/148774848.html" target="_blank" target='_blank'><font color="#ff0000">出游一定要安全！老年人不可不知的出游安全指南</font></a></li><li><a href="http://yuqing.people.com.cn/GB/392071/395572/index.html" target="_blank" target='_blank'><font color="#ff0000">旅游要发展 厕所要革命</font></a></li><li><a href='/GB/139035/395586/index.html' target="_blank">小厕所影响大旅游&nbsp;厕所革命来了</a></li>
+<li><a href='/GB/139035/396354/index.html' target="_blank">2015第七届中国国际旅游商品博览会</a></li>
+</ul></div>
+    <div class="p1_a2" id="bb_2" style="display:none"><div class="p1_a3"><a href="http://travel.people.com.cn/GB/139035/371699/index.html" target="_blank"><img src="/NMediaFile/2014/0311/MAIN201403111425530539258751529.jpg" width="80" height="80" border="0"/></a>　　2013十大旅游投诉案例评选旨在提高网友维权意识，曝光高投诉地区、企业，激励高回复率的地区、企业继续履行相应的职责。</div>
+
+    <ul class="list_12"><li><a href='/n/2015/0410/c41570-26825568.html' target="_blank">调查：12301旅游服务热线问卷</a></li>
+
+</ul></div>
+    <div class="p1_a2" id="bb_3" style="display:none"><div class="p1_a3"><a href="http://travel.people.com.cn/GB/139035/391417/index.html" target="_blank"><img src="/NMediaFile/2015/0127/MAIN201501271443463777488106677.jpg" width="80" height="80" border="0"/></a>2014是国家旅游局确定的“智慧旅游年”，智慧旅游有什么特点？这一年有哪些成果？还有哪些方面需进一步完善？</div>
+
+    <ul class="list_12"><li><a href='/GB/17460881.html' target="_blank">12月在最温暖的海之南</a></li>
+<li><a href='/GB/17449640.html' target="_blank">单车环游 - 在多瑙河沿岸的路上</a></li>
+<li><a href='/GB/17449540.html' target="_blank">浮生逍遥一日闲</a></li>
+<li><a href='/GB/17425393.html' target="_blank">爱云南腾冲美景 苦对“叠水”对联</a></li>
+</ul></div>
+ <div class="tit1 xzp1_5"><ul>
+<li class="this" id="a_1" style="cursor:pointer;" onmouseover="showMen(1)"><a href="http://travel.people.com.cn/GB/237931/index.html">满意度</a></li>
+<li id="a_2" style="cursor:pointer;" onmouseover="showMen(2)"><a href="http://travel.people.com.cn/GB/139035/362973/index.html">中国旅游法</a></li>
+<li id="a_3" style="cursor:pointer;" onmouseover="showMen(3)"><a href="http://travel.people.com.cn/GB/237990/index.html">旅游排行</a></li>
+<li id="a_4" style="cursor:pointer;" onmouseover="showMen(4)">地图</li>
+<li id="a_5" style="cursor:pointer;" onmouseover="showMen(5)">评论</li>
+</ul>
+</div>
+<div class="p1_a1" id="b_1"><div class="p1_a_pic"><a href="http://travel.people.com.cn/GB/211392/391838/index.html" target="_blank"><img src="/NMediaFile/2015/0114/MAIN201501141652353082927097066.jpg" width="120" height="80" border="0" alt="城市旅游发展战略研讨"/></a><br /><a href="http://travel.people.com.cn/GB/211392/391838/index.html" target="_blank">城市旅游发展战略研讨</a></div>
+
+<ul class="list_12"><li><a href="http://travel.people.com.cn/GB/211392/389683/index.html" target='_blank'>2014年3季度游客满意度</a></li><li><a href="http://travel.people.com.cn/GB/211392/384864/index.html" target='_blank'>2014年2季度游客满意度</a></li><li><a href='/GB/211392/383252/index.html' target="_blank">2014年1季度游客满意度</a></li>
+<li><a href='/GB/211392/372774/index.html' target="_blank">城市旅游发展研讨会</a></li>
+<li><a href='/GB/211392/369750/index.html' target="_blank">2013年3季度游客满意度</a></li>
+</ul>
+</div>
+<div class="p1_a1" id="b_2" style="display:none"><div class="p1_a_pic"><a href="http://travel.people.com.cn/GB/139035/362973/index.html" target="_blank"><img src="/NMediaFile/2014/0311/MAIN201403111448157761774400173.jpg" width="120" height="80" border="0" alt="中国旅游法解读"/></a><br /><a href="http://travel.people.com.cn/GB/139035/362973/index.html" target="_blank">中国旅游法解读</a></div>
+
+<ul class="list_12"><li><a href='/GB/139035/373103/index.html' target="_blank">2014春节文明出境游</a></li>
+<li><a href='/GB/139035/371797/index.html' target="_blank">年终策划：新旅游法时代</a></li>
+<li><a href='/GB/139035/370612/index.html' target="_blank">2013旅游诚信经营案例</a></li>
+<li><a href='/GB/139035/369574/index.html' target="_blank">旅游法实施后如何聪明旅游</a></li>
+<li><a href='/GB/139035/362973/index.html' target="_blank">解读中国首部旅游法</a></li>
+</ul>
+</div>
+<div class="p1_a1" id="b_3" style="display:none"><div class="p1_a_pic"><a href="http://travel.people.com.cn/GB/237990/index.html" target="_blank"><img src="/mediafile/201203/01/F201203011208552186913555.jpg" width="120" height="80" border="0" alt="旅游收入监测平台"/></a><br /><a href="http://travel.people.com.cn/GB/237990/index.html" target="_blank">旅游收入监测平台</a></div>
+
+<ul class="list_12"><li><a href='/n/2015/0226/c41570-26599014.html' target="_blank"><font color='#ff8000'>2015年春节各省收入排行</font></a></li>
+<li><a href='/n/2015/0121/c41570-26422390.html' target="_blank">2014全国各省份收入排行</a></li>
+<li><a href='/n/2014/0504/c41570-24971347.html' target="_blank">2014年五一各省收入排行</a></li>
+<li><a href='/n/2014/0505/c41570-24973886.html' target="_blank">2014年五一重点城市收入</a></li>
+<li><a href='/n/2014/0408/c41570-24850124.html' target="_blank">2014年清明各省收入排行</a></li>
+</ul>
+</div>
+
+<div class="p1_a1" id="b_4" style="display:none">
+<ul style="margin:10px;width:280px"><li>1.<a href="http://politics.people.com.cn/n/2015/0622/c1001-27188658.html" title="31省公安厅长7人由公安部空降 23人兼任政府副职" class="anavy">31省公安厅长7人由公安部空降&nbsp;23人…</a></li><li>2.<a href="http://legal.people.com.cn/n/2015/0622/c188502-27188748.html" class="anavy">男子怀疑前期出轨&nbsp;持铁棍打死岳父母后自首</a></li><li>3.<a href="http://society.people.com.cn/n/2015/0622/c136657-27188618.html" class="anavy">面包车深夜起火男子睡在车内身亡</a></li><li>4.<a href="http://society.people.com.cn/n/2015/0622/c136657-27188494.html" class="anavy">“猎狐2015”赴印尼抓获6名逃犯</a></li><li>5.<a href="http://politics.people.com.cn/n/2015/0622/c70731-27189163.html" title="广州男子别墅囚禁前妻等3女子 用铁链捆绑毒打(图)" class="anavy">广州男子别墅囚禁前妻等3女子&nbsp;用铁链捆…</a></li><li>6.<a href="http://society.people.com.cn/n/2015/0622/c136657-27188856.html" title="江西余干县端午龙舟赛引冲突 官方称已化解(图)" class="anavy">江西余干县端午龙舟赛引冲突&nbsp;官方称已化…</a></li><li>7.<a href="http://legal.people.com.cn/n/2015/0622/c188502-27188928.html" title="女子买包遭拒跳湖轻生 丈夫恼羞成怒下水殴打" class="anavy">女子买包遭拒跳湖轻生&nbsp;丈夫恼羞成怒下水…</a></li><li>8.<a href="http://society.people.com.cn/n/2015/0622/c136657-27188641.html" class="anavy">国际瑜伽日&nbsp;千人同做瑜伽</a></li></ul>
+</div>
+
+
+<div class="tit1 xzp1_5"><ul>
+<li class="this" id="aa_1" style="cursor:pointer;" onmouseover="showMena(1)"><a href="/GB/41636/41640/index.html">争鸣</a></li>
+<li id="aa_2" style="cursor:pointer;" onmouseover="showMena(2)"><a href="/GB/115592/index.html">对话旅游局长</a></li>
+<li id="aa_3" style="cursor:pointer;" onmouseover="showMena(3)">新闻推荐</li>
+</ul>
+</div>
+<div class="p1_a2" id="ba_1">
+  <ul class="list_12"><li><a href='/n/2015/0623/c41570-27191516.html' target="_blank">端午，道一声“快乐”又何妨</a></li>
+<li><a href='/n/2015/0618/c41570-27174286.html' target="_blank">市场认同度下降 旅游商品企业哪里去了</a></li>
+<li><a href='/n/2015/0616/c41570-27160838.html' target="_blank">火车票改签就该“一站式”</a></li>
+<li><a href='/n/2015/0616/c41570-27160578.html' target="_blank">评论：中国公民护照“含金量”提高指日可待</a></li>
+<li><a href='/n/2015/0611/c41570-27137624.html' target="_blank">古城收费需谨慎</a></li>
+<li><a href='/n/2015/0610/c225454-27131590.html' target="_blank">评论：“无人超市”是在挖“道德陷阱”？</a></li>
+<li><a href='/n/2015/0608/c41570-27117818.html' target="_blank">"无人超市"测试消费者诚信 大男人"买…</a></li>
+<li><a href='/n/2015/0608/c41570-27117727.html' target="_blank">“无人超市”也可以培育诚信</a></li>
+<li><a href='/n/2015/0608/c41570-27117494.html' target="_blank">除了“晚安”，广州塔还可以说什么</a></li>
+<li><a href='/n/2015/0603/c41570-27096390.html' target="_blank">地铁换乘距离长有助分散客流</a></li>
+
+</ul>
+</div>
+<div class="p1_a2" id="ba_2" style="display:none">
+  <ul class="list_12">
+<table width="260" height="210" border="0" align="center">
+  <tr> 
+    <td height="17" align="center" valign="middle">&nbsp;</td>
+    <td height="17" colspan="3" align="center" valign="middle"><a href="http://comments.people.com.cn/bbs_new/app/src/main/?action=list&uid=128532&channel_id=41570" target="_blank">【寄语国家旅游局】</a></td>
+    <td height="17" align="center" valign="middle">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="37" height="23" align="center" valign="middle"><a href="/GB/115592/115593/index.html" target="_blank">北京</a></td>
+    <td width="37" height="23" align="center" valign="middle"><a href="/GB/115592/115594/index.html" target="_blank">天津</a></td>
+    <td width="55" height="23" align="center" valign="middle"><a href="/GB/115592/116345/index.html" target="_blank">河北</a></td>
+    <td width="44" height="23" align="center" valign="middle"><a href="/GB/115592/116356/index.html" target="_blank">山西</a></td>
+    <td width="49" height="23" align="center" valign="middle"><a href="/GB/115592/116353/index.html" target="_blank">内蒙古</a></td>
+  </tr>
+  <tr> 
+    <td height="21" align="center" valign="middle"><a href="/GB/115592/116351/index.html" target="_blank">辽宁</a></td>
+    <td height="21" align="center" valign="middle"><a href="/GB/115592/116349/index.html" target="_blank">吉林</a></td>
+    <td height="21" align="center" valign="middle"><a href="/GB/115592/116347/index.html" target="_blank">黑龙江</a></td>
+    <td height="21" align="center" valign="middle"><a href="/GB/115592/116340/index.html" target="_blank">上海</a></td>
+    <td height="21" align="center" valign="middle"><a href="/GB/115592/116436/index.html" target="_blank">江苏</a></td>
+  </tr>
+  <tr> 
+    <td height="17" align="center" valign="middle"><a href="/GB/115592/116439/index.html" target="_blank">浙江</a></td>
+    <td height="17" align="center" valign="middle"><a href="/GB/115592/116433/index.html" target="_blank">安徽</a></td>
+    <td height="17" align="center" valign="middle"><a href="/GB/115592/116441/index.html" target="_blank">福建</a></td>
+    <td height="17" align="center" valign="middle"><a href="/GB/115592/116454/index.html" target="_blank">江西</a></td>
+    <td height="17" align="center" valign="middle"><a href="/GB/115592/116416/index.html" target="_blank">山东</a></td>
+  </tr>
+  <tr> 
+    <td height="17" align="center" valign="middle"><a href="/GB/115592/116418/index.html" target="_blank">河南</a></td>
+    <td height="17" align="center" valign="middle"><a href="/GB/115592/116431/index.html" target="_blank">湖北</a></td>
+    <td height="17" align="center" valign="middle"><a href="/GB/115592/116429/index.html" target="_blank">湖南</a></td>
+    <td height="17" align="center" valign="middle"><a href="/GB/115592/116442/index.html" target="_blank">广东</a></td>
+    <td height="17" align="center" valign="middle"><a href="/GB/115592/116446/index.html" target="_blank">广西</a></td>
+  </tr>
+  <tr> 
+    <td height="17" align="center" valign="middle"><a href="/GB/115592/116448/index.html" target="_blank">海南</a></td>
+    <td height="17" align="center" valign="middle"><a href="/GB/115592/116343/index.html" target="_blank">重庆</a></td>
+    <td height="17" align="center" valign="middle"><a href="/GB/115592/116426/index.html" target="_blank">四川</a></td>
+    <td height="17" align="center" valign="middle"><a href="/GB/115592/116452/index.html" target="_blank">贵州</a></td>
+    <td height="17" align="center" valign="middle"><a href="/GB/115592/116450/index.html" target="_blank">云南</a></td>
+  </tr>
+  <tr> 
+    <td height="24" align="center" valign="middle"><a href="/GB/115592/116424/index.html" target="_blank">西藏</a></td>
+    <td height="24" align="center" valign="middle"><a href="/GB/115592/116412/index.html" target="_blank">陕西</a></td>
+    <td height="24" align="center" valign="middle"><a href="/GB/115592/116456/index.html" target="_blank">甘肃</a></td>
+    <td height="24" align="center" valign="middle"><a href="/GB/115592/116422/index.html" target="_blank">青海</a></td>
+    <td height="24" align="center" valign="middle"><a href="/GB/115592/116414/index.html" target="_blank">宁夏</a></td>
+  </tr>
+  <tr> 
+    <td height="24" align="center" valign="middle"><a href="/GB/115592/116420/index.html" target="_blank">新疆</a></td>
+    <td height="24" align="center" valign="middle"><a href="/GB/115592/116834/index.html" target="_blank">香港</a></td>
+    <td height="24" align="center" valign="middle"><a href="/GB/115592/116836/index.html" target="_blank">澳门</a></td>
+    <td height="24" align="center" valign="middle"><a href="/GB/115592/125007/index.html" target="_blank">台湾</a></td>
+    <td height="24" align="center" valign="middle">&nbsp;</td>
+  </tr>
+</table></ul>
+</div>
+<div class="p1_a2" id="ba_3" style="display:none">
+  <ul class="list_12" id="ba_3_ul">
+</ul>
+</div>
+<div class="tit1 xzp1_5"><ul>
+<li class="this" id="ac_1" style="cursor:pointer;" onmouseover="showMenc(1)"><a href="">旅游频道及旅游3·15二维码</a></li>
+<li id="ac_2" style="cursor:pointer;" onmouseover="showMenc(2)"></li>
+</ul>
+</div>
+<div class="p1_a4" id="bc_1">
+<ul><img src="/NMediaFile/2014/0821/MAIN201408211041343891039319752.jpg" />
+</ul>
+</div>
+
+
+
+<div class="p1_a5" id="bd_2" style="display:none">222222222222222222</div>
+<div class="p1_a5" id="bd_3" style="display:none">111111111111111111</div>
+</div>
+  </div>
+  <div class="p1_center">
+<div class="p1_hot"><b>热门：</b><a href="http://travel.people.com.cn/GB/225668/index.html" target="_blank" style="color: red;" target='_blank'>全国旅游新闻</a> <a href="/GB/139035/367529/index.html" target="_blank" style="color: black;" target='_blank'>文明旅游</a>&nbsp;<a href="/GB/139035/148561/index.html" target="_blank" style="color: black;" target='_blank'>旅游漫笔</a> <a href="http://travel.people.com.cn/GB/139035/364229/index.html" target="_blank" style="color: black;" target='_blank'><font color="#0000ff">假日生活/</font></a><a href="http://travel.people.com.cn/GB/139035/354055/index.html" target="_blank" style="color: black;" target='_blank'><font color="#0000ff">美丽乡村</font></a> <a href="http://travel.people.com.cn/GB/139035/395586/index.html" target="_blank" target='_blank'><font color="#ff0000">旅游厕所</font></a></div><div class="line marg_bt10">&nbsp;</div>
+   <h1><a href='/n/2015/0623/c41570-27191939.html' target=_blank>小长假多地景区门票违规涨价 景区叫苦：仍入不敷出</a></h1>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://travel.people.com.cn/n/2015/0623/c41570-27191935.html" target="_blank" target='_blank'>[7地超20家景区门票涨价 部分实行"打包加价"]</a> <a href="http://travel.people.com.cn/n/2015/0623/c41570-27191579.html" target="_blank" target='_blank'>[成本压力说遭驳斥]</a></p>
+
+   
+   <h1><a href='/n/2015/0623/c41570-27192686.html' target=_blank>韩国出猛招支持观光产业 游客感染MERS旅费可报销</a></h1>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://travel.people.com.cn/n/2015/0623/c41570-27191830.html" target="_blank" target='_blank'>[北京电视台女主持人曝旅行箱遭"野蛮托运"]</a></p>
+
+   
+    <div class="tit2 xzp1_10">
+      <h3><img src="/img/2010lvyoupd/images/ico2.gif" width="13" height="13" alt="" />业界</h3><a href="/GB/367071/index.html" target='_blank'><font color='#0000ff''>文明旅游</font></a> <a href="/GB/41624/index.html" target='_blank'><font color='#006699'>旅行社</font></a> <a href="/GB/210708/index.html" target='_blank'><font color='#006699'>在线</font></a> <a href="/GB/163475/index.html" target='_blank'><font color='#006699'>航空</font></a> <a href="/GB/217133/index.html" target='_blank'><font color='#006699'>铁路</font></a> <a href="/GB/163477/index.html" target='_blank'><font color='#006699'>酒店</font></a> <a href="/GB/210706/index.html" target='_blank'><font color='#006699'>邮轮</font></a>　<a href="/GB/41636/41644/index.html" target='_blank'>更多&gt;&gt;</a></div>
+    <ul class="list_14 margin10"><li><a href=" http://travel.people.com.cn/n/2015/0612/c41570-27146791.html" target='_blank'>李建华就开放宁夏建设工作到自治区旅游局进行调研</a></li><li><a href='/n/2015/0623/c41570-27191939.html' target="_blank">小长假多地景区门票违规涨价 景区叫苦：仍入不敷出</a></li>
+<li><a href='/n/2015/0623/c41570-27191935.html' target="_blank">今年7地超20家景区门票涨价 部分实行"打包加价"</a></li>
+<li><a href='/n/2015/0623/c41570-27191579.html' target="_blank">国内多地景区门票违规涨价 成本压力说遭驳斥</a></li>
+<li><a href='/n/2015/0623/c41570-27191539.html' target="_blank">台风“鲸鱼”致三亚取消航班54架次 6480人受影响</a></li>
+<li><a href='/n/2015/0619/c41570-27183556.html' target="_blank">《丝绸之路国家旅游部长会议西安倡议（草案）》发布</a></li>
+<li><a href='/n/2015/0619/c41570-27183084.html' target="_blank">1季度全国旅行社统计数据:香港广东接待旅游人次最多</a></li>
+<li><a href='/n/2015/0619/c41570-27182564.html' target="_blank">遨游网行业率先推出微信支付功能 上线一天支付近30万</a></li>
+<li><a href='/n/2015/0619/c41570-27181031.html' target="_blank">高清：漫天丝绸翻卷 梦回长安</a></li>
+
+</ul>
+   <div class="tit2 xzp1_10">
+      <h3><img src="/img/2010lvyoupd/images/ico2.gif" width="13" height="13" alt="" />国内</h3><a href="/GB/41636/41642/217441/index.html" target='_blank'><font color='#006699'>北京</font></a> <a href="/GB/41636/41642/217477/index.html" target='_blank'><font color='#006699'>云南</font></a> <a href="/GB/41636/41642/217470/index.html" target='_blank'><font color='#006699'>广西</font></a> <a href="/GB/41636/41642/217471/index.html" target='_blank'><font color='#006699'>海南</font></a> <a href="/GB/41636/41642/217485/index.html" target='_blank'><font color='#006699'>香港</font></a> <a href="/GB/41636/41642/217487/index.html" target='_blank'><font color='#006699'>台湾</font></a>　<a href="http://travel.people.com.cn/GB/225668/index.html" target='_blank'>更多&gt;&gt;</a></div>
+    <ul class="list_14 margin10"><li><a href='/n/2015/0615/c41570-27156720.html' target="_blank"><b>端午节遇上父亲节 宁夏景区优惠活动多</b></a></li>
+<li><a href='/n/2015/0623/c41570-27194217.html' target="_blank">高清：敦煌西湖自然保护区生态植被得到恢复</a></li>
+<li><a href='/n/2015/0623/c41570-27194198.html' target="_blank">高清：2015全球首对大熊猫双胞胎出生 </a></li>
+<li><a href='/n/2015/0623/c41570-27193938.html' target="_blank">陕西丝路申遗一周年:7处遗产点游客激增门票未涨</a></li>
+<li><a href='/n/2015/0623/c41570-27192971.html' target="_blank">贵州省委副书记谌贻琴:"贵州懂绿"从"四个绿色"开始</a></li>
+<li><a href='/n/2015/0623/c41570-27192891.html' target="_blank">谌贻琴：写入“一带一路”规划  凸显生态文明论坛价值</a></li>
+<br><li><a href='/n/2015/0623/c41570-27192706.html' target="_blank">北京地铁车厢温度有规定 控制在24℃至26℃</a></li>
+<li><a href='/n/2015/0623/c41570-27192656.html' target="_blank">新版火车票8月1日全面推行</a></li>
+<li><a href='/n/2015/0623/c41570-27192581.html' target="_blank">北京顺义啤酒节闭幕 多档活动接力</a></li>
+
+</ul>
+    <div class="tit2 xzp1_10">
+      <h3><img src="/img/2010lvyoupd/images/ico2.gif" width="13" height="13" alt="" />国际</h3> <a href="/GB/366237/index.html" target='_blank'><font color='#0000ff'>海外安全</font></a> <a href="/GB/236441/index.html" target='_blank'><font color='#006699'>签证</font></a> <a href="/GB/163472/index.html" target='_blank'><font color='#006699'>趣图</font></a> <a href="/GB/163471/index.html" target='_blank'><font color='#006699'>美景</font></a> <a href="/GB/163470/index.html" target='_blank'><font color='#006699'>美食</font></a> <a href="/GB/41636/41641/index.html" target='_blank'>更多&gt;&gt;</a></div>
+    <ul class="list_14 margin10"><li><a href='/n/2015/0623/c41570-27194203.html' target="_blank">高清：美国华裔小姐大赛 佳丽表演尽显中国风 </a></li>
+<li><a href='/n/2015/0623/c41570-27193977.html' target="_blank">坐飞机时网上冲浪？ 看球赛实况转播将不再是梦</a></li>
+<li><a href='/n/2015/0623/c41570-27192859.html' target="_blank">东京城市治理经验参考：与周边形成环状多级都市群</a></li>
+<li><a href='/n/2015/0623/c41570-27192686.html' target="_blank">韩国出猛招支持观光产业 游客感染MERS旅费可报销</a></li>
+<li><a href='/n/2015/0623/c41570-27191974.html' target="_blank">波兰民航系统遭黑客入侵 系统瘫痪长达5小时</a></li>
+<br><li><a href='/n/2015/0623/c41570-27191571.html' target="_blank">波兰民航地面操作系统遭黑客入侵 系全球首例</a></li>
+<li><a href='/n/2015/0623/c41570-27191174.html' target="_blank">环球采风：2015年匈牙利小姐出炉（高清）</a></li>
+<li><a href='/n/2015/0623/c41570-27191130.html' target="_blank">高清：俄罗斯圣彼得堡中学毕业生迎来“红帆节”</a></li>
+<li><a href='/n/2015/0620/c41570-27185811.html' target="_blank">赴韩国扫货中日游客习惯大不同 中国人像探险家</a></li>
+
+</ul>
+  </div>
+  <div class="p1_right">
+  
+<div class="tit2 tit6 xzp1_6">
+      <h3><img src="/img/2010lvyoupd/images/ico2.gif" width="13" height="13" alt="" />精品旅游推荐</h3>
+    <a href="#"><!--更多&gt;&gt;--></a></div><div class="center marg_top10"><a href="http://travel.people.com.cn/GB/139035/395082/index.html" target="_blank"><img src="/NMediaFile/2015/0320/MAIN201503201116232936711934054.jpg" width="209" height="60" border="0"/></a></div>
+
+<ul class="list_12 padding10"><li><a href='/n/2015/0410/c41570-26826935.html' target="_blank">好客山东乡村旅游赏花采摘季</a></li>
+</ul>
+<div class="center marg_top10"><a href="http://dujia.people.com.cn/" target="_blank"><img src="/NMediaFile/2015/0513/MAIN201505130824272842547891267.jpg" width="209" height="60" border="0" alt="2015国际旅游度假目的地创新发展大会"/></a></div>
+
+<ul class="list_12 padding10"><li><a href='/GB/139035/386313/index.html' target="_blank">2015国际旅游度假目的地评价</a></li>
+</ul>
+<div class="center marg_top10"><a href="http://tv.people.com.cn/n/2015/0615/c43911-27155268.html " target="_blank"><img src="/NMediaFile/2015/0616/MAIN201506160949501690565004783.jpg" width="209" height="60" border="0"/></a></div>
+
+<ul class="list_12 padding10"><li><a href="http://tv.people.com.cn/n/2015/0610/c43911-27132710.html">第四届全国自驾车旅游峰会</a></li><li><a href="http://tv.people.com.cn/n/2015/0610/c43911-27132710.html">中国实景演出华清宫峰会</a></li><li><a href="http://tv.people.com.cn/n/2015/0109/c43911-26357989.html">国魂家风文化价值创新工程</a></li></ul>
+<div class="center marg_top10"><a href="http://travel.people.com.cn/GB/139035/368276/index.html" target="_blank"><img src="/NMediaFile/2015/0422/MAIN201504221411444241467386209.jpg" width="209" height="60" border="0"/></a></div>
+
+<ul class="list_12 padding10"><li><a href="http://tv.people.com.cn/n/2015/0123/c43911-26439857.html" target='_blank'>“2014风华致远年会”</a></li><li><a href="http://tv.people.com.cn/n/2014/1126/c43911-26098153.html" target='_blank'>中国梦美丽富裕新安康</a></li><li><a href="http://tv.people.com.cn/n/2014/1020/c150721-25871286.html" target='_blank'>美丽乡村石门行系列活动</a></li></ul>
+<div class="center marg_top10"><a href="/GB/139035/376506/index.html" target="_blank"><img src="/NMediaFile/2014/0620/MAIN201406201048421226887869351.jpg" width="209" height="60" border="0"/></a></div>
+
+<ul class="list_12 padding10"><li><a href='/n/2015/0507/c376506-26964303.html' target="_blank">第二届震泽蚕花节,七大精彩活动</a></li>
+<li><a href='/n/2015/0504/c41570-26944347.html' target="_blank">游苏州吴江 寻丝绸源流</a></li>
+<li><a href='/n/2015/0420/c376506-26873901.html' target="_blank">第十九届"同里之春"国际旅游文化节</a></li>
+</ul>
+<div class="center marg_top10"><a href="http://www.qiandaohu.cc/zt/2015water/" target="_blank"><img src="/NMediaFile/2015/0604/MAIN201506040906139119745637156.jpg" width="209" height="60" border="0"/></a></div>
+
+<ul class="list_12 padding10"><li><a href="http://www.qiandaohu.cc/article/5882.html" target='_blank'>千岛湖旅游休闲度假蜜月婚纱视频</a></li><li><a href="http://www.qiandaohu.cc/zt/hunsha/" target='_blank'>爱在千岛湖，私人定制蜜月婚纱之旅</a></li><li><a href="http://www.qiandaohu.cc/article/4107.html" target='_blank'>千岛湖旅游信息指南</a></li></ul>
+</div>
+<img src="/img/2010lvyoupd/images/p_bgt.gif" width="980" height="2" style="float:left" alt="" />
+</div>
+<!--p1 over-->
+<div class="width980 marg_top10 cp">
+<img src="/img/2010lvyoupd/images/chanpin.gif" width="978" height="34" alt="" />
+<ul class="margin10"><li><a href="http://www.ems517.com" target="_blank"><img src="/NMediaFile/2013/0510/MAIN201305100938231694158103865.gif" width="140" height="60" border="0"/></a><ul class="list_12">峨眉山·乐山大佛</ul></li>
+<li><a href="http://travel.people.com.cn/GB/139035/386017/387332/index.html" target="_blank"><img src="/NMediaFile/2014/0923/MAIN201409231506141585539793383.jpg" width="140" height="60" border="0"/></a><ul class="list_12">疯狂猜景区</ul></li>
+<li><a href="http://travel.people.com.cn/GB/139035/372229/index.html" target="_blank"><img src="/NMediaFile/2012/1227/MAIN201212271423064045562527621.jpg" width="140" height="60" border="0"/></a><ul class="list_12">北国风光 美在黑龙江</ul></li>
+<li><a href="http://cctv.cntv.cn/lm/xiangcundashijie/daji/index.shtml" target="_blank"><img src="/NMediaFile/2014/0513/MAIN201405131119302643169693735.jpg" width="140" height="60" border="0"/></a><ul class="list_12">乡村大集</ul></li>
+<li><a href="http://www.81788888.com/" target="_blank"><img src="/NMediaFile/2012/1230/MAIN201212301201315767539658966.jpg" width="140" height="60" border="0"/></a><ul class="list_12">温都水城</ul></li>
+<li><a href="http://travel.people.com.cn/GB/139035/386981/index.html" target="_blank"><img src="/NMediaFile/2014/0923/MAIN201409231603346488574887995.gif" width="140" height="60" border="0"/></a><ul class="list_12">走近最新世界文化遗产</ul></li>
+<li><a href="http://travel.people.com.cn/GB/139035/389153/index.html" target="_blank"><img src="/NMediaFile/2014/0923/MAIN201409231508197124086686759.jpg" width="140" height="60" border="0"/></a><ul class="list_12">部际联席会议制度建立</ul></li>
+<li><a href="http://travel.people.com.cn/GB/139035/388772/index.html" target="_blank"><img src="/NMediaFile/2014/0923/MAIN201409231601558844119621203.jpg" width="140" height="60" border="0"/></a><ul class="list_12">第八届APEC旅游部长会议</ul></li>
+<li><a href="http://www.alsly.gov.cn/html/2015-06/3089.html" target="_blank"><img src="/NMediaFile/2015/0609/MAIN201506091518003406949670822.jpg" width="140" height="60" border="0"/></a><ul class="list_12">苍天圣地阿拉善</ul></li>
+<li><a href="http://travel.people.com.cn/GB/139035/197413/index.html" target="_blank"><img src="/NMediaFile/2014/0928/MAIN201409281103448032150975045.jpg" width="140" height="60" border="0"/></a><ul class="list_12">欧亚人祖山</ul></li>
+<li><a href="http://wf.people.com.cn/GB/211881/366093/index.html" target="_blank"><img src="/NMediaFile/2014/1009/MAIN201410091300533406595476503.jpg" width="140" height="60" border="0"/></a><ul class="list_12">临朐沂山</ul></li>
+<li><a href="http://travel.people.com.cn/GB/139035/368276/370581/index.html" target="_blank"><img src="/NMediaFile/2013/1212/MAIN201312121526020297709385554.jpg" width="140" height="60" border="0"/></a><ul class="list_12">旅游商品网上展示评选</ul></li>
+</ul>
+</div>
+
+<!--P2-->
+<div class="width980 marg_top10 p2_content">
+<div class="p2_tit"><a href="http://travel.people.com.cn/GB/41636/41642/217441/index.html" target="_blank">北京</a>&nbsp;<a 
+href="http://travel.people.com.cn/GB/41636/41642/217455/index.html" target="_blank">河北</a>&nbsp;<a 
+href="http://travel.people.com.cn/GB/41636/41642/217456/index.html" target="_blank">山西</a>&nbsp;<a href="http://travel.people.com.cn/GB/41636/41642/217461/index.html" target="_blank">上海</a>&nbsp;<a 
+href="http://travel.people.com.cn/GB/41636/41642/217463/index.html" target="_blank">安徽</a>&nbsp;<a href="http://travel.people.com.cn/GB/41636/41642/217464/index.html" target="_blank">浙江</a>&nbsp;<a 
+href="http://travel.people.com.cn/GB/41636/41642/217465/index.html" target="_blank">福建</a>&nbsp;<a href="http://travel.people.com.cn/GB/41636/41642/217466/index.html" target="_blank">江苏</a>&nbsp;<a 
+href="http://travel.people.com.cn/GB/41636/41642/217468/index.html" target="_blank">江西</a>&nbsp;<a href="http://travel.people.com.cn/GB/41636/41642/217462/index.html" target="_blank">山东</a>&nbsp;<a 
+href="http://travel.people.com.cn/GB/41636/41642/217474/index.html" target="_blank">河南</a>&nbsp;<a 
+href="http://travel.people.com.cn/GB/41636/41642/217472/index.html" target="_blank">湖北</a>&nbsp;<a 
+href="http://travel.people.com.cn/GB/41636/41642/217473/index.html" target="_blank">湖南</a>&nbsp;<a 
+href="http://travel.people.com.cn/GB/41636/41642/217469/index.html" target="_blank">广东</a>&nbsp;<a href="http://travel.people.com.cn/GB/41636/41642/217471/index.html" target="_blank">海南</a>&nbsp;<a href="http://travel.people.com.cn/GB/41636/41642/217476/index.html" target="_blank">四川</a>&nbsp;<a href="http://travel.people.com.cn/GB/41636/41642/217479/index.html" target="_blank">西藏</a>&nbsp;<a href="http://travel.people.com.cn/GB/41636/41642/217480/index.html" target="_blank">陕西</a>&nbsp;<a 
+href="http://travel.people.com.cn/GB/41636/41642/217482/index.html" target="_blank">新疆</a></div>
+<div class="p2_left">
+<div class="margin10 p2_pic"><a href="http://travel.people.com.cn/n/2015/0408/c41570-26812105.html" target="_blank"><img src="/NMediaFile/2015/0421/MAIN201504210849568822790431784.jpg" width="300" height="200" border="0" alt="坐上高铁 赏花看景（组图）"/></a><b><a href="http://travel.people.com.cn/n/2015/0408/c41570-26812105.html" target="_blank">坐上高铁 赏花看景（组图）</a></b><div class="b_bg"></div>
+</div>
+
+<div class="tit2 p2_tit2"><h3><img src="/img/2010lvyoupd/images/ico2.gif" width="13" height="13" alt="" />旅游收入监测</h3><a href="#"><!--更多&gt;&gt;--></a></div>
+    <div>
+<a href="http://travel.people.com.cn/GB/237990/index.html" target="_blank"><img src="/mediafile/201203/20/F201203201709181740426863.jpg" width="300" height="200" border="0"/></a>
+
+
+<!--
+<div id="wwdiv1"></div>
+<script type="text/javascript">
+var pic_arr = new Array(); 
+var link_arr = new Array();
+var title_arr = new Array(); 
+
+<a href="http://travel.people.com.cn/GB/237990/index.html" target="_blank"><img src="/mediafile/201203/20/F201203201709181740426863.jpg" width="300" height="200" border="0"/></a>
+
+var p = pic_arr.join("|");
+var l = link_arr.join("|");
+var tit = title_arr.join("|");
+
+var wwvars = {pic: p,url: l, title:tit};
+swfobject.embedSWF("/img/2010lvyoupd/main.swf?"+Math.random(), "wwdiv1", "288", "234", "9.0.0", "",wwvars,{wmode:"window"},false);
+</script>
+-->
+</div>
+</div>
+<div class="p1_center p2_center">
+<h1><a href='/n/2015/0421/c41570-26877609.html' target=_blank>高清：北京植物园50万株郁金香竞相开放</a></h1>
+         <p>&nbsp;&nbsp;&nbsp;&nbsp;4月20日，北京植物园郁金香已经进入最佳观赏期，近万平米的郁金香花海展区内，105个品种的50万郁金香竞相开放，犹如花的海洋。俯瞰花海，中心区域是一个蝴蝶结徜徉在花海中的美丽图案，花海西侧则是由彩带串联起的两个小蝴蝶图案，这是北京植物园的园艺师们在种植郁金香时设计好的图案。</p> <div class="line margin10">&nbsp;</div>
+
+<div class="tit2 tit6">
+      <h3><img src="/img/2010lvyoupd/images/ico2.gif" width="13" height="13" alt="" />漫游神州</h3>
+    <a href="/GB/41635/41766/index.html" target='_blank'>更多&gt;&gt;</a></div>
+    <div class="p2_b"><span><a href="http://travel.people.com.cn/GB/41635/41752/index.html" target="_blank"><img src="/NMediaFile/2013/0105/MAIN201301051413252174381650530.jpg" border="0" alt="华中华东"/></a><br /><a href="http://travel.people.com.cn/GB/41635/41752/index.html" target="_blank">华中华东</a></span>
+<span><a href="http://travel.people.com.cn/GB/41635/41744/index.html" target="_blank"><img src="/NMediaFile/2013/0105/MAIN201301051413250813761770269.jpg" border="0" alt="华北东北"/></a><br /><a href="http://travel.people.com.cn/GB/41635/41744/index.html" target="_blank">华北东北</a></span>
+<span><a href="http://travel.people.com.cn/GB/41635/41740/index.html" target="_blank"><img src="/NMediaFile/2013/0105/MAIN201301051413249556534789858.jpg" border="0" alt="西南西北"/></a><br /><a href="http://travel.people.com.cn/GB/41635/41740/index.html" target="_blank">西南西北</a></span>
+<span><a href="http://travel.people.com.cn/GB/41635/41751/index.html" target="_blank"><img src="/NMediaFile/2013/0105/MAIN201301051413248476720608544.jpg" border="0" alt="港澳台华南"/></a><br /><a href="http://travel.people.com.cn/GB/41635/41751/index.html" target="_blank">港澳台华南</a></span>
+</div>
+<ul class="list_14 margin10"><li><a href='/n/2015/0619/c41570-27182450.html' target="_blank">沈阳故宫碾房磨房首次开放 曾生产萨其马等食品</a></li>
+<li><a href='/n/2015/0618/c41570-27177243.html' target="_blank">国家旅游局：一季度全国旅行社总数为27072家</a></li>
+<li><a href='/n/2015/0610/c41570-27132023.html' target="_blank">暑期旅游模式开启 各色趣味线路推荐</a></li>
+<li><a href='/n/2015/0609/c41570-27123677.html' target="_blank">水果联盟放大招 入菜挑战你味蕾</a></li>
+<li><a href='/n/2015/0604/c41570-27101826.html' target="_blank">午食吊烧鱼 晚尝火焰鱼</a></li>
+<li><a href='/n/2015/0603/c41570-27098547.html' target="_blank">高清：中国文字博物馆——中国文字的家</a></li>
+<li><a href='/n/2015/0603/c41570-27096550.html' target="_blank">浮生余记：我的呼伦贝尔记忆</a></li>
+
+</ul>
+
+
+</div>
+<div class="p2_right">
+
+
+
+
+
+<div class="tit2 tit6">
+      <h3><img src="/img/2010lvyoupd/images/ico2.gif" width="13" height="13" alt="" />特价国内游</h3>
+    <a href="/GB/41635/41736/index.html" target='_blank'>更多&gt;&gt;</a></div>
+    <div class="center marg_top10"><a href="http://travel.people.com.cn/GB/14928879.html" target="_blank"><img src="/mediafile/201106/22/F201106221622243189187671.jpg" width="209" height="60" border="0"/></a><br />
+</div>
+<ul class="list_12 padding10"><li><a href='/n/2015/0623/c41570-27194217.html' target="_blank">高清：敦煌西湖自然保护区生态…</a></li>
+<li><a href='/n/2015/0623/c41570-27191939.html' target="_blank">小长假多地景区门票违规涨价 …</a></li>
+<li><a href='/n/2015/0623/c41570-27191925.html' target="_blank">两只大熊猫将落户吉林虎园 首…</a></li>
+<li><a href='/n/2015/0623/c41570-27191639.html' target="_blank">假期旅游 北京成端午国内游最…</a></li>
+<li><a href='/n/2015/0623/c41570-27191105.html' target="_blank">高清：探访中国最美湿地——四…</a></li>
+<li><a href='/n/2015/0619/c41570-27183556.html' target="_blank">《丝绸之路国家旅游部长会议西…</a></li>
+<li><a href='/n/2015/0619/c41570-27183075.html' target="_blank">加拿大温哥华：别样的水滨都市…</a></li>
+<li><a href='/n/2015/0619/c41570-27182390.html' target="_blank">签证利好吸引游客 澳大利亚十…</a></li>
+<li><a href='/n/2015/0619/c41570-27181236.html' target="_blank">中联航将新增西宁黄山等新航线</a></li>
+<li><a href='/n/2015/0619/c41570-27181033.html' target="_blank">端午好去处：云龙镇赛龙舟 九…</a></li>
+<li><a href='/n/2015/0619/c41570-27181025.html' target="_blank">杭州首次开通前往银川列车</a></li>
+<li><a href='/n/2015/0619/c41570-27180838.html' target="_blank">考古发现尧舜古国走出传说 陶…</a></li>
+<li><a href='/n/2015/0619/c41570-27180746.html' target="_blank">“一带一路”沿线省份成立旅游…</a></li>
+<li><a href='/n/2015/0619/c41570-27180676.html' target="_blank">北京高速开启“假期模式” 将…</a></li>
+<li><a href='/n/2015/0619/c41570-27180433.html' target="_blank">父亲节邂逅小长假 带上老爸出…</a></li>
+
+</ul>
+</div>
+
+</div>
+
+<!--P3-->
+<div class="width980 marg_top10 p2_content">
+<div class="p2_tit p3_tit"><a href="/GB/41636/41641/240263/index.html" target='_blank'>美国</a> <a href="/GB/41636/41641/240268/index.html" target='_blank'>英国</a> <a href="/GB/41636/41641/240276/index.html" target='_blank'>加拿大</a> <a href="/GB/41636/41641/240270/index.html" target='_blank'>菲律宾</a> <a href="/GB/41636/41641/240599/index.html" target='_blank'>俄罗斯</a></div>
+<div class="p2_left p3_left">
+<div class="margin10 p2_pic"><a href="http://travel.people.com.cn/n/2015/0415/c41570-26847397.html" target="_blank"><img src="/NMediaFile/2015/0421/MAIN201504210853030298127175885.jpg" width="300" height="200" border="0" alt="盘点：美国五座最高观景摩天轮"/></a><b><a href="http://travel.people.com.cn/n/2015/0415/c41570-26847397.html" target="_blank">盘点：美国五座最高观景摩天轮</a></b><div class="b_bg"></div>
+</div>
+
+<div class="tit2 p2_tit2"><h3><img src="/img/2010lvyoupd/images/ico4.gif" width="13" height="13" alt="" />时尚旅途</h3><a href="#"><!--更多&gt;&gt;--></a></div>
+      <div class="center margin10"><div class="fpic">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><div class="small_pic">
+<ul>
+<li><img src="" alt="" width="79" height="65" border="0" class="thubpiccur" id="tmb0" onmouseover="setfoc(0);" onmouseout="playit();" /></li>
+<li><img width="79" height="65" alt="" src="" class="thubpic" id="tmb1" onmouseover="setfoc(1);" onmouseout="playit();" /></li>
+<li><img width="79" height="65" alt="" src="" class="thubpic" id="tmb2" onmouseover="setfoc(2);" onmouseout="playit();" /></li>
+</ul></div></td>
+    <td><div class="fpica">
+<a id="foclnk" href="#" target="_blank"><img src="" alt="" name="focpic" width="200" height="204" id="focpic" style="FILTER: RevealTrans ( duration = 1，transition=23 );"></a><div id="fttltxt">&nbsp;</div><div class="bg">&nbsp;</div>
+</div></td>
+  </tr>
+</table>
+
+      
+
+
+<script language="javascript" type="text/javascript">
+<!--
+var picarry = {};
+var lnkarry = {};
+var ttlarry = {};
+
+
+picarry[0] = "/mediafile/201203/20/F201203201417031721414275.jpg";
+lnkarry[0] = "/GB/139035/213135/index.html";
+ttlarry[0] = "尼泊尔精彩不止一次";
+picarry[1] = "/mediafile/201203/20/F201203201429245537311492.jpg";
+lnkarry[1] = "/GB/139035/232283/index.html";
+ttlarry[1] = "荷兰假期";
+picarry[2] = "/NMediaFile/2013/0606/MAIN201306061719331925506842019.jpg";
+lnkarry[2] = "/GB/139035/200439/index.html";
+ttlarry[2] = "畅游加拿大";
+//-->
+</script>
+<script language="javascript" type="text/javascript">
+<!--
+ playit1();
+//-->
+</script>
+</div></div>
+</div>
+<div class="p1_center p2_center">
+<h1><a href='/n/2015/0417/c41570-26860076.html' target=_blank>城市丛林冒险之旅！世界十大最美空中花园</a></h1>
+         <p>&nbsp;&nbsp;&nbsp;&nbsp;如今，空中花园已经不是什么新鲜事儿，越来越多的公寓以及豪华酒店都在屋顶建造了花园。不过大部分花园都是私人所有，并不对外开放。既然如此，那就让我们跟随美国有线电视新闻网（CNN）一同领略世界十大最美空中花园的风采，来一场城市丛林冒险之旅吧！</p> <div class="line margin10">&nbsp;</div>
+ 
+<div class="tit2 tit6">
+      <h3><img src="/img/2010lvyoupd/images/ico4.gif" width="13" height="13" alt="" />环球资讯</h3>
+    <a href="/GB/41634/41650/index.html" target='_blank'>更多&gt;&gt;</a></div>
+    <div class="p2_b"><span><a href="http://travel.people.com.cn/GB/41634/41707/index.html" target="_blank"><img src="/NMediaFile/2013/0105/MAIN201301051426209054994489016.jpg" width="75" height="50" border="0" alt="亚洲"/></a><br /><a href="http://travel.people.com.cn/GB/41634/41707/index.html" target="_blank">亚洲</a></span>
+<span><a href="http://travel.people.com.cn/GB/41634/41658/index.html" target="_blank"><img src="/NMediaFile/2013/0105/MAIN201301051426207732063720749.jpg" width="75" height="50" border="0" alt="欧洲"/></a><br /><a href="http://travel.people.com.cn/GB/41634/41658/index.html" target="_blank">欧洲</a></span>
+<span><a href="http://travel.people.com.cn/GB/41634/41653/index.html" target="_blank"><img src="/NMediaFile/2013/0105/MAIN201301051426206412984919850.jpg" width="75" height="50" border="0" alt="非洲澳洲"/></a><br /><a href="http://travel.people.com.cn/GB/41634/41653/index.html" target="_blank">非洲澳洲</a></span>
+<span><a href="http://travel.people.com.cn/GB/41634/41654/index.html" target="_blank"><img src="/NMediaFile/2013/0105/MAIN201301051426205079577498144.jpg" width="75" height="50" border="0" alt="北美南美"/></a><br /><a href="http://travel.people.com.cn/GB/41634/41654/index.html" target="_blank">北美南美</a></span>
+</div><ul class="list_14 margin10"><li><a href='/n/2015/0618/c41570-27177243.html' target="_blank">国家旅游局：一季度全国旅行社总数为27072家</a></li>
+<li><a href='/n/2015/0617/c41570-27168825.html' target="_blank">蓝宝石公主号 这个公主很好吃</a></li>
+<li><a href='/n/2015/0615/c41570-27155674.html' target="_blank">不去韩国 今夏出国去哪玩儿？</a></li>
+<li><a href='/n/2015/0615/c41570-27154802.html' target="_blank">盘点：全球五大不可思议的游览胜地</a></li>
+<li><a href='/n/2015/0615/c41570-27154548.html' target="_blank">避免奇葩证明：公安部推行派出所设出入境受理点</a></li>
+<li><a href='/n/2015/0610/c41570-27132023.html' target="_blank">暑期旅游模式开启 各色趣味线路推荐</a></li>
+<li><a href='/n/2015/0608/c41570-27118167.html' target="_blank">难以置信！探秘全球最大的洞穴韩松洞（组图）</a></li>
+<li><a href='/n/2015/0608/c41570-27117486.html' target="_blank">欧洲烟民：放肆与节制</a></li>
+
+</ul>
+
+</div>
+<div class="p2_right p3_right">
+
+
+
+<ul class="list_12 padding10" id="bf_2" style="display:none"><li><a href='/n/2015/0618/c41570-27177243.html' target="_blank">国家旅游局：一季度全国旅行社…</a></li>
+<li><a href='/n/2015/0617/c41570-27168825.html' target="_blank">蓝宝石公主号 这个公主很好吃</a></li>
+<li><a href='/n/2015/0615/c41570-27155674.html' target="_blank">不去韩国 今夏出国去哪玩儿？</a></li>
+<li><a href='/n/2015/0615/c41570-27154802.html' target="_blank">盘点：全球五大不可思议的游览…</a></li>
+<li><a href='/n/2015/0615/c41570-27154548.html' target="_blank">避免奇葩证明：公安部推行派出…</a></li>
+<li><a href='/n/2015/0610/c41570-27132023.html' target="_blank">暑期旅游模式开启 各色趣味线…</a></li>
+<li><a href='/n/2015/0608/c41570-27118167.html' target="_blank">难以置信！探秘全球最大的洞穴…</a></li>
+<li><a href='/n/2015/0608/c41570-27117486.html' target="_blank">欧洲烟民：放肆与节制</a></li>
+<li><a href='/n/2015/0603/c41570-27098037.html' target="_blank">出境游新选择：去华沙寻访肖邦…</a></li>
+<li><a href='/n/2015/0519/c175558-27023255.html' target="_blank">中青旅“团缘”首批体验师畅游…</a></li>
+<li><a href='/n/2015/0519/c41570-27022181.html' target="_blank">Flyboard出没 水上飞…</a></li>
+<li><a href='/n/2015/0519/c41570-27022173.html' target="_blank">恩爱旅途秀出了名堂：环游世界…</a></li>
+
+</ul>
+<div class="tit2 tit6">
+      <h3><img src="/img/2010lvyoupd/images/ico4.gif" width="13" height="13" alt="" />国外旅游线路推荐</h3>
+    <a href="/GB/41634/41732/index.html" target='_blank'>更多&gt;&gt;</a></div>
+    <div class="center marg_top10"><img src="/mediafile/201104/29/F201104291054332940312322.jpg" width="209" height="15" border="0"/><br />
+</div>
+<ul class="list_12 padding10"><li><a href='/n/2015/0617/c41570-27168999.html' target="_blank">美食购物，福冈满足你的旅行梦想</a></li>
+<li><a href='/n/2015/0615/c41570-27155674.html' target="_blank">不去韩国 今夏出国去哪玩儿？</a></li>
+<li><a href='/n/2015/0604/c41570-27104924.html' target="_blank">美黄石公园野牛再伤人 62岁…</a></li>
+<li><a href='/n/2015/0519/c41570-27022173.html' target="_blank">恩爱旅途秀出了名堂：环游世界…</a></li>
+<li><a href='/n/2015/0519/c41570-27021944.html' target="_blank">阿姆斯特丹 自游没问题（图）</a></li>
+
+</ul>
+</div>
+</div>
+
+<!--P4-->
+<div class="width980 marg_top10 p2_content">
+<div class="p2_tit p4_tit"><a href='/GB/41608/41690/index.html' target='_blank'>开心旅途</a>&nbsp;<a href='http://travel.people.com.cn/GB/163472/index.html' target='_blank'>乐活</a>&nbsp;<a href='http://bbs1.people.com.cn/boardList.do?action=postList&boardId=32' target='_blank'>旅游论坛</a>&nbsp;<a href='http://travel.people.com.cn/GB/139035/238271/index.html' target='_blank'>游记大赛</a>&nbsp;<a href='http://travel.people.com.cn/GB/41636/219157/index.html' target='_blank'>旅途连载</a></div>
+<div class="p2_left p4_left">
+<div class="margin10 p2_pic"><a href="http://travel.people.com.cn/n/2015/0414/c41570-26840473.html" target="_blank"><img src="/NMediaFile/2015/0421/MAIN201504210857234819470073662.jpg" width="300" height="200" border="0" alt="刺激味蕾 韩国首都圈春季美食店一览"/></a><b><a href="http://travel.people.com.cn/n/2015/0414/c41570-26840473.html" target="_blank">刺激味蕾 韩国首都圈春季美食店一览</a></b><div class="b_bg"></div>
+</div>
+
+<div class="tit2 p2_tit2">
+      <h3><img src="/img/2010lvyoupd/images/ico5.gif" width="13" height="13" alt="" />刘佳摄影作品</h3><a href="#"><!--更多&gt;&gt;--></a></div><ul><a href="http://travel.people.com.cn/GB/139035/390947/index.html" ><img src="/NMediaFile/2014/1230/MAIN201412301207546963842296048.jpg" /></a>
+</ul>
+<script type="text/javascript">
+/* ==== start script ==== */
+slider.init();
+</script>  
+</div>
+<div class="p1_center p2_center">
+<h1><a href='/n/2015/0421/c41570-26877445.html' target=_blank>法国艺术家创作奇幻天幕画 插画与天空交融</a></h1>
+         <p>&nbsp;&nbsp;&nbsp;&nbsp;法国摄影师、插图画家托马斯·拉马迪奥喜欢抓拍城市建筑照片，他为此还想出一种利用这些照片创造新式艺术的方式，即以天空为画布创作插图画。</p> <div class="line margin10">&nbsp;</div>
+    
+     
+     
+<div class="tit2 tit6">
+      <h3><img src="/img/2010lvyoupd/images/ico5.gif" width="13" height="13" alt="" />主题旅游</h3>
+    <a href="/GB/41608/41695/index.html" target='_blank'>更多&gt;&gt;</a></div>
+    <div class="p2_b"><span><a href="http://travel.people.com.cn/GB/206081/index.html" target="_blank"><img src="/mediafile/201105/25/F201105251318291059622089.jpg" width="75" height="50" border="0" alt="自驾"/></a><br /><a href="http://travel.people.com.cn/GB/206081/index.html" target="_blank">自驾</a></span>
+<span><a href="http://travel.people.com.cn/GB/210706/index.html" target="_blank"><img src="/mediafile/201105/25/F201105251318299890268616.jpg" width="75" height="50" border="0" alt="邮轮"/></a><br /><a href="http://travel.people.com.cn/GB/210706/index.html" target="_blank">邮轮</a></span>
+<span><a href="http://travel.people.com.cn/GB/163475/index.html" target="_blank"><img src="/mediafile/201105/25/F201105251318292563710533.jpg" width="75" height="50" border="0" alt="航空"/></a><br /><a href="http://travel.people.com.cn/GB/163475/index.html" target="_blank">航空</a></span>
+<span><a href="http://travel.people.com.cn/GB/217133/index.html" target="_blank"><img src="/mediafile/201105/25/F201105251318292736830621.jpg" width="75" height="50" border="0" alt="高铁"/></a><br /><a href="http://travel.people.com.cn/GB/217133/index.html" target="_blank">高铁</a></span>
+</div> 
+    <ul class="list_14 margin10"><li><a href='/n/2015/0618/c41570-27175329.html' target="_blank">济南为提升城市山体景观 拟建23处山体公园</a></li>
+<li><a href='/n/2015/0618/c41570-27173517.html' target="_blank">高清：杭州将打造中国首个加拿大太阳马戏驻场秀</a></li>
+<li><a href='/n/2015/0610/c41570-27131298.html' target="_blank">毕业季，用旅行镌刻青春</a></li>
+<li><a href='/n/2015/0608/c41570-27118066.html' target="_blank">西红柿亲子采摘大受欢迎 亲子游农庄住宿欢乐继续</a></li>
+<li><a href='/n/2015/0608/c41570-27117486.html' target="_blank">欧洲烟民：放肆与节制</a></li>
+<li><a href='/n/2015/0608/c41570-27117413.html' target="_blank">英国男狂爱“美黑” 谨防患恶性黑素瘤</a></li>
+
+</ul> 
+    
+</div>
+<div class="p2_right p4_right">
+<div class="tit2 tit6 tit7">
+      <h3><img src="/img/2010lvyoupd/images/ico5.gif" width="13" height="13" alt="" />旅行者最新推荐</h3>
+    <a href="http://travel.people.com.cn/GB/139035/200789/211372/index.html" target='_blank'>更多&gt;&gt;</a></div>
+    <ul class="p4_c"><li><a href="http://travel.people.com.cn/GB/139035/200789/210435/index.html" target="_blank"><img src="/mediafile/201101/26/F201101261506552963118948.jpg" width="80" height="80" border="0" alt="网友：幸运"/></a><br /><a href="http://travel.people.com.cn/GB/139035/200789/210435/index.html" target="_blank">网友：幸运</a></li>
+<li><a href="http://travel.people.com.cn/GB/139035/200789/210435/index.html" target="_blank"><img src="/mediafile/201101/26/F201101261506551936537822.jpg" width="80" height="80" border="0" alt="网友：忘了"/></a><br /><a href="http://travel.people.com.cn/GB/139035/200789/210435/index.html" target="_blank">网友：忘了</a></li>
+<li><a href="http://travel.people.com.cn/GB/139035/200789/210435/index.html" target="_blank"><img src="/mediafile/201101/26/F201101261506551942221693.jpg" width="80" height="80" border="0" alt="网友：青灯公子"/></a><br /><a href="http://travel.people.com.cn/GB/139035/200789/210435/index.html" target="_blank">网友：青灯公子</a></li>
+<li><a href="http://travel.people.com.cn/GB/139035/200789/210435/index.html" target="_blank"><img src="/mediafile/201101/26/F201101261506539296281181.jpg" width="80" height="80" border="0" alt="网友：酷克力"/></a><br /><a href="http://travel.people.com.cn/GB/139035/200789/210435/index.html" target="_blank">网友：酷克力</a></li>
+<li><a href="http://travel.people.com.cn/GB/139035/200789/210435/index.html" target="_blank"><img src="/mediafile/201101/26/F201101261506533181024289.jpg" width="80" height="80" border="0" alt="网友：吉雅"/></a><br /><a href="http://travel.people.com.cn/GB/139035/200789/210435/index.html" target="_blank">网友：吉雅</a></li>
+<li><a href="http://travel.people.com.cn/GB/139035/200789/210435/index.html" target="_blank"><img src="/mediafile/201101/26/F201101261506533201019745.jpg" width="80" height="80" border="0" alt="网友：放风筝"/></a><br /><a href="http://travel.people.com.cn/GB/139035/200789/210435/index.html" target="_blank">网友：放风筝</a></li>
+</ul> 
+    
+ 
+</div>
+
+</div>
+<div class="width980 marg_top10 ad"><a href="http://liuyan.people.com.cn/" target="_blank"><img src="/NMediaFile/2012/0926/MAIN201209261355495732122570349.gif" width="980" border="0"/></a>
+</div>
+<div class="width980 marg_top10 p5_content1">
+<div class="p2_tit p7_tit"><a href='/GB/163472/index.html' target='_blank'>趣图</a> <a href='/GB/163471/index.html' target='_blank'>美景</a> <a href='/GB/163470/index.html' target='_blank'>美食</a> <a href='/GB/223858/index.html' target='_blank'>高清</a> <a href='/GB/225454/index.html' target='_blank'>热点</a></div>
+<div id="main" class="pic_list clearfix clear" role="main">
+      <ul id="tiles" class="clearfix"><li><a href="/n/2015/0623/c41570-27194217.html" target="_blank"><img src="/NMediaFile/2015/0623/MAIN201506231248000550164385134.jpg" width="210"  border="0" alt="高清：敦煌西湖自然保护区生态植被得到恢复"/></a><p class="tc"><a href="/n/2015/0623/c41570-27194217.html" target="_blank">高清：敦煌西湖自然保护区生态植被得到恢复</a></p></li>
+<li><a href="/n/2015/0623/c41570-27194203.html" target="_blank"><img src="/NMediaFile/2015/0623/MAIN201506231238000152616297358.jpg" width="210"  border="0" alt="高清：美国华裔小姐大赛 佳丽表演尽显中国风 "/></a><p class="tc"><a href="/n/2015/0623/c41570-27194203.html" target="_blank">高清：美国华裔小姐大赛&nbsp;佳丽表演尽显中国风&nbsp;</a></p></li>
+<li><a href="/n/2015/0623/c41570-27194198.html" target="_blank"><img src="/NMediaFile/2015/0623/MAIN201506231235000021268566073.jpg" width="210"  border="0" alt="高清：2015全球首对大熊猫双胞胎出生 "/></a><p class="tc"><a href="/n/2015/0623/c41570-27194198.html" target="_blank">高清：2015全球首对大熊猫双胞胎出生&nbsp;</a></p></li>
+<li><a href="/n/2015/0623/c41570-27191207.html" target="_blank"><img src="/NMediaFile/2015/0623/MAIN201506230754000413133084484.jpg" width="210"  border="0" alt="高清：台风“鲸鱼”来袭 三亚乌云密布"/></a><p class="tc"><a href="/n/2015/0623/c41570-27191207.html" target="_blank">高清：台风“鲸鱼”来袭&nbsp;三亚乌云密布</a></p></li>
+<li><a href="/n/2015/0623/c41570-27191174.html" target="_blank"><img src="/NMediaFile/2015/0623/MAIN201506230748000060493224646.jpg" width="210"  border="0" alt="环球采风：2015年匈牙利小姐出炉（高清）"/></a><p class="tc"><a href="/n/2015/0623/c41570-27191174.html" target="_blank">环球采风：2015年匈牙利小姐出炉（高清）</a></p></li>
+<li><a href="/n/2015/0623/c41570-27191130.html" target="_blank"><img src="/NMediaFile/2015/0623/MAIN201506230740000325324923149.jpg" width="210"  border="0" alt="高清：俄罗斯圣彼得堡中学毕业生迎来“红帆节”"/></a><p class="tc"><a href="/n/2015/0623/c41570-27191130.html" target="_blank">高清：俄罗斯圣彼得堡中学毕业生迎来“红帆节”</a></p></li>
+<li><a href="/n/2015/0623/c41570-27191105.html" target="_blank"><img src="/NMediaFile/2015/0623/MAIN201506230734000492076112503.jpg" width="210"  border="0" alt="高清：探访中国最美湿地——四川阿坝州若尔盖 "/></a><p class="tc"><a href="/n/2015/0623/c41570-27191105.html" target="_blank">高清：探访中国最美湿地——四川阿坝州若尔盖&nbsp;</a></p></li>
+<li><a href="/n/2015/0620/c41570-27185964.html" target="_blank"><img src="/NMediaFile/2015/0620/MAIN201506201326000407674839898.jpg" width="210"  border="0" alt="高清：肯尼亚猎豹捕猎不成反被疣猪赶跑"/></a><p class="tc"><a href="/n/2015/0620/c41570-27185964.html" target="_blank">高清：肯尼亚猎豹捕猎不成反被疣猪赶跑</a></p></li>
+<li><a href="/n/2015/0620/c41570-27185956.html" target="_blank"><img src="/NMediaFile/2015/0620/MAIN201506201323000443114225193.jpg" width="210"  border="0" alt="高清：老爸为患眼疾女儿绘制漫画眼罩 温情感动网友"/></a><p class="tc"><a href="/n/2015/0620/c41570-27185956.html" target="_blank">高清：老爸为患眼疾女儿绘制漫画眼罩&nbsp;温情感动网友</a></p></li>
+<li><a href="/n/2015/0620/c41570-27185952.html" target="_blank"><img src="/NMediaFile/2015/0620/MAIN201506201318000547414685975.jpg" width="210"  border="0" alt="高清：美国最可爱女子垒球队穿长裙做“冰雪女王”"/></a><p class="tc"><a href="/n/2015/0620/c41570-27185952.html" target="_blank">高清：美国最可爱女子垒球队穿长裙做“冰雪女王”</a></p></li>
+
+</ul>
+</div>
+</div>
+   <script src="/img/MAIN/2012/10/112513/js_library/jquery.wookmark.js"></script>  
+  <script type="text/javascript">
+          // Get a reference to your grid items.
+	  $(function(){
+	  $(window).load(function(){
+		var options = {
+        autoResize: true, 
+        container: $('#main'), 
+        offset: 18, 
+        itemWidth: 224 
+       };
+		var handler = $('#tiles li');
+        handler.wookmark(options);
+		handler.click(function(){
+        var newHeight = $('img', this).height()+80;
+        $(this).css('height', newHeight+'px');
+        handler.wookmark();
+       });
+      });
+	  });
+    $(document).ready(new function() {  
+    });
+  </script>
+<div class="width980 p5_content" style="display:none;">
+<div class="p5_left">
+
+</div>
+<div class="p5_right">
+<li><a href="/n/2012/0911/c41570-18974560.html" target="_blank"><img src="/NMediaFile/2012/0918/MAIN201209181609437526650653417.jpg" border="0" alt="日本北海道暖暖寒冬"/></a><b><a href="/n/2012/0911/c41570-18974560.html" target="_blank">日本北海道暖暖寒冬</a></b></li>
+<li><a href="/n/2012/0913/c41570-18999046.html" target="_blank"><img src="/NMediaFile/2012/0918/MAIN201209181607490153668379282.jpg" border="0" alt="日本北海道雪景如画"/></a><b><a href="/n/2012/0913/c41570-18999046.html" target="_blank">日本北海道雪景如画</a></b></li>
+
+<li class="p5_2"><a href="/n/2012/0917/c41570-19026026.html" target="_blank"><img src="/NMediaFile/2012/0918/MAIN201209181605458119340332151.jpg" width="203" height="302" border="0" alt="北海道冬日印象"/></a><b><a href="/n/2012/0917/c41570-19026026.html" target="_blank">北海道冬日印象</a></b></li>
+
+<li><a href="/n/2012/0913/c41570-18999046.html" target="_blank"><img src="/NMediaFile/2012/0918/MAIN201209181611484659858239121.jpg" border="0" alt="日本北海道雪景如画"/></a><b><a href="/n/2012/0913/c41570-18999046.html" target="_blank">日本北海道雪景如画</a></b></li>
+<li><a href="/n/2012/0912/c41570-18986159.html" target="_blank"><img src="/NMediaFile/2012/0918/MAIN201209181606246145640446563.jpg" border="0" alt="雪后北海道宛如梦幻之城"/></a><b><a href="/n/2012/0912/c41570-18986159.html" target="_blank">雪后北海道宛如梦幻之城</a></b></li>
+
+</div>
+</div>
+
+<div class="width980 marg_top10 link link2">
+<div class="link_tit"><br />友<br />情<br />链<br />接<br /><br /></div>
+<div class="scrollImgLista">
+<div class="Conta" id="ISL_Cont_a">
+<div class="scrConta">
+<div id="List1_a"><a href="http://market.cnta.gov.cn/" target="_blank" target='_blank'>全国旅游市场培训网</a>|<a href="http://gb.cri.cn/travel/" target='_blank'>国际在线环球旅游 </a>|<a href="http://www.bjlyjszx.com/" target="_blank" target='_blank'>北京旅游集散中心</a>|<a href="http://travel.letv.com/" target="_blank" target='_blank'>乐视网旅游</a>|<br><a href="http://www.cdyou.net/" target='_blank'>长岛旅游</a>|<a href="http://tour.rednet.cn//" target='_blank'>红网旅游</a>|<a href="http://travel.chinadaily.com.cn/" target='_blank'>中国日报网旅游</a>|<a href="http://travel.qianlong.com/" target='_blank'>千龙网旅游</a>|<a href="http://you.ctrip.com/" target='_blank'>携程旅游攻略</a>|<a href="http://www.unpcn.com/" target="_blank" target='_blank'>国家摄影</a>|<a href="http://www.ynet.com/" target="_blank" target='_blank'>北青网</a>|<a href="http://xunlu.ynet.com/" target="_blank" target='_blank'>北青网旅游</a>|<a href="http://wujiyou.com/" target="_blank" target='_blank'>无忌游</a>|<a href="http://www.morningpost.com.cn/travel/" target="_blank" target='_blank'>北京晨报</a>|<a href="http://v.china.com.cn/
+ target=" _blank"="" target="_blank">中国网视频中国</a>|<a href="http://blog.sohu.com/" target="_blank" target='_blank'>搜狐博客</a>|<a href="http://www.aoyou.com" target="_blank" target='_blank'>遨游网</a>|<a href="http://www.dreams-travel.com/" target="_blank">梦之旅</a>|<a href="http://www.cntraveler.com.cn/" target="_blank" target='_blank'>CNT全球旅行网</a>|<a href="http://wuzhen.com.cn/" target="_blank" target='_blank'>乌镇旅游</a>|<a href="http://www.xdxfdb.com/" target='_blank'>现代消费网</a>|<a href="http://www.laidingba.com" target='_blank'>来订吧</a>|<a href="http://www.uzai.com/" target='_blank'>悠哉旅游网</a>|<a href="http://www.51you.com/" target='_blank'>新华旅行网</a>|<br><a href="http://www.xiaomishu.com" target='_blank'>全国美食订餐小秘书</a>|<a href="http://www.lvmama.com" target='_blank'>驴妈妈旅游网</a>|<a href="http://www.xinlvxing.com.cn" target='_blank'>新旅行官网</a><a href="http://www.lantangren.cn/" target="_blank">兰汤人·武夷山特产</a>|<a href="http://www.kuxun.cn" target="_blank">酷讯网</a>|<a href="http://www.meadin.com/" target="_blank">迈点网</a>|<a href="http://www.cnoutdoor.com/" target="_blank">中国户外网</a>|<a href="http://www.chinacct.org" target="_blank">中国城市旅游</a>|<a href="http://travel.hebei.com.cn/" target="_blank">长城网旅游</a>|<a href="http://www.cngaosu.com/" target="_blank">中国高速</a>|<a href="http://www.qianzhengdaiban.com/" target="_blank">中国签证网</a>|<a href="http://fashion.ifeng.com/travel/" target="_blank">凤凰网旅游</a>|<a href="http://www.gearok.com/" target="_blank">装备之都</a>|<a href="http://www.tuniu.com/" target="_blank">途牛旅游网</a>|<a href="http://www.lotour.com/" target="_blank">乐途旅游</a>|<a href="http://www.wlmqwb.com/2971/" target="_blank">乌鲁木齐在线旅游</a>|<a href="http://www.gotoningbo.com/" target="_blank">宁波旅游网</a>|<a href="http://www.qianzheng88.com/" target="_blank">中旅在线</a>|<a href="http://www.china.travel" target="_blank">中国旅游网</a>|<a href="http://www.newta.com.cn/" target="_blank">新旅游</a>|<a href='http://www.lvren.cn/' target='_blank'>绿人旅游网</a>|<br><a href='http://www.jzg.cn/' target='_blank'>九寨沟旅游门户网</a>|<a href="http://www.sanyalanhua.com/" target="_blank">三亚旅游</a>|<a href="http://www.1000islandlake.com/index.html" target="_blank">千岛湖旅游网</a>|<a href="http://www.kg10000.com/" target="_blank">四川空港旅行社</a>|<a href='http://www.96123.com' target='_blank'>杭州旅游</a>|<a href="http://www.haihainan.com/" target="_blank">嗨！海南</a>|<a href="http://www.ems517.com/" target="_blank">峨眉山风景区</a>|<a href="http://www.wuyishan.gov.cn" target="_blank">中国武夷山</a>|<a href="http://www.toptour.cn/" target="_blank">第一旅游网</a>|<a href="http://www.likefar.com/index.html" target="_blank">远方网</a>|<br><a href='http://www.jiayou360.com' target='_blank'>佳游网</a>|<a href='http://www.iscenes.com.cn/' target='_blank'>风景网</a>|<a href="http://www.uuyoyo.com/" target="_blank">悠游网</a>|<a href='http://www.cntour365.com/' target='_blank'>辽宁旅行社</a>|<a href="http://www.mutianyugreatwall.com" target="_blank">慕田峪长城</a>|<a href="http://www.bescn.com/" target="_blank">大地风景</a>|<a href='http://www.tctc.com.cn/' target='_blank'>旅游卫视</a>|<a href='http://www.51766.com/' target='_blank'>中国通用旅游网</a>|<a href="http://www.lovingafrica.cn/" target="_blank">爱上非洲</a>|<a href="http://www.51tibettour.com/" target="_blank">西藏旅游</a>|<a href="http://www.gootrip.com/" target="_blank">玩家旅游</a>|<br><a href="http://in.daqi.com/" target="_blank">大旗锐生活</a>|<a href="http://www.travellingscope.com/" target="_blank">旅游天地</a>|<a href="http://www.qyta.com/" target="_blank">清远旅游网</a>|<a href="http://www.nmgly.com.cn/" target="_blank">内蒙古旅游网</a>|<a href="http://www.soulv.com" target="_blank">搜旅网</a>|<a href="http://travel.sohu.com/" target="_blank">搜狐旅游</a>|<a href="http://travel.gmw.cn" target="_blank">光明网旅游</a>|<a href="http://www.8264.com/" target="_blank">户外资料网</a>|<a href="http://www.17u.com/" target="_blank">同程旅游网</a>|<a href="http://travel.sina.com.cn/" target="_blank">新浪旅游</a>|<a href='http://travel.163.com/' target='_blank'>网易旅游</a>|<br><a href='http://travel.tom.com' target='_blank'>TOM旅游</a>|<a href="http://www.hxuc.com/" target="_blank">华夏联通</a>|<a href="http://www.dili360.com/" target="_blank">中国国家地理网</a>|<a href="http://www.soworld.net/" target="_blank">搜世界旅游网</a>|<a href='http://www.xiangdaochina.com/index.html' target='_blank'>我的向导网</a>|<a href="http://www.ngtraveler.cn/" target="_blank">时尚旅游</a>|<a href="http://www.cnta.com.cn" target="_blank">国家旅游局</a>|<a href="http://www.visitbeijing.com.cn/" target="_blank">北京市旅游局</a>|<a href="http://www.xinhuanet.com/travel/" target="_blank">新华旅游</a>|<a href="http://travel.ce.cn/" target="_blank">中国经济网旅游</a>|<br><a href="http://www.china.com.cn/travel/node_5001722.htm" target="_blank">中国网旅游</a>|<a href="http://travel.cntv.cn/" target="_blank">CNTV旅游台</a>|<a href="http://tour.cyol.com/node/tour.htm" target="_blank">中青在线旅游</a>|<a href="http://go.huanqiu.com/" target="_blank">环球网旅游</a>|<a href="http://trip.elong.com/qq" target="_blank">腾讯旅游</a>|<a href='http://www.chinesecity.com.cn/' target='_blank'>中国名城网</a>|<a href='http://travel.qunar.com/' target='_blank'>去哪儿网攻略频道</a>|<a href='http://travel.china.com/ 
+' target='_blank'>中华网旅游</a>|<a href='http://travel.haiwainet.cn/ 
+' target='_blank'>海外网旅游</a></div>
+<div id="List2_a"></div>
+</div>
+</div>
+</div></div>
+<script type="text/javascript">
+		var speed_a = 0; //速度(毫秒)
+		var space_a = 10; //每次移动(px)
+		var PageHeight_a = 66; //翻页宽度
+		var fill_a = 0; //整体移位
+		var moveLock_a = false;
+		var moveTimeObj_a;
+		var moveWay_a = "right";
+		var comp_a = 0;
+		var autoPlayObj_a=null;
+		
+		GetObj_a("List2_a").innerHTML=GetObj_a("List1_a").innerHTML;
+		GetObj_a('ISL_Cont_a').scrollTop=fill_a>=0?fill_a:GetObj_a('List1_a').scrollHeight-Math.abs(fill_a);
+		GetObj_a("ISL_Cont_a").onmouseover=function(){clearInterval(autoPlayObj_a)}
+		GetObj_a("ISL_Cont_a").onmouseout=function(){AutoPlay_a()}
+		AutoPlay_a();
+		
+		function GetObj_a(objName){
+			if(document.getElementById){return eval('document.getElementById("'+objName+'")')}else{return eval('document.all.'+objName)}
+		}
+		
+		function AutoPlay_a(){
+			clearInterval(autoPlayObj_a);
+			autoPlayObj_a=setInterval('ISL_GoDown_a();ISL_StopDown_a();',3000)
+		}
+		
+		function ISL_GoUp_a(){
+			if(moveLock_a)return;
+			clearInterval(autoPlayObj_a);
+			moveLock_a=true;
+			moveWay_a="left";
+			moveTimeObj_a=setInterval('ISL_ScrUp_a();',speed_a);
+		}
+		
+		function ISL_StopUp_a(){
+		if(moveWay_a == "right"){return};
+		clearInterval(moveTimeObj_a);
+		if((GetObj_a('ISL_Cont_a').scrollTop-fill_a)%PageHeight_a!=0){
+		comp_a=fill_a-(GetObj_a('ISL_Cont_a').scrollTop%PageHeight_a);
+		CompScr_a()}else{moveLock_a=false}
+		AutoPlay_a()}
+		
+		function ISL_ScrUp_a(){
+		if(GetObj_a('ISL_Cont_a').scrollTop<=0){GetObj_a('ISL_Cont_a').scrollTop=GetObj_a('ISL_Cont_a').scrollTop+GetObj_a('List1_a').offsetHeight}
+		GetObj_a('ISL_Cont_a').scrollTop-=space_a
+		}
+		
+		function ISL_GoDown_a(){
+			clearInterval(moveTimeObj_a);
+			if(moveLock_a)return;
+			clearInterval(autoPlayObj_a);
+			moveLock_a=true;
+			moveWay_a="right";
+			ISL_ScrDown_a();
+			moveTimeObj_a=setInterval('ISL_ScrDown_a()',speed_a)
+		}
+		
+		function ISL_StopDown_a(){
+			if(moveWay_a == "left"){return};
+			clearInterval(moveTimeObj_a);
+			if(GetObj_a('ISL_Cont_a').scrollTop%PageHeight_a-(fill_a>=0?fill_a:fill_a+1)!=0){
+				comp_a=PageHeight_a-GetObj_a('ISL_Cont_a').scrollTop%PageHeight_a+fill_a;
+				CompScr_a()
+			}
+			else{moveLock_a=false}
+			AutoPlay_a()
+		}
+		
+		function ISL_ScrDown_a(){
+		if(GetObj_a('ISL_Cont_a').scrollTop>=GetObj_a('List1_a').scrollHeight){GetObj_a('ISL_Cont_a').scrollTop=GetObj_a('ISL_Cont_a').scrollTop-GetObj_a('List1_a').scrollHeight}
+		GetObj_a('ISL_Cont_a').scrollTop+=space_a
+		}
+		
+		function CompScr_a(){
+			if(comp_a==0){moveLock_a=false;return}
+			var num,TempSpeed=speed_a,TempSpace=space_a;
+			if(Math.abs(comp_a)<PageHeight_a/2){
+				TempSpace=Math.round(Math.abs(comp_a/space_a));
+				if(TempSpace<1){TempSpace=1}
+			}
+			if(comp_a<0){
+				if(comp_a<-TempSpace){
+					comp_a+=TempSpace;
+					num=TempSpace
+				}
+				else{num=-comp_a;comp_a=0}
+				GetObj_a('ISL_Cont_a').scrollTop-=num;
+				setTimeout('CompScr_a()',TempSpeed)
+			}	
+			else{if(comp_a>TempSpace){comp_a-=TempSpace;num=TempSpace}
+			else{num=comp_a;
+			comp_a=0}
+			GetObj_a('ISL_Cont_a').scrollTop+=num;
+			setTimeout('CompScr_a()',TempSpeed)}
+		}
+		</script>
+<div class="width980 p6_content marg_top10">
+<div class="p1_tit p6_tit"> </div>
+<ul class="margin10">
+<li class="p6_a">
+<b>国内游</b><a href="http://travel.people.com.cn/GB/35549/35715/index.html" target="_blank"><font color='#0080bd'>北京</font></a> <a href="http://travel.people.com.cn/GB/35549/35720/index.html"><font color='#0080bd'>天津</font></a> <a 
+href="http://travel.people.com.cn/GB/35549/35724/index.html"><font color='#0080bd'>山西</font></a> <a href="http://travel.people.com.cn/GB/35549/35723/index.html"><font color='#0080bd'>河北</font></a> <a href="http://travel.people.com.cn/GB/35549/35725/index.html"><font color='#0080bd'>内蒙古</font></a> <a href="http://travel.people.com.cn/GB/35549/35739/index.html"><font color='#0080bd'>海南</font></a> <a href="http://travel.people.com.cn/GB/35549/35738/index.html"><font color='#0080bd'>广西</font></a>  <a href="http://travel.people.com.cn/GB/35549/35734/index.html"><font color='#0080bd'>福建</font></a> <a href="http://travel.people.com.cn/GB/35549/35755/index.html"><font color='#0080bd'>澳门</font></a> <a href="http://travel.people.com.cn/GB/35549/35754/index.html"><font color='#0080bd'>香港</font></a> <a href="http://travel.people.com.cn/GB/35549/35756/index.html"><font color='#0080bd'>台湾</font></a> <a href="http://travel.people.com.cn/GB/35549/35751/index.html"><font color='#0080bd'>辽宁</font></a> <a href="http://travel.people.com.cn/GB/35549/35752/index.html"><font color='#0080bd'>吉林</font></a> <a href="http://travel.people.com.cn/GB/35549/35753/index.html"> 
+<font color='#0080bd'>黑龙江</font></a> <a href="http://travel.people.com.cn/GB/35549/35732/index.html"><font color='#0080bd'>安徽</font></a> <a href="http://travel.people.com.cn/GB/35549/35733/index.html"> <font color='#0080bd'>浙江</font></a> <a href="http://travel.people.com.cn/GB/35549/35721/index.html"><font color='#0080bd'>上海</font></a> <a href="http://travel.people.com.cn/GB/35549/35735/index.html"><font color='#0080bd'>江苏</font></a> <a href="http://travel.people.com.cn/GB/35549/35731/index.html"><font color='#0080bd'>山东</font></a> <a href="http://travel.people.com.cn/GB/35549/35736/index.html"> <font color='#0080bd'>江西</font></a> <a 
+href="http://travel.people.com.cn/GB/35549/35742/index.html"><font color='#0080bd'>湖北</font></a> <a href="http://travel.people.com.cn/GB/35549/35743/index.html"><font color='#0080bd'>湖南</font></a>  <a href="http://travel.people.com.cn/GB/35549/35744/index.html"><font color='#0080bd'>河南</font></a></li>
+<li class="p6_b">
+<b>出境游</b><a href='http://travel.people.com.cn/GB/139035/193477/index.html' target='_blank'><font color='#0080bd'>南非</font></a><br><a href='http://travel.people.com.cn/GB/139035/200439/index.html' target='_blank'><font color='#0080bd'>加拿大</font></a><a href="/GB/41634/41707/9624418.html"><font color='#0080bd'>日本</font></a><br><a href="http://tv.people.com.cn/GB/14644/13179679.html"><font color='#0080bd'>以色列</font></a><br><a href="/GB/41634/41707/9631968.html"><font color='#0080bd'>泰国</font></a><br><a href="/GB/41634/41707/9632496.html"><font color='#0080bd'>新加坡</font></a><br><a href="/GB/41634/41707/9632497.html"><font color='#0080bd'>马来西亚</font></a></li>
+<li class="p6_b">
+<b>周边游</b><a href='http://travel.people.com.cn/GB/139035/170810/index.html' target='_blank'><font color='#0080bd'>昆明</font></a><br><a href='http://travel.people.com.cn/GB/139035/184412/index.html' target='_blank'><font color='#0080bd'>上海</font></a><br><a href='http://travel.people.com.cn/GB/139035/206175/index.html' target='_blank'><font color='#0080bd'>普陀山</font></a><br><a href='http://travel.people.com.cn/GB/139035/205347/index.html' target='_blank'><font color='#0080bd'>彭山</font></a><br><a href='http://travel.people.com.cn/GB/139035/199010/index.html' target='_blank'><font color='#0080bd'>香港</font></a></li>
+<li class="p6_c">
+<b>主题游</b><a href='http://travel.people.com.cn/GB/139035/189973/201793/index.html' target='_blank'><font color='#0080bd'>采摘</font></a><a href='http://travel.people.com.cn/GB/139035/190139/index.html' target='_blank'><font color='#0080bd'>烧烤</font></a><a href='http://travel.people.com.cn/GB/139035/200789/200790/index.html' target='_blank'><font color='#0080bd'>体验团</font></a><a href='http://travel.people.com.cn/GB/139035/149400/index.html' target='_blank'><font color='#0080bd'>购物</font></a><a href='http://travel.people.com.cn/GB/139035/189973/198490/index.html' target='_blank'><font color='#1377c1'>亲水</font></a><a href='http://travel.people.com.cn/GB/139035/149400/index.html' target='_blank'><font color='#0080bd'>节庆游</font></a><a href='http://travel.people.com.cn/GB/139035/149400/index.html' target='_blank'><font color='#0080bd'>自驾</font></a><a href='http://travel.people.com.cn/GB/139035/149400/index.html' target='_blank'><font color='#0080bd'>酒店</font></a><a href='http://travel.people.com.cn/GB/139035/189973/189974/index.html' target='_blank'><font color='#0080bd'>毕业游</font></a><a href='http://travel.people.com.cn/GB/139035/151317/index.html' target='_blank'><font color='#0080bd'>漂流</font></a><a href='http://travel.people.com.cn/GB/139035/158545/index.html' target='_blank'><font color='#0080bd'>民俗</font></a><a href='http://travel.people.com.cn/GB/139035/189973/195411/index.html' target='_blank'><font color='#0080bd'>草原</font></a><a href='http://travel.people.com.cn/GB/139035/189973/202038/index.html' target='_blank'><font color='#0080bd'>枫叶</font></a> <a href='http://travel.people.com.cn/GB/139035/189973/210440/index.html' target='_blank'><font color='#0080bd'>滑雪</font></a></li>
+<li class="p6_b">
+<b>互动原创</b><a href='http://qgblog.people.com.cn/travel/index.html' target='_blank'><font color='#0080bd'>博客</font></a><br><a href='http://bbs1.people.com.cn/boardList.do?action=postList&boardId=32' target='_blank'><font color='#0080bd'>论坛</font></a><br><a href='http://t.people.com.cn/travel' target='_blank'><font color='#0080bd'>微博</font></a><br><a href='http://liaoba.people.com.cn/topic.html?method=query&tb_code=4479' target='_blank'><font color='#0080bd'>聊吧</font></a><br><a href='http://vblog.people.com.cn/index.php?uid=21815' target='_blank'><font color='#0080bd'>视频</font></a><br><a href='http://travel.people.com.cn/GB/139035/200789/211372/index.html' target='_blank'><font color='#0080bd'>活动推荐</font></a></li>
+<li class="p6_b p6_d">
+<b>服务工具</b><a href='http://travel315.people.com.cn/' target='_blank'><font color='#0080bd'>投诉平台</font></a><br><a href='http://travel.people.com.cn/GB/175711/193433/index.html' target='_blank'><font color='#0080bd'>建言平台</font></a><br><a href='http://ask.people.com.cn/ask/browser.php?tid=1027&lm=2' target='_blank'><font color='#0080bd'>旅游问答</font></a><br><a href='http://jiudian.soulv.com/?t=1289984031000&ref=tpeople_jd' target='_blank'><font color='#0080bd'>酒店预订</font></a><br><a href='http://travel.people.com.cn/GB/354324/index.html' target='_blank'><font color='#0080bd'>旅游中国</font></a><br><a href='http://travel.people.com.cn/GB/115932/index.html' target='_blank'><font color='#0080bd'>看景区</font></a><br><a href='http://weather.people.com.cn/' target='_blank'><font color='#0080bd'>旅游天气</font></a><br><a href='http://travel.people.com.cn/GB/115592/index.html' target='_blank'><font color='#0080bd'>对话旅游局长</font></a></li>
+</ul>
+</div>
+
+<div id="copyright"><!-- 版权栏 -->
+<style>
+#copyright{clear:both; margin:15px auto 5px; padding-top:10px; width:980px; height:auto; color:#333; font-size:12px; text-align:center;}
+#copyright p{margin:0 0 2px 0; text-align:center;}
+#copyright a{color:#333;}
+#copyright p.p5{padding:5px 0;}
+#copyright p.pb10{width:980px; margin:0 auto; padding-bottom:10px; word-break:keep-all; line-height:28px; overflow:hidden;}
+#copyright p.mt10{margin-top:10px;}
+#copyright p.mt10 span.red{color:#cc0000;}
+#copyright p.mt10 span.red a:link,#copyright p.mt10 span.red a:hover,#copyright p.mt10 span.red a:visited{color:#cc0000; text-decoration:none;}
+</style>
+<div id="copyright">
+<p>镜像:<a href="http://www.people.com.cn/" target="_blank" >日本</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.peopledaily.edu.cn/" target="_blank">教育网</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.peopledaily.ac.cn/" target="_blank">科技网</a></p>
+<p>呼叫热线&nbsp;&nbsp;4008-100-300&nbsp;&nbsp;服务邮箱&nbsp;&nbsp;<a href="mailto:kf@people.cn">kf@people.cn</a></p>
+<p class="p5"><a href="http://www.people.com.cn/GB/1018/22259/index.html" target="_blank">人民日报社概况</a>
+ | <a href="http://www.people.com.cn/GB/50142/353480/353481/index.html" target="_blank">关于人民网</a>
+ | <a href="http://58.68.146.35/exam_print/" target="_blank">考生服务</a>
+ | <a href="http://www.people.com.cn/GB/1018/245490/index.html" target="_blank">招聘英才</a>
+ | <a href="http://www.people.com.cn/GB/208743/index.html" target="_blank">广告服务</a>
+ | <a href="http://www.people.com.cn/GB/50142/50462/index.html" target="_blank">合作加盟</a>
+ | <a href="http://gonggao.people.com.cn/" target="_blank">供稿服务</a>
+ | <a href="http://www.people.com.cn/n/2013/1227/c373005-23961344.html" target="_blank">网站声明</a>
+ | <a href="http://www.people.com.cn/n/2013/1227/c373006-23961372.html" target="_blank">网站律师</a>
+ | <a href="http://kf.people.com.cn/" target="_blank">呼叫中心</a>
+ | <a href="http://english.peopledaily.com.cn/102840/7560415.html" target="_blank">ENGLISH</a>
+</p>
+<p class="pb10"><a href="http://www.people.com.cn/img/2011zzzs/2011icp.htm" target="_blank">京ICP证000006号</a>
+ | 京公网安备110000000008号
+ | <a href="http://www.people.com.cn/img/2011zzzs/2011xxwlcb.htm" target="_blank">网上传播视听节目许可证（0104065）</a>
+ | <a href="http://tv.people.com.cn/GB/6983227.html" target="_blank">中国互联网视听节目服务自律公约</a>
+</p>
+<p class="mt10"><span class="red">人 民 网 版 权 所 有 ，未 经 书 面 授 权 禁 止 使 用</span><br />
+<span>Copyright &copy; 1997-2015 by www.people.com.cn. all rights reserved</span><a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=0102000101300040" target="_blank"><img src="/img/2011people/images/gongshang.gif" width="40" style="float:right;margin:-50px 190px 0 0px;" height="48" alt="" align="middle" border="0" /></a></p>
+</div>
+<!-- 版权栏结束 --></div>
+<div id="fixedImage">
+		<img id="floatDelete" src="/img/2010lvyoupd/images/delete-float-img.png" width="17" height="16"><br/><img src="/NMediaFile/2013/0725/MAIN201307251542020721413371784.jpg" width="150" height="180"/>
+</div>
+<script type="text/javascript">
+	var wrap = document.getElementById('fixedImage');
+	function resize(){
+		var left =document.documentElement.scrollLeft+ (document.documentElement.clientWidth -980)/2 - 200;
+		if (left < 0) {
+			left = 0;
+		}
+		wrap.style.right = left + 'px';
+	}
+	window.onresize = resize;
+	resize();
+	var deleteElem = document.getElementById('floatDelete');
+	deleteElem.onclick = function() {
+		var wrap = document.getElementById('fixedImage');
+		wrap.parentNode.removeChild(wrap);
+	};
+
+
+//获取推荐新闻
+$.ajax({  
+        type : "get",  
+        async: false,  
+        url : "http://paike0.people.com.cn/newssearch/queryrect?num=10",  
+        dataType : "jsonp",
+        jsonp: "callback",
+        success : function(data){
+			//data["2"][0]表示第二页第一条
+			var xwtj = '';
+            for( var i = 0; i < data["1"].length; i++ )
+			{
+				var title = data["1"][i].title;
+				var newslink = data["1"][i].newsLink;
+				title = title.length > 14 ? title.substr(0,14) + '…' : title;
+				xwtj += '<li><a href="' + newslink + '" target="_blank">' + title + '</a></li>';
+				//alert(data["1"][i].title + data["1"][i].newsLink);
+			}
+			document.getElementById("ba_3_ul").innerHTML = xwtj;
+        }  
+    });
+
+
+</script>
+<script src="/css/2010tianrun/webdig_test.js" language="javascript" type="text/javascript"></script>
+</body>
+</html>
