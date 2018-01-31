@@ -1,0 +1,99 @@
+2015-01-27 13:44:33.436 [main] DEBUG org.eclipse.jetty.util.log - Logging to Logger[org.eclipse.jetty.util.log] via org.eclipse.jetty.util.log.Slf4jLog
+2015-01-27 13:44:33.438 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.server.Server@196e136 + SelectChannelConnector@0.0.0.0:8080 as connector
+2015-01-27 13:44:33.452 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.server.Server@196e136 + o.e.j.s.ServletContextHandler{/,null} as handler
+2015-01-27 13:44:33.473 [main] DEBUG org.eclipse.jetty.util.log - filterNameMap={}
+2015-01-27 13:44:33.474 [main] DEBUG org.eclipse.jetty.util.log - pathFilters=null
+2015-01-27 13:44:33.474 [main] DEBUG org.eclipse.jetty.util.log - servletFilterMap=null
+2015-01-27 13:44:33.474 [main] DEBUG org.eclipse.jetty.util.log - servletPathMap={/*=lin.HelloServlet-17761829}
+2015-01-27 13:44:33.474 [main] DEBUG org.eclipse.jetty.util.log - servletNameMap={lin.HelloServlet-17761829=lin.HelloServlet-17761829}
+2015-01-27 13:44:33.474 [main] DEBUG org.eclipse.jetty.util.log - Starting org.eclipse.jetty.server.Server@196e136
+2015-01-27 13:44:33.474 [main] INFO  org.eclipse.jetty.util.log - jetty-7.3.1.v20110307
+2015-01-27 13:44:33.486 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.server.Server@196e136 + qtp1693359{8<=0<=0/254,-1} as threadpool
+2015-01-27 13:44:33.486 [main] DEBUG org.eclipse.jetty.util.log - Starting o.e.j.s.ServletContextHandler{/,null}
+2015-01-27 13:44:33.498 [main] DEBUG org.eclipse.jetty.util.log - Container o.e.j.s.ServletContextHandler{/,null} + org.eclipse.jetty.server.session.SessionHandler@98bbf6 as handler
+2015-01-27 13:44:33.498 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.servlet.ServletHandler@15c40eb + lin.HelloServlet-17761829 as servlet
+2015-01-27 13:44:33.498 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.servlet.ServletHandler@15c40eb + [/*]=>lin.HelloServlet-17761829 as servletMapping
+2015-01-27 13:44:33.498 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.server.session.SessionHandler@98bbf6 + org.eclipse.jetty.servlet.ServletHandler@15c40eb as handler
+2015-01-27 13:44:33.498 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.server.session.SessionHandler@98bbf6 + org.eclipse.jetty.server.session.HashSessionManager@18c4a7f as sessionManager
+2015-01-27 13:44:33.498 [main] DEBUG org.eclipse.jetty.util.log - Starting org.eclipse.jetty.server.session.SessionHandler@98bbf6
+2015-01-27 13:44:33.499 [main] DEBUG org.eclipse.jetty.util.log - Starting org.eclipse.jetty.server.session.HashSessionManager@18c4a7f
+2015-01-27 13:44:33.500 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.server.Server@196e136 + org.eclipse.jetty.server.session.HashSessionIdManager@167c5e3 as sessionIdManager
+2015-01-27 13:44:33.500 [main] DEBUG org.eclipse.jetty.util.log - Starting org.eclipse.jetty.server.session.HashSessionIdManager@167c5e3
+2015-01-27 13:44:33.501 [main] DEBUG org.eclipse.jetty.util.log - STARTED org.eclipse.jetty.server.session.HashSessionIdManager@167c5e3
+2015-01-27 13:44:33.502 [main] DEBUG org.eclipse.jetty.util.log - STARTED org.eclipse.jetty.server.session.HashSessionManager@18c4a7f
+2015-01-27 13:44:33.502 [main] DEBUG org.eclipse.jetty.util.log - Starting org.eclipse.jetty.servlet.ServletHandler@15c40eb
+2015-01-27 13:44:33.502 [main] DEBUG org.eclipse.jetty.util.log - filterNameMap={}
+2015-01-27 13:44:33.503 [main] DEBUG org.eclipse.jetty.util.log - pathFilters=null
+2015-01-27 13:44:33.503 [main] DEBUG org.eclipse.jetty.util.log - servletFilterMap=null
+2015-01-27 13:44:33.503 [main] DEBUG org.eclipse.jetty.util.log - servletPathMap={/*=lin.HelloServlet-17761829}
+2015-01-27 13:44:33.503 [main] DEBUG org.eclipse.jetty.util.log - servletNameMap={lin.HelloServlet-17761829=lin.HelloServlet-17761829}
+2015-01-27 13:44:33.503 [main] DEBUG org.eclipse.jetty.util.log - starting org.eclipse.jetty.servlet.ServletHandler@15c40eb
+2015-01-27 13:44:33.504 [main] DEBUG org.eclipse.jetty.util.log - STARTED org.eclipse.jetty.servlet.ServletHandler@15c40eb
+2015-01-27 13:44:33.504 [main] DEBUG org.eclipse.jetty.util.log - starting org.eclipse.jetty.server.session.SessionHandler@98bbf6
+2015-01-27 13:44:33.504 [main] DEBUG org.eclipse.jetty.util.log - STARTED org.eclipse.jetty.server.session.SessionHandler@98bbf6
+2015-01-27 13:44:33.504 [main] DEBUG org.eclipse.jetty.util.log - starting o.e.j.s.ServletContextHandler{/,null}
+2015-01-27 13:44:33.504 [main] INFO  org.eclipse.jetty.util.log - started o.e.j.s.ServletContextHandler{/,null}
+2015-01-27 13:44:33.504 [main] DEBUG org.eclipse.jetty.util.log - Starting lin.HelloServlet-17761829
+2015-01-27 13:44:33.506 [main] DEBUG org.eclipse.jetty.util.log - STARTED lin.HelloServlet-17761829
+2015-01-27 13:44:33.506 [main] DEBUG org.eclipse.jetty.util.log - STARTED o.e.j.s.ServletContextHandler{/,null}
+2015-01-27 13:44:33.506 [main] DEBUG org.eclipse.jetty.util.log - starting org.eclipse.jetty.server.Server@196e136
+2015-01-27 13:44:33.506 [main] DEBUG org.eclipse.jetty.util.log - Starting qtp1693359{8<=0<=0/254,-1}
+2015-01-27 13:44:33.509 [main] DEBUG org.eclipse.jetty.util.log - STARTED qtp1693359{8<=3<=8/254,0}
+2015-01-27 13:44:33.509 [main] DEBUG org.eclipse.jetty.util.log - Starting SelectChannelConnector@0.0.0.0:8080
+2015-01-27 13:44:33.509 [main] DEBUG org.eclipse.jetty.util.log - Starting org.eclipse.jetty.server.nio.SelectChannelConnector$ConnectorSelectorManager@4b0bbb
+2015-01-27 13:44:33.532 [main] DEBUG org.eclipse.jetty.util.log - STARTED org.eclipse.jetty.server.nio.SelectChannelConnector$ConnectorSelectorManager@4b0bbb
+2015-01-27 13:44:33.533 [main] INFO  org.eclipse.jetty.util.log - Started SelectChannelConnector@0.0.0.0:8080
+2015-01-27 13:44:33.533 [main] DEBUG org.eclipse.jetty.util.log - STARTED SelectChannelConnector@0.0.0.0:8080
+2015-01-27 13:44:33.534 [main] DEBUG org.eclipse.jetty.util.log - STARTED org.eclipse.jetty.server.Server@196e136
+2015-01-27 13:56:40.869 [main] DEBUG org.eclipse.jetty.util.log - Logging to Logger[org.eclipse.jetty.util.log] via org.eclipse.jetty.util.log.Slf4jLog
+2015-01-27 13:56:40.873 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.server.Server@9bad5a + SelectChannelConnector@0.0.0.0:8080 as connector
+2015-01-27 13:59:26.089 [main] DEBUG org.eclipse.jetty.util.log - Logging to Logger[org.eclipse.jetty.util.log] via org.eclipse.jetty.util.log.Slf4jLog
+2015-01-27 13:59:26.095 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.server.Server@687ea9 + SelectChannelConnector@0.0.0.0:8080 as connector
+2015-01-27 14:00:23.898 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.server.Server@687ea9 + o.e.j.s.ServletContextHandler{/,null} as handler
+2015-01-27 14:07:27.645 [main] DEBUG org.eclipse.jetty.util.log - Logging to Logger[org.eclipse.jetty.util.log] via org.eclipse.jetty.util.log.Slf4jLog
+2015-01-27 14:07:27.649 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.server.Server@15904ce + SelectChannelConnector@0.0.0.0:8080 as connector
+2015-01-27 14:07:28.410 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.server.Server@15904ce + o.e.j.s.ServletContextHandler{/,null} as handler
+2015-01-27 14:07:28.441 [main] DEBUG org.eclipse.jetty.util.log - filterNameMap={}
+2015-01-27 14:07:28.442 [main] DEBUG org.eclipse.jetty.util.log - pathFilters=null
+2015-01-27 14:07:28.442 [main] DEBUG org.eclipse.jetty.util.log - servletFilterMap=null
+2015-01-27 14:07:28.442 [main] DEBUG org.eclipse.jetty.util.log - servletPathMap={/*=lin.HelloServlet-18102863}
+2015-01-27 14:07:28.442 [main] DEBUG org.eclipse.jetty.util.log - servletNameMap={lin.HelloServlet-18102863=lin.HelloServlet-18102863}
+2015-01-27 14:07:28.442 [main] DEBUG org.eclipse.jetty.util.log - Starting org.eclipse.jetty.server.Server@15904ce
+2015-01-27 14:07:28.442 [main] INFO  org.eclipse.jetty.util.log - jetty-7.3.1.v20110307
+2015-01-27 14:07:28.457 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.server.Server@15904ce + qtp12751972{8<=0<=0/254,-1} as threadpool
+2015-01-27 14:07:28.457 [main] DEBUG org.eclipse.jetty.util.log - Starting o.e.j.s.ServletContextHandler{/,null}
+2015-01-27 14:07:28.472 [main] DEBUG org.eclipse.jetty.util.log - Container o.e.j.s.ServletContextHandler{/,null} + org.eclipse.jetty.server.session.SessionHandler@1fa80c7 as handler
+2015-01-27 14:07:28.472 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.servlet.ServletHandler@11c9103 + lin.HelloServlet-18102863 as servlet
+2015-01-27 14:07:28.472 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.servlet.ServletHandler@11c9103 + [/*]=>lin.HelloServlet-18102863 as servletMapping
+2015-01-27 14:07:28.472 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.server.session.SessionHandler@1fa80c7 + org.eclipse.jetty.servlet.ServletHandler@11c9103 as handler
+2015-01-27 14:07:28.472 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.server.session.SessionHandler@1fa80c7 + org.eclipse.jetty.server.session.HashSessionManager@30aafc as sessionManager
+2015-01-27 14:07:28.472 [main] DEBUG org.eclipse.jetty.util.log - Starting org.eclipse.jetty.server.session.SessionHandler@1fa80c7
+2015-01-27 14:07:28.472 [main] DEBUG org.eclipse.jetty.util.log - Starting org.eclipse.jetty.server.session.HashSessionManager@30aafc
+2015-01-27 14:07:28.473 [main] DEBUG org.eclipse.jetty.util.log - Container org.eclipse.jetty.server.Server@15904ce + org.eclipse.jetty.server.session.HashSessionIdManager@1c73512 as sessionIdManager
+2015-01-27 14:07:28.473 [main] DEBUG org.eclipse.jetty.util.log - Starting org.eclipse.jetty.server.session.HashSessionIdManager@1c73512
+2015-01-27 14:07:28.475 [main] DEBUG org.eclipse.jetty.util.log - STARTED org.eclipse.jetty.server.session.HashSessionIdManager@1c73512
+2015-01-27 14:07:28.475 [main] DEBUG org.eclipse.jetty.util.log - STARTED org.eclipse.jetty.server.session.HashSessionManager@30aafc
+2015-01-27 14:07:28.475 [main] DEBUG org.eclipse.jetty.util.log - Starting org.eclipse.jetty.servlet.ServletHandler@11c9103
+2015-01-27 14:07:28.476 [main] DEBUG org.eclipse.jetty.util.log - filterNameMap={}
+2015-01-27 14:07:28.476 [main] DEBUG org.eclipse.jetty.util.log - pathFilters=null
+2015-01-27 14:07:28.476 [main] DEBUG org.eclipse.jetty.util.log - servletFilterMap=null
+2015-01-27 14:07:28.477 [main] DEBUG org.eclipse.jetty.util.log - servletPathMap={/*=lin.HelloServlet-18102863}
+2015-01-27 14:07:28.477 [main] DEBUG org.eclipse.jetty.util.log - servletNameMap={lin.HelloServlet-18102863=lin.HelloServlet-18102863}
+2015-01-27 14:07:28.477 [main] DEBUG org.eclipse.jetty.util.log - starting org.eclipse.jetty.servlet.ServletHandler@11c9103
+2015-01-27 14:07:28.477 [main] DEBUG org.eclipse.jetty.util.log - STARTED org.eclipse.jetty.servlet.ServletHandler@11c9103
+2015-01-27 14:07:28.477 [main] DEBUG org.eclipse.jetty.util.log - starting org.eclipse.jetty.server.session.SessionHandler@1fa80c7
+2015-01-27 14:07:28.477 [main] DEBUG org.eclipse.jetty.util.log - STARTED org.eclipse.jetty.server.session.SessionHandler@1fa80c7
+2015-01-27 14:07:28.477 [main] DEBUG org.eclipse.jetty.util.log - starting o.e.j.s.ServletContextHandler{/,null}
+2015-01-27 14:07:28.478 [main] INFO  org.eclipse.jetty.util.log - started o.e.j.s.ServletContextHandler{/,null}
+2015-01-27 14:07:28.478 [main] DEBUG org.eclipse.jetty.util.log - Starting lin.HelloServlet-18102863
+2015-01-27 14:07:28.479 [main] DEBUG org.eclipse.jetty.util.log - STARTED lin.HelloServlet-18102863
+2015-01-27 14:07:28.479 [main] DEBUG org.eclipse.jetty.util.log - STARTED o.e.j.s.ServletContextHandler{/,null}
+2015-01-27 14:07:28.479 [main] DEBUG org.eclipse.jetty.util.log - starting org.eclipse.jetty.server.Server@15904ce
+2015-01-27 14:07:28.479 [main] DEBUG org.eclipse.jetty.util.log - Starting qtp12751972{8<=0<=0/254,-1}
+2015-01-27 14:07:28.481 [main] DEBUG org.eclipse.jetty.util.log - STARTED qtp12751972{8<=4<=8/254,0}
+2015-01-27 14:07:28.482 [main] DEBUG org.eclipse.jetty.util.log - Starting SelectChannelConnector@0.0.0.0:8080
+2015-01-27 14:07:28.482 [main] DEBUG org.eclipse.jetty.util.log - Starting org.eclipse.jetty.server.nio.SelectChannelConnector$ConnectorSelectorManager@1db3a73
+2015-01-27 14:07:28.513 [main] DEBUG org.eclipse.jetty.util.log - STARTED org.eclipse.jetty.server.nio.SelectChannelConnector$ConnectorSelectorManager@1db3a73
+2015-01-27 14:07:28.515 [main] INFO  org.eclipse.jetty.util.log - Started SelectChannelConnector@0.0.0.0:8080
+2015-01-27 14:07:28.516 [main] DEBUG org.eclipse.jetty.util.log - STARTED SelectChannelConnector@0.0.0.0:8080
+2015-01-27 14:07:28.516 [main] DEBUG org.eclipse.jetty.util.log - STARTED org.eclipse.jetty.server.Server@15904ce
