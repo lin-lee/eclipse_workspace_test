@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ 						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+ 						http://www.springframework.org/schema/context 
+ 						http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:component-scan base-package="com.lvmama.vst.passport">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+     <bean id="fsClient" class="com.lvmama.comm.pet.fs.client.FSClient" />
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:jdbc.properties</value>
+			<!-- <value>classpath*:const.properties</value>
+			    <value>classpath*:webService.properties</value>
+				<value>classpath*:jms.properties</value>-->
+			</list>
+		</property>
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+	</bean>
+	
+	<bean id="autoPerformTaskExecutor"  
+        class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">  
+        <property name="corePoolSize" value="2" />  
+        <property name="maxPoolSize" value="8" />  
+        <property name="queueCapacity" value="8000" />  
+        <property name="keepAliveSeconds" value="60" /><!-- default value 60秒 -->  
+        <property name="rejectedExecutionHandler">  
+            <bean class="java.util.concurrent.ThreadPoolExecutor$DiscardPolicy" />  
+        </property>
+    </bean>
+    
+
+	<bean class="com.lvmama.vst.passport.util.WebAppContextUtil" />
+	<!-- 引入vst_comm里的xml文件 -->
+	<import resource="classpath*:applicationContext-vst-comm-beans.xml" />
+	<import resource="classpath*:spring-database.xml" />
+	<import resource="classpath*:hessian-service-remote.xml" />
+	<import resource="classpath*:applicationContext-passport-trigger.xml" /> 
+	<import resource="classpath*:applicationContext-passport-processer.xml" />
+</beans>

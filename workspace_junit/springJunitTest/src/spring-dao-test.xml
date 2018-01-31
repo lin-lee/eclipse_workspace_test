@@ -1,0 +1,9 @@
+
+<bean id ="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+	destroy-method="close">
+	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+	<property name="url" value="jdbc:oracle:thin:@192.168.0.16:1521:lvmamadb" />
+	<property name="username" value="lvmama_ver" />
+	<property name="password" value="lvmama_ver" />
+
+</bean>
