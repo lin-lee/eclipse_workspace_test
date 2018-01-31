@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: org.apache.log4j.RFATestCase
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.16 sec
+test1(org.apache.log4j.RFATestCase)  Time elapsed: 0.076 sec
+test2(org.apache.log4j.RFATestCase)  Time elapsed: 0.029 sec
+test2ParamConstructor(org.apache.log4j.RFATestCase)  Time elapsed: 0.001 sec
+test3ParamConstructor(org.apache.log4j.RFATestCase)  Time elapsed: 0.001 sec
+testLockDotOne(org.apache.log4j.RFATestCase)  Time elapsed: 0.012 sec
+testLockDotThree(org.apache.log4j.RFATestCase)  Time elapsed: 0.016 sec

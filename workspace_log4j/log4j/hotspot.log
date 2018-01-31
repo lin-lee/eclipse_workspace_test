@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hotspot_log version='160 1' process='11032' time_ms='1420018021735'>
+<vm_version>
+<name>
+Java HotSpot(TM) Client VM
+</name>
+<release>
+20.0-b10-fastdebug
+</release>
+<info>
+Java HotSpot(TM) Client VM (20.0-b10-fastdebug) for windows-x86 JRE (1.6.0_25-ea-fastdebug-b03), built on Feb 27 2011 03:51:39 by &quot;java_re&quot; with MS VC++ 7.1 (VS2003)
+</info>
+</vm_version>
+<vm_arguments>
+<args>
+-agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:50946 -Dmaven.home=F:\maven-repo-src\apache-maven-3.2.5-net -Dclassworlds.conf=E:\eclipse32_enjoy_4.4.1\workspace_log4j\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf2822782990902485951.tmp -Dfile.encoding=GBK 
+</args>
+<command>
+org.codehaus.plexus.classworlds.launcher.Launcher -B -s F:\maven-repo-src\apache-maven-3.2.5-net\conf\settings.xml install
+</command>
+<launcher>
+SUN_STANDARD
+</launcher>
+<properties>
+java.vm.specification.name=Java Virtual Machine Specification
+java.vm.version=20.0-b10-fastdebug
+java.vm.name=Java HotSpot(TM) Client VM
+java.vm.info=mixed mode, sharing
+java.ext.dirs=D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\ext;C:\windows\Sun\Java\lib\ext
+java.endorsed.dirs=D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\endorsed
+sun.boot.library.path=D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\bin
+java.library.path=D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\bin;.;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\bin;D:\ProgramFiles\Java\jdk1.6.0_45\bin;F:\oracle\11.2.0\client_1;D:\ProgramFiles\Java\jdk1.6.0_45\bin;C:\Program Files\TortoiseSVN\bin;D:\ProgramFiles\apache-maven-3.0.5\bin;c:\windows\system32;F:\CXF\CXF\apache-cxf-2.4.0\bin;D:\ProgramFiles\apache-ant-1.9.4\bin
+java.home=D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre
+java.class.path=F:\maven-repo-src\apache-maven-3.2.5-net\boot\plexus-classworlds-2.5.2.jar
+sun.boot.class.path=D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\resources.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\rt.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\sunrsasign.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\jsse.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\jce.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\charsets.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\modules\jdk.boot.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\classes
+java.vm.specification.vendor=Sun Microsystems Inc.
+java.vm.specification.version=1.0
+java.vm.vendor=Sun Microsystems Inc.
+maven.home=F:\maven-repo-src\apache-maven-3.2.5-net
+classworlds.conf=E:\eclipse32_enjoy_4.4.1\workspace_log4j\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf2822782990902485951.tmp
+file.encoding=GBK
+sun.java.command=org.codehaus.plexus.classworlds.launcher.Launcher -B -s F:\maven-repo-src\apache-maven-3.2.5-net\conf\settings.xml install
+sun.java.launcher=SUN_STANDARD
+</properties>
+</vm_arguments>
+<tty>
+<writer thread='11096'/>
+<dependency_failed type='leaf_type' ctxk='java/util/ArrayList' witness='org/eclipse/sisu/bean/BeanScheduler$Pending' stamp='2.240'/>
+<dependency_failed type='leaf_type' ctxk='java/util/ArrayList' witness='org/eclipse/sisu/bean/BeanScheduler$Pending' stamp='2.240'/>
+<dependency_failed type='unique_concrete_method' x='java/util/Properties getProperty (Ljava/lang/String;)Ljava/lang/String;' witness='java/security/Provider' stamp='2.419'/>
+<dependency_failed type='unique_concrete_method' x='java/util/Properties getProperty (Ljava/lang/String;)Ljava/lang/String;' witness='java/security/Provider' stamp='2.419'/>
+<dependency_failed type='unique_concrete_method' x='java/util/Hashtable get (Ljava/lang/Object;)Ljava/lang/Object;' witness='java/security/Provider' stamp='2.419'/>
+<dependency_failed type='unique_concrete_method' x='java/util/Hashtable put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;' witness='java/security/Provider' stamp='2.419'/>
+<dependency_failed type='unique_concrete_method' x='java/util/Hashtable rehash ()V' witness='org/apache/maven/wagon/providers/http/commons/logging/impl/WeakHashtable' stamp='2.981'/>
+<dependency_failed type='leaf_type' ctxk='java/security/cert/Certificate' witness='java/security/cert/X509Certificate' stamp='3.051'/>
+<dependency_failed type='unique_concrete_method' ctxk='java/io/DataOutput' x='java/io/DataOutputStream write ([BII)V' witness='java/io/DataOutput' stamp='3.504'/>
+<dependency_failed type='unique_concrete_method' ctxk='java/io/DataInput' x='java/io/DataInputStream readUnsignedShort ()I' witness='java/io/DataInput' stamp='3.504'/>
+<dependency_failed type='unique_concrete_method' ctxk='java/io/DataInput' x='java/io/DataInputStream readFully ([BII)V' witness='java/io/DataInput' stamp='3.504'/>
+<dependency_failed type='unique_concrete_method' x='java/net/URLStreamHandler getDefaultPort ()I' witness='sun/net/www/protocol/http/Handler' stamp='4.082'/>
+<dependency_failed type='unique_concrete_method' x='java/util/zip/ZipEntry getName ()Ljava/lang/String;' witness='org/codehaus/plexus/archiver/zip/ZipEntry' stamp='30.275'/>
+<dependency_failed type='leaf_type' ctxk='org/codehaus/plexus/classworlds/realm/ClassRealm' witness='org/codehaus/classworlds/ClassRealmReverseAdapter' stamp='60.377'/>
+<dependency_failed type='leaf_type' ctxk='org/codehaus/plexus/classworlds/realm/ClassRealm' witness='org/codehaus/classworlds/ClassRealmReverseAdapter' stamp='60.377'/>
+C1 Runtime statistics:
+ _resolve_invoke_virtual_cnt:     1078
+ _resolve_invoke_opt_virtual_cnt: 1904
+ _resolve_invoke_static_cnt:      258
+ _handle_wrong_method_cnt:        8
+ _ic_miss_cnt:                    332
+ _generic_arraycopy_cnt:          28263
+ _primitive_arraycopy_cnt:        989593
+ _oop_arraycopy_cnt:              34890
+ _arraycopy_slowcase_cnt:         6139
+ _new_type_array_slowcase_cnt:    53
+ _new_object_array_slowcase_cnt:  6
+ _new_instance_slowcase_cnt:      599
+ _new_multi_array_slowcase_cnt:   0
+ _monitorenter_slowcase_cnt:      17093
+ _monitorexit_slowcase_cnt:       4101
+ _patch_code_slowcase_cnt:        15
+ _throw_range_check_exception_count:            258:
+ _throw_index_exception_count:                  0:
+ _throw_div0_exception_count:                   0:
+ _throw_null_pointer_exception_count:           215:
+ _throw_class_cast_exception_count:             0:
+ _throw_incompatible_class_change_error_count:  0:
+ _throw_array_store_exception_count:            0:
+ _throw_count:                                  0:
+
+<statistics type='nmethod'>
+Statistics for 52 native nmethods:
+ N. total size  = 33908
+ N. relocation  = 3008
+ N. main code   = 19332
+Statistics for 1689 bytecoded nmethods:
+ total in heap  = 3782160
+ relocation     = 269808
+ constants      = 592
+ main code      = 1212720
+ stub code      = 173184
+ oops           = 29552
+ scopes data    = 665396
+ scopes pcs     = 951632
+ dependencies   = 19016
+ handler table  = 50580
+ nul chk table  = 40376
+Debug Data Chunks: 121607, shared 14529+28334, non-SP&apos;s elided 1803
+PcDesc Statistics:  90388 queries, 6.70 comparisons per query
+  caches=1689 queries=90388/0, hits=0+65856, tests=343173+262526, adds=24533
+</statistics>
+<tty_done stamp='250.065'/>
+</tty>
+<hotspot_log_done stamp='250.065'/>
+</hotspot_log>

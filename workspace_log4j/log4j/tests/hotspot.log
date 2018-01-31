@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hotspot_log version='160 1' process='12040' time_ms='1420018271211'>
+<vm_version>
+<name>
+Java HotSpot(TM) Client VM
+</name>
+<release>
+20.0-b10-fastdebug
+</release>
+<info>
+Java HotSpot(TM) Client VM (20.0-b10-fastdebug) for windows-x86 JRE (1.6.0_25-ea-fastdebug-b03), built on Feb 27 2011 03:51:39 by &quot;java_re&quot; with MS VC++ 7.1 (VS2003)
+</info>
+</vm_version>
+<vm_arguments>
+<command>
+C:\Users\lilin\AppData\Local\Temp\surefirebooter5099978160203395308.jar C:\Users\lilin\AppData\Local\Temp\surefire5096744627835397703tmp C:\Users\lilin\AppData\Local\Temp\surefire1361640422936933281tmp
+</command>
+<launcher>
+SUN_STANDARD
+</launcher>
+<properties>
+java.vm.specification.name=Java Virtual Machine Specification
+java.vm.version=20.0-b10-fastdebug
+java.vm.name=Java HotSpot(TM) Client VM
+java.vm.info=mixed mode, sharing
+java.ext.dirs=D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\ext;C:\windows\Sun\Java\lib\ext
+java.endorsed.dirs=D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\endorsed
+sun.boot.library.path=D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\bin
+java.library.path=D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\bin;.;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\bin;D:\ProgramFiles\Java\jdk1.6.0_45\bin;F:\oracle\11.2.0\client_1;D:\ProgramFiles\Java\jdk1.6.0_45\bin;C:\Program Files\TortoiseSVN\bin;D:\ProgramFiles\apache-maven-3.0.5\bin;c:\windows\system32;F:\CXF\CXF\apache-cxf-2.4.0\bin;D:\ProgramFiles\apache-ant-1.9.4\bin
+java.home=D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre
+java.class.path=C:\Users\lilin\AppData\Local\Temp\surefirebooter5099978160203395308.jar
+sun.boot.class.path=D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\resources.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\rt.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\sunrsasign.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\jsse.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\jce.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\charsets.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\modules\jdk.boot.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\classes
+java.vm.specification.vendor=Sun Microsystems Inc.
+java.vm.specification.version=1.0
+java.vm.vendor=Sun Microsystems Inc.
+sun.java.command=C:\Users\lilin\AppData\Local\Temp\surefirebooter5099978160203395308.jar C:\Users\lilin\AppData\Local\Temp\surefire5096744627835397703tmp C:\Users\lilin\AppData\Local\Temp\surefire1361640422936933281tmp
+sun.java.launcher=SUN_STANDARD
+</properties>
+</vm_arguments>
+<tty>
+<writer thread='9004'/>
+C1 Runtime statistics:
+ _resolve_invoke_virtual_cnt:     4
+ _resolve_invoke_opt_virtual_cnt: 46
+ _resolve_invoke_static_cnt:      12
+ _handle_wrong_method_cnt:        0
+ _ic_miss_cnt:                    0
+ _generic_arraycopy_cnt:          0
+ _primitive_arraycopy_cnt:        25897
+ _oop_arraycopy_cnt:              0
+ _arraycopy_slowcase_cnt:         0
+ _new_type_array_slowcase_cnt:    1
+ _new_object_array_slowcase_cnt:  0
+ _new_instance_slowcase_cnt:      1
+ _new_multi_array_slowcase_cnt:   0
+ _monitorenter_slowcase_cnt:      0
+ _monitorexit_slowcase_cnt:       0
+ _patch_code_slowcase_cnt:        0
+ _throw_range_check_exception_count:            0:
+ _throw_index_exception_count:                  0:
+ _throw_div0_exception_count:                   0:
+ _throw_null_pointer_exception_count:           0:
+ _throw_class_cast_exception_count:             0:
+ _throw_incompatible_class_change_error_count:  0:
+ _throw_array_store_exception_count:            0:
+ _throw_count:                                  0:
+
+<statistics type='nmethod'>
+Statistics for 1 native nmethods:
+ N. total size  = 656
+ N. relocation  = 60
+ N. main code   = 376
+Statistics for 71 bytecoded nmethods:
+ total in heap  = 185036
+ relocation     = 12568
+ main code      = 60736
+ stub code      = 7448
+ oops           = 728
+ scopes data    = 31616
+ scopes pcs     = 51968
+ dependencies   = 296
+ handler table  = 1824
+ nul chk table  = 2316
+Debug Data Chunks: 6199, shared 716+1683, non-SP&apos;s elided 64
+PcDesc Statistics:  301 queries, 14.34 comparisons per query
+  caches=71 queries=301/0, hits=0+25, tests=1388+2928, adds=276
+</statistics>
+<tty_done stamp='0.294'/>
+</tty>
+<hotspot_log_done stamp='0.294'/>
+</hotspot_log>

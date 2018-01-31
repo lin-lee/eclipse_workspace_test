@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="0.154" errors="0" skipped="0" tests="5" name="org.apache.log4j.CategoryTest">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\bin"/>
+    <property name="java.vm.version" value="20.0-b10-fastdebug"/>
+    <property name="java.vm.vendor" value="Sun Microsystems Inc."/>
+    <property name="java.vendor.url" value="http://java.sun.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="E:\eclipse32_enjoy_4.4.1\workspace_log4j\log4j\tests"/>
+    <property name="java.runtime.version" value="1.6.0_25-ea-fastdebug-b03"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="basedir" value="E:\eclipse32_enjoy_4.4.1\workspace_log4j\log4j"/>
+    <property name="java.endorsed.dirs" value="D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\endorsed"/>
+    <property name="os.arch" value="x86"/>
+    <property name="java.io.tmpdir" value="C:\Users\lilin\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\bin;.;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\bin;D:\ProgramFiles\Java\jdk1.6.0_45\bin;F:\oracle\11.2.0\client_1;D:\ProgramFiles\Java\jdk1.6.0_45\bin;C:\Program Files\TortoiseSVN\bin;D:\ProgramFiles\apache-maven-3.0.5\bin;c:\windows\system32;F:\CXF\CXF\apache-cxf-2.4.0\bin;D:\ProgramFiles\apache-ant-1.9.4\bin"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="50.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="C:\Users\lilin"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="file.encoding" value="GBK"/>
+    <property name="java.specification.version" value="1.6"/>
+    <property name="user.name" value="lilin"/>
+    <property name="java.class.path" value="C:\Users\lilin\AppData\Local\Temp\surefirebooter5474146059121804400.jar"/>
+    <property name="java.vm.specification.version" value="1.0"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre"/>
+    <property name="sun.java.command" value="C:\Users\lilin\AppData\Local\Temp\surefirebooter5474146059121804400.jar C:\Users\lilin\AppData\Local\Temp\surefire892831260243891665tmp C:\Users\lilin\AppData\Local\Temp\surefire7448919799183517875tmp"/>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="user.language" value="zh"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.6.0_25-ea-fastdebug"/>
+    <property name="java.ext.dirs" value="D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\ext;C:\windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\resources.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\rt.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\sunrsasign.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\jsse.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\jce.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\charsets.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\lib\modules\jdk.boot.jar;D:\ProgramFiles\Java\jdk1.6.0_25-debug-32\fastdebug\jre\classes"/>
+    <property name="java.vendor" value="Sun Microsystems Inc."/>
+    <property name="localRepository" value="F:\maven-repo-src\log4j-maven-repo"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+  </properties>
+  <testcase time="0.121" classname="org.apache.log4j.CategoryTest" name="testForcedLog"/>
+  <testcase time="0.001" classname="org.apache.log4j.CategoryTest" name="testGetChainedPriorityReturnType"/>
+  <testcase time="0.009" classname="org.apache.log4j.CategoryTest" name="testL7dlog"/>
+  <testcase time="0" classname="org.apache.log4j.CategoryTest" name="testL7dlog4Param"/>
+  <testcase time="0" classname="org.apache.log4j.CategoryTest" name="testSetPriority"/>
+</testsuite>

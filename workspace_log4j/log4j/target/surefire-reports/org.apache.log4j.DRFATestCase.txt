@@ -1,0 +1,19 @@
+-------------------------------------------------------------------------------
+Test set: org.apache.log4j.DRFATestCase
+-------------------------------------------------------------------------------
+Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 123.136 sec
+testComputeCheckPeriod(org.apache.log4j.DRFATestCase)  Time elapsed: 0.059 sec
+testRC1(org.apache.log4j.DRFATestCase)  Time elapsed: 0.108 sec
+testRC2(org.apache.log4j.DRFATestCase)  Time elapsed: 1.59 sec
+testRC3(org.apache.log4j.DRFATestCase)  Time elapsed: 1.718 sec
+testTopOfYear(org.apache.log4j.DRFATestCase)  Time elapsed: 0.006 sec
+testTopOfMonth(org.apache.log4j.DRFATestCase)  Time elapsed: 0.002 sec
+testTopOfWeek(org.apache.log4j.DRFATestCase)  Time elapsed: 0.002 sec
+testTopOfDay(org.apache.log4j.DRFATestCase)  Time elapsed: 0.001 sec
+testHalfDay(org.apache.log4j.DRFATestCase)  Time elapsed: 0.002 sec
+testTopOfHour(org.apache.log4j.DRFATestCase)  Time elapsed: 0.001 sec
+testTopOfMinute(org.apache.log4j.DRFATestCase)  Time elapsed: 0.003 sec
+testRolloverNoPattern(org.apache.log4j.DRFATestCase)  Time elapsed: 0.001 sec
+testMinuteRollover(org.apache.log4j.DRFATestCase)  Time elapsed: 59.614 sec
+testBlockedRollover(org.apache.log4j.DRFATestCase)  Time elapsed: 60.004 sec
+testWeeklyRollover(org.apache.log4j.DRFATestCase)  Time elapsed: 0 sec
