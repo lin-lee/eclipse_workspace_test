@@ -1,0 +1,9 @@
+struct A {
+	int x;
+	float y;
+};
+
+void f(){
+	A a;
+	a.x = 1;
+}

@@ -1,0 +1,13 @@
+float a[];
+int d[];
+int c = 'z'+1;
+void f(){
+	a[0] = 4*'i';
+	a[1] = d[0];
+	a['x'] = 1;
+	g('q', 10);
+}
+
+int g(int x, float y){
+	return 'k';
+}

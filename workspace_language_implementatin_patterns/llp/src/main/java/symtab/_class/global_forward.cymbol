@@ -1,0 +1,5 @@
+int main(){
+	x = y;	// shouldn't see global x or local y; ERROR!
+	int y;
+}
+int x;
