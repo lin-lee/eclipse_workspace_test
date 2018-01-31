@@ -1,0 +1,126 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>jms-test</groupId>
+  <artifactId>jms-test</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  
+  <dependencies>
+		<!-- https://mvnrepository.com/artifact/javax.jms/jms -->
+	<dependency>
+	    <groupId>javax.jms</groupId>
+	    <artifactId>jms</artifactId>
+	    <version>1.1</version>
+	</dependency>
+
+   <dependency>
+       <groupId>org.apache.activemq</groupId>
+       <artifactId>activemq-client</artifactId>
+       <version>5.14.5</version>
+   </dependency>
+   <dependency>
+       <groupId>org.apache.activemq</groupId>
+       <artifactId>activemq-broker</artifactId>
+       <version>5.14.5</version>
+   </dependency> 
+   
+ 
+   
+   <!-- stomp -->
+   <dependency>
+      <groupId>org.fusesource.stompjms</groupId>
+      <artifactId>stompjms-client</artifactId>
+      <version>1.19</version>
+    </dependency>
+    <!-- amqp -->
+    <dependency>
+      <groupId>org.apache.qpid</groupId>
+      <artifactId>qpid-jms-client</artifactId>
+      <version>0.11.1</version>
+    </dependency>
+    <!-- mqtt -->
+    <dependency>
+      <groupId>org.fusesource.mqtt-client</groupId>
+      <artifactId>mqtt-client</artifactId>
+      <version>1.14</version>
+    </dependency>
+   
+   
+   <dependency>
+		<groupId>annogen</groupId>
+		<artifactId>annogen</artifactId>
+		<version>0.1.0</version>
+   </dependency>
+   <dependency>
+		<groupId>ant</groupId>
+		<artifactId>ant</artifactId>
+		<version>1.6.2</version>
+	</dependency>
+   
+    <dependency>
+         <groupId>log4j</groupId>
+         <artifactId>log4j</artifactId>
+         <version>1.2.17</version>
+     </dependency>
+     <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-api</artifactId>
+         <version>1.6.6</version>
+     </dependency>
+     <dependency>
+		  <groupId>org.slf4j</groupId>
+		  <artifactId>slf4j-log4j12</artifactId>
+		  <version>1.6.0</version>
+	 </dependency>
+	 
+	 
+	 
+	 <!--  Distributed transaction -->
+	 <dependency>
+            <groupId>jotm</groupId>
+            <artifactId>jotm</artifactId>
+            <version>2.0.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ow2.jotm</groupId>
+            <artifactId>jotm-core</artifactId>
+            <version>2.3.1-M1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ow2.jotm</groupId>
+            <artifactId>jotm-datasource</artifactId>
+            <version>2.3.1-M1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ow2.jotm</groupId>
+            <artifactId>jotm-standalone</artifactId>
+            <version>2.3.1-M1</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.resource</groupId>
+            <artifactId>javax.resource-api</artifactId>
+            <version>1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.experlog</groupId>
+            <artifactId>xapool</artifactId>
+            <version>1.6-beta</version>
+        </dependency>
+   
+</dependencies>
+
+  
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
